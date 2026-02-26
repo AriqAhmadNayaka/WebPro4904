@@ -12,7 +12,7 @@ Harap ikuti instruksi di bawah ini dengan teliti.
 1. **Clone repository ini:**
    `git clone https://github.com/AriqAhmadNayaka/WebPro4902.git`
 2. **Masuk ke folder:**
-   `cd WebPro4902`
+   `cd WebPro4904`
 3. **Buat dan pindah ke branch sendiri (hanya dilakukan sekali):**
    `git checkout -b Nama-NIM`
 4. **Buat folder pekan dan masukkan file tugas.**
