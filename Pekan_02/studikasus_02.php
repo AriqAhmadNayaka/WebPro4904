@@ -1,7 +1,7 @@
 <?php
 // Mengambil angka desimal dari URL (contoh: ?angka=255)
-// Defaultnya kita isi 255 jika tidak ada input
-$desimal_input = $_GET['angka'] ?? 30;
+// Defaultnya kita isi 255 jika tidak ada input 
+$desimal_input = $_GET['angka'] ?? 40;
 
 // Membuat fungsi konverter
 function desimalKeHeksa(int $desimal)
