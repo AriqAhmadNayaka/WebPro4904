@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* --- VARIABEL WARNA --- */
+:root {
+    --purple: #6C63FF;
+    --purple-light: #eceaff;
+    --purple-soft: #f5f3ff;
+    --green: #1BC47D;
+    --red: #FF5B5B;
+    --text-dark: #1d1d2f;
+    --text-light: #7675a3;
+    --card-bg: #ffffff;
+    --bg: #f7f7ff;
+    --radius: 18px;
+    --shadow: 0 8px 22px rgba(0,0,0,0.08);
+}
+
+/* --- BASE STYLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* --- NAVIGATION --- */
+nav {
+    background: white;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav__logo .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--text-dark);
+}
+
+.nav__logo span {
+    color: var(--purple);
+}
+
+.nav__links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav__links a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav__links a:hover {
+    color: var(--purple);
+}
+
+/* --- CONTAINER UTAMA --- */
+main {
+    padding: 120px 5% 50px; /* Padding top agar tidak tertutup nav */
+    min-height: 90vh;
+}
+
+.section__container {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+/* --- AUTH & FORM STYLES --- */
+.auth-container {
+    max-width: 450px;
+    margin: 40px auto;
+    background: white;
+    padding: 40px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.auth-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--purple);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input, 
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    border-color: var(--purple);
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: var(--purple);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #5a54e7;
+    transform: translateY(-2px);
+}
+
+/* --- TABLE STYLES --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+table th, table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+table th {
+    background: var(--purple-soft);
+    color: var(--purple);
+    font-weight: 600;
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: white;
+    margin-top: 40px;
+}
+
+.footer__bar {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}

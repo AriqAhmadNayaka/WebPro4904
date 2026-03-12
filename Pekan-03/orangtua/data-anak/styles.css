@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --purple: #7A73FF;
+    --purple-soft: #f1efff;
+    --red: #FF5B5B;
+    --text-dark: #222;
+    --text-light: #777;
+    --bg: #fafaff;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    background: var(--bg);
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+    width: 240px;
+    background: #fff;
+    padding: 25px;
+    height: 100vh;
+    position: fixed;
+    border-right: 1px solid #ededed;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--purple);
+    margin-bottom: 30px;
+}
+
+.sidebar a {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    color: var(--text-dark);
+    border-radius: 12px;
+}
+
+.sidebar a.active,
+.sidebar a:hover {
+    background: var(--purple-soft);
+    color: var(--purple);
+}
+
+.logout {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: var(--red);
+    color: white;
+    cursor: pointer;
+}
+
+/* ================= CONTENT ================= */
+.content {
+    margin-left: 260px;
+    padding: 35px;
+    width: calc(100% - 260px);
+}
+
+/* ================= PAGE HEADER ================= */
+.page-header {
+    margin-bottom: 30px;
+}
+
+.page-header h1 {
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.page-header p {
+    font-size: 15px;
+    color: var(--text-light);
+}
+
+/* ================= PROFILE BOX ================= */
+.profile-box {
+    background: white;
+    padding: 35px 40px;
+    border-radius: 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
+    width: 100%;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+}
+
+/* ================= FOTO ================= */
+.photo-box {
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photo-box img {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    border: 4px solid var(--purple-soft);
+    object-fit: cover;
+}
+
+.upload-label {
+    margin-top: 14px;
+    font-size: 14px;
+    color: var(--purple);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ================= CARD DATA ================= */
+.big-card {
+    flex: 1;
+}
+
+.big-card h3 {
+    font-size: 20px;
+    margin-bottom: 22px;
+}
+
+/* ================= FORM GRID ================= */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 28px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.input-group textarea {
+    resize: none;
+    height: 90px;
+}
+
+/* Full width field */
+.input-group.full {
+    grid-column: span 2;
+}
+
+/* ================= BUTTON ================= */
+.save-btn {
+    margin-top: 28px;
+    background: var(--purple);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 14px;
+    font-size: 15px;
+    cursor: pointer;
+    width: 220px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .profile-box {
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 25px;
+    }
+
+    .photo-box {
+        width: 100%;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .input-group.full {
+        grid-column: span 1;
+    }
+
+    .save-btn {
+        width: 100%;
+    }
+}
