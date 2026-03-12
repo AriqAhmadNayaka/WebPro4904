@@ -1,40 +1,74 @@
 <?php
 session_start();
 
-if(isset($_POST['login'])){
-    if($_POST['username'] == $_SESSION['username'] &&
-       $_POST['password'] == $_SESSION['password']){
-        $_SESSION['login'] = true;
-        header("Location: Soal02.php");
-        exit;
-    }
+/* Cek apakah sudah login */
+if(!isset($_SESSION['login'])){
+    header("Location: login.php");
+    exit;
 }
 
+/* Inisialisasi data */
 if(!isset($_SESSION['data'])){
     $_SESSION['data'] = [];
 }
 
+/* CREATE */
 if(isset($_POST['tambah'])){
-    $_SESSION['data'][] = $_POST['nama'];
+    $judul = $_POST['judul'];
+
+    if($judul != ""){
+        $_SESSION['data'][] = $judul;
+    }
+}
+
+/* LOGOUT */
+if(isset($_POST['logout'])){
+    session_destroy();
+    header("Location: login.php");
+    exit;
 }
 ?>
 
-<h2>Dashboard</h2>
-<p>Selamat datang, <?php echo $_SESSION['user']['username']; ?>!</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
 
-<h3>Tambah Data</h3>
+<h2>Dashboard</h2>
+<p>Selamat datang, <?php echo $_SESSION['email']; ?></p>
+
+<hr>
+
+<h3>CREATE (Tambah Data)</h3>
 <form method="POST">
-    Nama: <input type="text" name="nama" required>
+    Masukkan Data: 
+    <input type="text" name="judul" required>
     <button type="submit" name="tambah">Tambah</button>
 </form>
 
-<h3>Data Tersimpan (READ)</h3>
-<ul>
+<hr>
+
+<h3>READ (Tampilkan Data)</h3>
+
 <?php
-foreach($_SESSION['data'] as $item){
-    echo "<li>$item</li>";
+if(count($_SESSION['data']) > 0){
+    echo "<ul>";
+    foreach($_SESSION['data'] as $item){
+        echo "<li>" . htmlspecialchars($item) . "</li>";
+    }
+    echo "</ul>";
+} else {
+    echo "Belum ada data.";
 }
 ?>
-</ul>
 
-<a href="logout.php">Logout</a>
+<hr>
+
+<form method="POST">
+    <button type="submit" name="logout">Logout</button>
+</form>
+
+</body>
+</html>
