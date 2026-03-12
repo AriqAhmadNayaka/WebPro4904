@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masuk - CyberVault</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00d4ff;
+      --primary-dark: #0099cc;
+      --bg: #0a0a0f;
+      --card: rgba(15, 15, 35, 0.65);
+      --text: #e0e6ed;
+      --text-muted: #8892b0;
+      --shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+      --glow: 0 0 20px rgba(0, 212, 255, 0.4);
+      --radius: 20px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+      background-attachment: fixed;
+      color: var(--text);
+      padding-top: 90px; 
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .main-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(0,212,255,0.3);
+      z-index: 1000;
+      padding: 0.8rem 0;
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -6px;
+      left: 0;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(0,212,255,0.12), transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0,212,255,0.08), transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .login-wrapper {
+      width: 100%;
+      max-width: 1100px;
+      margin: 40px auto;
+      display: flex;
+      gap: 40px;
+      align-items: stretch;
+      min-height: 580px;
+      height: min(78vh, 680px);
+    }
+
+    .image-box {
+      flex: 1;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,212,255,0.2);
+      position: relative;
+      background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(0,100,200,0.05));
+    }
+
+    .image-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, transparent 30%, rgba(0,212,255,0.1) 50%, transparent 70%);
+      background-size: 400% 400%;
+      animation: shimmer 8s ease infinite;
+      z-index: 1;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.9) contrast(1.1);
+    }
+
+    .form-box {
+      flex: 0 0 440px;
+      background: var(--card);
+      backdrop-filter: blur(20px);
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,212,255,0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .form-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+
+    .top { text-align: center; margin-bottom: 28px; }
+    .top .logo-img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 15px var(--primary));
+      margin-bottom: 12px;
+    }
+
+    .form-box h2 {
+      font-size: 28px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #00d4ff, #00ffaa);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+    }
+
+    .form-box p {
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    form { display: flex; flex-direction: column; gap: 18px; }
+
+    .input-group { position: relative; }
+
+    .input {
+      width: 100%;
+      padding: 16px 20px;
+      padding-right: 56px;
+      border-radius: 50px;
+      border: 1px solid rgba(0,212,255,0.3);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .input::placeholder { color: #667; }
+
+    .input:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: rgba(255,255,255,0.08);
+      box-shadow: var(--glow);
+    }
+
+    .toggle {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    .toggle:hover {
+      color: #00ffaa;
+    }
+
+    .role-selection {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .role-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      padding: 10px 16px;
+      border-radius: 50px;
+      border: 1px solid rgba(0,212,255,0.3);
+      background: rgba(255,255,255,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .role-option:hover {
+      border-color: var(--primary);
+      background: rgba(0,212,255,0.1);
+    }
+
+    .role-option input[type="radio"] {
+      display: none;
+    }
+
+    .role-option input[type="radio"]:checked + label {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .role-option label {
+      cursor: pointer;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 16px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 8px 25px rgba(0,212,255,0.4);
+    }
+
+    .btn-login:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(0,212,255,0.5);
+    }
+
+    .btn-login:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .login-text {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .login-text a {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .login-text a:hover {
+      color: #00ffaa;
+      text-shadow: 0 0 8px rgba(0,255,170,0.5);
+    }
+
+    .error-message {
+      background: rgba(255, 70, 100, 0.1);
+      border: 1px solid rgba(255, 70, 100, 0.3);
+      border-radius: 12px;
+      padding: 12px;
+      margin-top: 15px;
+      text-align: center;
+      color: #ff6464;
+      font-size: 14px;
+      display: none;
+    }
+
+    @media (max-width: 992px) {
+      .login-wrapper { flex-direction: column; margin: 20px auto; }
+      .image-box { height: 300px; }
+      .form-box { flex: 1; }
+      .role-selection { flex-direction: column; gap: 10px; }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      margin-left: 8px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="main-header">
+    <nav class="nav-bar">
+      <a href="HomePage.html" class="logo">CyberVault</a>
+      <ul class="nav-links">
+        <li><a href="HomePage.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="login-wrapper">
+
+    <div class="image-box">
+      <img src="cybersecurity_NicoElNino-AlamyStockPhoto.jpg" alt="Cyber Security Protection">
+    </div>
+
+    <div class="form-box">
+      <div class="top">
+        <img src="images.png" alt="Logo" class="logo-img">
+        <h2>CyberVault</h2>
+        <p>Masuk ke akun Anda</p>
+      </div>
+
+      
+      <div class="role-selection">
+        <div class="role-option">
+          <input type="radio" id="user" name="role" value="user" checked>
+          <label for="user">User</label>
+        </div>
+        <div class="role-option">
+          <input type="radio" id="admin" name="role" value="admin">
+          <label for="admin">Admin</label>
+        </div>
+      </div>
+
+      <form id="loginForm">
+        <div class="input-group">
+          <input type="email" id="email" class="input" placeholder="Email" required>
+        </div>
+
+        <div class="input-group">
+          <input type="password" id="password" class="input" placeholder="Password" required>
+          <span class="toggle" onclick="togglePass()">👁️ View</span>
+        </div>
+
+        <div class="error-message" id="errorMsg"></div>
+
+        <button type="submit" class="btn-login" id="loginBtn">Masuk Sekarang</button>
+      </form>
+
+      <div class="login-text">
+        Belum punya akun? <a href="daftarakun.html">Daftar di sini</a>
+      </div>
+    </div>
+
+  </div>
+<?php
+$name = $email = $password = "";
+$nameErr = $emailErr = $passwordErr = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    function test_input($data) {
+        return htmlspecialchars(stripslashes(trim($data)));
+    }
+
+    if (isset($_POST["email"])) {
+        $email = test_input($_POST["email"]);
+        if (empty($email)) {
+            $emailErr = "Email harus diisi";
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "Format email tidak valid";
+        }
+    }
+
+    if (isset($_POST["password"])) {
+        $password = test_input($_POST["password"]);
+        if (empty($password)) {
+            $passwordErr = "Password harus diisi";
+        } elseif (strlen($password) < 6) {
+            $passwordErr = "Password harus minimal 6 karakter";
+        } elseif (!preg_match("/[\W]/", $password)) {
+            $passwordErr = "Password harus mengandung minimal 1 karakter spesial (!@#$%^&*)";
+        }
+    }
+
+    if (!$emailErr && !$passwordErr) {
+
+        if($email == "jim@gmail.com" && $password == "poiuy#") {
+                var_dump("Berhasil!");
+                header("Location: page.php");
+            }
+            var_dump("Gagal!");
+    }
+}
+?>
+</body>
+</html>
