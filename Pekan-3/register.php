@@ -30,7 +30,6 @@ body{
   color:var(--text);
 }
 
-/* CARD FORM */
 .form-box{
   width:380px;
   background:var(--card);
@@ -40,7 +39,6 @@ body{
   backdrop-filter:blur(10px);
 }
 
-/* TITLE */
 .form-box h2{
   text-align:center;
   margin-bottom:25px;
@@ -48,7 +46,6 @@ body{
   color:var(--primary);
 }
 
-/* INPUT */
 .input{
   width:100%;
   padding:14px 18px;
@@ -65,7 +62,6 @@ body{
   border-color:var(--primary);
 }
 
-/* BUTTON */
 .btn-login{
   width:100%;
   padding:14px;
@@ -76,14 +72,8 @@ body{
   font-size:16px;
   font-weight:600;
   cursor:pointer;
-  transition:0.3s;
 }
 
-.btn-login:hover{
-  transform:translateY(-2px);
-}
-
-/* RESULT */
 .result{
   margin-top:20px;
   font-size:14px;
@@ -97,59 +87,50 @@ body{
 
 <div class="form-box">
 
-<h2>Form Registrasi</h2>
+<h2>Registrasi</h2>
 
+<!--
+Form ini digunakan untuk mengambil data dari user.
+Data dikirim menggunakan method POST agar bisa diproses oleh PHP.
+-->
 <form method="POST">
-
+<!-- input username -->
+<input type="text" name="username" class="input" placeholder="Masukkan username" required>
+<!-- input email -->
 <input type="email" name="email" class="input" placeholder="Masukkan Email" required>
-
+<!-- input password -->
 <input type="password" name="password" class="input" placeholder="Masukkan Password" required>
-
+<!-- tombol untuk mengirim data -->
 <button type="submit" class="btn-login">Registrasi</button>
-
 </form>
 
 <div class="result">
+
 <?php
-$name = $email = $password = "";
-$nameErr = $emailErr = $passwordErr = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+/*
+Bagian ini mengecek apakah form sudah dikirim
+Jika semua input sudah ada, maka data akan diproses
+*/
+if(
+isset($_POST["email"]) &&
+isset($_POST["username"]) &&
+isset($_POST["password"])
+){
 
-    function test_input($data) {
-        return htmlspecialchars(stripslashes(trim($data)));
-    }
+// mengambil data dari form
+$username = $_POST["username"];
+$email = $_POST["email"];
+$password = $_POST["password"];
 
-    if (isset($_POST["email"])) {
-        $email = test_input($_POST["email"]);
-        if (empty($email)) {
-            $emailErr = "Email harus diisi";
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $emailErr = "Format email tidak valid";
-        }
-    }
+echo "Registrasi berhasil! <br>";
+echo "Username : " . $username . "<br>";
+echo "Email : " . $email . "<br>";
+echo "Password : " . $password . "<br>";
 
-    if (isset($_POST["password"])) {
-        $password = test_input($_POST["password"]);
-        if (empty($password)) {
-            $passwordErr = "Password harus diisi";
-        } elseif (strlen($password) < 6) {
-            $passwordErr = "Password harus minimal 6 karakter";
-        } elseif (!preg_match("/[\W]/", $password)) {
-            $passwordErr = "Password harus mengandung minimal 1 karakter spesial (!@#$%^&*)";
-        }
-    }
-
-    if (!$emailErr && !$passwordErr) {
-
-        if($email == "jim@gmail.com" && $password == "poiuy#") {
-                var_dump("Berhasil!");
-                header("Location: page.php");
-            }
-            var_dump("Gagal!");
-    }
 }
 ?>
+
 </div>
 
 </div>
