@@ -1,3 +1,3 @@
 registrasi berhasil!<br>
-jim@gmail.com<br>
-poiuy#
+email : jim@gmail.com<br>
+password : poiuy#
