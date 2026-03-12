@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1773289420,
+        "name": "Fariza",
+        "email": "frznovianti11@gmail.com",
+        "password": "$2y$10$zlgDHY1l9wY8X\/oL1ivea.qvfLVfT\/e58MNZwrPPl8pjGnSguWe8u",
+        "role": "orangtua"
+    },
+    {
+        "id": 1773307962,
+        "name": "Fariza Novianti",
+        "email": "frznovianti@gmail.com",
+        "password": "$2y$10$sWxpB3kkgxZktAFv3PX\/beYTM2zuwb5Cjdjixe\/x.iy\/IeoCgvaK.",
+        "role": "sekolah"
+    }
+]
