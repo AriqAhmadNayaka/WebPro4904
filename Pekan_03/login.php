@@ -17,7 +17,7 @@ if(isset($_POST['login'])){
 
         // LOGIN CHECK
         if($username == "admin" && $password == "12345"){
-            header("Location: kuliner.php");
+            header("Location: dompet.php");
             exit();
         }else{
             $error = "Username atau Password salah";
