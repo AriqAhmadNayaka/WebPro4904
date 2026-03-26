@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Data Pasien</title>
+    <link rel="stylesheet" href="inputdatastyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        
+         <aside class="sidebar">
+            <a href="nuids.html" class="sidebar-logo"><img src="logo Nuids..png" width="50px" style="margin-left: -1px;"></i></a>
+            <nav class="sidebar-nav">
+                <a href="nuids.html" class="nav-item"><i class="fa-solid fa-house"></i></a>
+                <a href="inputdata.html" class="nav-item active"><i class="fa-solid fa-file"></i></a>
+                <a href="chatbox.html" class="nav-item"><i class="fa-solid fa-comment"></i></a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-file-lines"></i></a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i></a>
+                <div class="user-avatar-small">
+                    <img src="IMG_1386.JPG" alt="Avatar Haikal">
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h1 class="page-title">Input Data Pasien</h1>
+
+            <section class="glass-section input-form-section">
+                <form class="input-grid" id="formPasien">
+                    <div class="input-group">
+                        <label for="nama">Nama</label>
+                        <input type="text" id="nama" placeholder="Masukkan Nama">
+                    </div>
+                    <div class="input-group">
+                        <label for="tanggal-lahir">Tanggal Lahir/Usia</label>
+                        <input type="date" id="tanggal-lahir" placeholder="DD/MM/YYYY / Usia">
+                    </div>
+                    <div class="input-group">
+                        <label for="jenis-kelamin">Jenis Kelamin</label>
+                        <input type="text" id="jenis-kelamin" placeholder="Laki-Laki / Perempuan">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="alamat">Alamat</label>
+                        <input type="text" id="alamat" placeholder="Masukkan Alamat">
+                    </div>
+                    <div class="input-group">
+                        <label for="nomor-kontak">Nomor Kontak</label>
+                        <input type="text" id="nomor-kontak" placeholder="08XXXXXXXXXX">
+                    </div>
+                    <div class="input-group">
+                        <label for="nomor-rekam">Nomor Rekam Medis/NIK</label>
+                        <input type="text" id="nomor-rekam" placeholder="RM/NIK">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="berat-badan">Berat Badan</label>
+                        <input type="text" id="berat-badan" placeholder="Contoh: 70 kg">
+                    </div>
+                    <div class="input-group">
+                        <label for="tinggi-badan">Tinggi Badan</label>
+                        <input type="text" id="tinggi-badan" placeholder="Contoh: 170 cm">
+                    </div>
+                    <div class="input-group">
+                        <label for="lingkar-kepala">Lingkar Kepala</label>
+                        <input type="text" id="lingkar-kepala" placeholder="Contoh: 30 cm">
+                    </div>
+                    <div class="input-group">
+                        <button type="submit" class="btn-submit">
+                        <i class="fa-solid fa-paper-plane"></i> Submit Data
+                        </button>
+                    </div>
+                </form>
+            </section>
+            
+            <section class="glass-section data-table-section">
+                <h4 class="section-title">Data Pasien</h4>
+                <div class="table-responsive">
+                    <table class="data-pasien-table">
+                        <thead>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Tanggal Lahir/Usia</th>
+                                <th>Jenis Kelamin</th>
+                                <th>Berat Badan</th>
+                                <th>Tinggi Badan</th>
+                                <th>Lingkar Kepala</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelPasien">
+                            <!-- <tr>
+                                <td>Haikal Syawal Al Bukhari</td>
+                                <td>25 Oktober 2008/17</td>
+                                <td>Laki-Laki</td>
+                                <td>45 kg</td>
+                                <td>166 cm</td>
+                                <td>30 cm</td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+        document.getElementById("formPasien").addEventListener("submit", function (e) {
+    e.preventDefault(); // mencegah reload
+
+    // Ambil nilai input
+    const nama = document.getElementById("nama").value;
+    const tanggal = document.getElementById("tanggal-lahir").value;
+    const jk = document.getElementById("jenis-kelamin").value;
+    const berat = document.getElementById("berat-badan").value;
+    const tinggi = document.getElementById("tinggi-badan").value;
+    const lingkar = document.getElementById("lingkar-kepala").value;
+
+    // Validasi sederhana
+    if (!nama || !tanggal || !jk) {
+        alert("Mohon lengkapi data pasien!");
+        return;
+    }
+
+    // Tambah baris ke tabel
+    const tabel = document.getElementById("tabelPasien");
+    console.log(tabel)
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+        
+    <td>${nama}</td>
+    <td>${tanggal}</td>
+    <td>${jk}</td>
+    <td>${berat} kg</td>
+    <td>${tinggi} cm</td>
+    <td>${lingkar} cm</td>
+                            
+    `;
+
+    tabel.appendChild(row)
+    console.log(row)
+
+    // Reset form
+    document.getElementById("formPasien").reset();
+});
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>
