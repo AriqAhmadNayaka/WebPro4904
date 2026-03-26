@@ -1,26 +1,23 @@
 <?php
-// File: login.php
 require 'db.php';
-
 $error = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $conn->real_escape_string($_POST['email']);
     $password = $_POST['password'];
 
-    // Cari user berdasarkan email
-    $stmt = $conn->prepare("SELECT id, name, password, role FROM users WHERE email = ?");
+    $stmt = $conn->prepare("SELECT id, name, password FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
-        
-        // Verifikasi password hash
+        // Verifikasi password yang sudah di-hash
         if (password_verify($password, $user['password'])) {
-            $error = "Login berhasil!";
-            header('Location: home.php');
+            // Redirect ke dashboard dengan membawa ID di URL
+            header("Location: dashboard.php?id=" . $user['id']);
+            exit();
         } else {
             $error = "Password salah!";
         }
@@ -57,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }?>  margin-bottom: 15px; text-align: center; font-weight: bold;"><?= $error ?></div>
             <?php endif; ?>
 
-            <form action="home.php" method="POST">
+            <form action="login.php" method="POST">
                 <div class="form-group">
                     <input type="email" name="email" class="custom-input input-teal" placeholder="Email" required>
                 </div>
