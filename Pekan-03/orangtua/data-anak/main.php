@@ -1,89 +1,42 @@
-const fields = [
-    "nama",
-    "gender",
-    "tanggalLahir",
-    "kelas",
-    "alamat",
-    "catatan"
-];
+<?php
+session_start();
 
-const btn = document.getElementById("toggleBtn");
+$nama = "";//variabel untuk menyimpan nama anak
+$gender = "";//variabel untuk menyimpan jenis kelamin anak
+$tanggalLahir = "";//variabel untuk menyimpan tanggal lahir anak
+$kelas = "";//variabel untuk menyimpan kelas atau program yang diikuti anak
+$alamat = "";//variabel untuk menyimpan alamat anak
+$catatan = "";//variabel untuk menyimpan catatan khusus tentang ana
 
-// ===== LOAD DATA =====
-let dataAnak = JSON.parse(localStorage.getItem("dataAnak"));
+//jika data anak sudah di isikan sebelumnya, maka data tersebut akan ditampilkan di form input data anak
+if(isset($_SESSION['dataAnak'])){
+    $data = $_SESSION['dataAnak'];
 
-if (dataAnak) {
-    fields.forEach(id => {
-        document.getElementById(id).value = dataAnak[id];
-    });
-    setFormLocked(true);
-    setButtonEdit();
-}
-const fotoInput = document.getElementById("fotoInput");
-const fotoProfil = document.getElementById("fotoProfil");
-
-fotoInput.addEventListener("change", () => {
-    const file = fotoInput.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = function (e) {
-        fotoProfil.src = e.target.result;
-        localStorage.setItem("fotoProfil", e.target.result);
-    };
-    reader.readAsDataURL(file);
-});
-
-const savedFoto = localStorage.getItem("fotoProfil");
-if (savedFoto) {
-    fotoProfil.src = savedFoto;
+    $nama = $data['nama'];
+    $gender = $data['gender'];
+    $tanggalLahir = $data['tanggalLahir'];
+    $kelas = $data['kelas'];
+    $alamat = $data['alamat'];
+    $catatan = $data['catatan'];
 }
 
+//simpan data ketika sudah di inputkan di form
+if($_SERVER["REQUEST_METHOD"] == "POST"){//cek apakah form disubmit
 
-// ===== LOCK / UNLOCK =====
-function setFormLocked(lock) {
-    fields.forEach(id => {
-        const el = document.getElementById(id);
-        if (el.tagName === "SELECT" || el.tagName === "INPUT") {
-            el.disabled = lock;
-        } else {
-            el.readOnly = lock;
-        }
-    });
+    $nama = $_POST['nama'];//nama anak yang diinputkan
+    $gender = $_POST['gender'];//jenis kelamin anak yang diinputkan
+    $tanggalLahir = $_POST['tanggalLahir'];//tanggal lahir anak yang diinputkan
+    $kelas = $_POST['kelas'];//kelas atau program yang diikuti anak yang diinputkan
+    $alamat = $_POST['alamat'];//alamat anak yang diinputkan
+    $catatan = $_POST['catatan'];//catatan khusus tentang anak yang diinputkan
+
+    $_SESSION['dataAnak'] = [//menyimpan data anak di session dan seterusnya baik dari gender,nama dan seterusnya
+        "nama" => $nama,    
+        "gender" => $gender,
+        "tanggalLahir" => $tanggalLahir,
+        "kelas" => $kelas,
+        "alamat" => $alamat,
+        "catatan" => $catatan
+    ];
 }
-
-
-// ===== BUTTON STATE =====
-function setButtonEdit() {
-    btn.innerHTML = `<i class="ri-edit-line"></i> Edit Data`;
-    btn.dataset.mode = "edit";
-}
-
-function setButtonSave() {
-    btn.innerHTML = `<i class="ri-save-line"></i> Simpan Data`;
-    btn.dataset.mode = "save";
-}
-
-// ===== CLICK BUTTON =====
-btn.addEventListener("click", () => {
-
-    // MODE SIMPAN
-    if (btn.dataset.mode !== "edit") {
-
-        const newData = {};
-        fields.forEach(id => {
-            newData[id] = document.getElementById(id).value;
-        });
-
-        localStorage.setItem("dataAnak", JSON.stringify(newData));
-
-        setFormLocked(true);
-        setButtonEdit();
-
-    } 
-    // MODE EDIT
-    else {
-        setFormLocked(false);
-        setButtonSave();
-    }
-});
+?>

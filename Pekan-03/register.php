@@ -14,7 +14,7 @@ echo '
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">// Ganti dengan path ke file CSS agar cssnya bisa ditampilin disini
 
 </head>
 
@@ -22,52 +22,52 @@ echo '
 
 <div class="auth-wrapper">
 
-<div class="auth-container active">
+<div class="auth-container active">//containner 
 
-<div class="auth-header">
+<div class="auth-header">//header
 
-<div class="logo-container">
-<div class="logo-icon">InS</div>
+<div class="logo-container">//logo container 
+<div class="logo-icon">InS</div>//logo icon untuk logo inluskill
 </div>
 
-<h2 class="auth-title">Inkluskill</h2>
-<p class="auth-subtitle">Bergabunglah dengan InkluSkill hari ini</p>
-
-</div>
-
-<form method="POST" action="proses_register.php" class="auth-form">
-
-<div class="form-group">
-
-<label>Nama Lengkap</label>
-
-<input type="text" name="nama" required>
+<h2 class="auth-title">Inkluskill</h2>// initu judul untuk halaman register
+<p class="auth-subtitle">Bergabunglah dengan InkluSkill hari ini</p>// itu subjudul untuk halaman register
 
 </div>
 
-<div class="form-group">
+<form method="POST" action="proses_register.php" class="auth-form">// form untuk input data register
 
-<label>Email</label>
+<div class="form-group">// form group untuk nama lengkap
 
-<input type="email" name="email" required>
+<label>Nama Lengkap</label>//input untuk nama lengkapnya
 
-</div>
-
-<div class="form-group">
-
-<label>Password</label>
-
-<input type="password" name="password" required>
+<input type="text" name="nama" required>//type teks untuk nama lengkap
 
 </div>
 
-<div class="form-group">
+<div class="form-group">//form untu email
 
-<label>Tipe Pengguna</label>
+<label>Email</label>//label emailnya
 
-<select name="role" required>
+<input type="email" name="email" required>//type email untuk input email
 
-<option value="">Pilih tipe pengguna</option>
+</div>
+
+<div class="form-group">//form untuk password
+
+<label>Password</label>//label untuk passwordnya
+
+<input type="password" name="password" required>//type paswornya
+
+</div>
+
+<div class="form-group">//button untuk submit 
+
+<label>Tipe Pengguna</label>//label untuk tipe pengguna karna ada 3 yaitu ada orhtua, sekolah,dinas
+
+<select name="role" required>//select untuk memilih tipe pengguna
+
+<option value="">Pilih tipe pengguna</option>//option untuk memilih tipe pengguna di bawah
 <option value="sekolah">Sekolah</option>
 <option value="orangtua">Orang Tua</option>
 <option value="dinas">Dinas/BLK</option>
@@ -85,8 +85,8 @@ Daftar
 
 <p class="auth-switch">
 
-Sudah punya akun?
-<a href="login.php">Masuk di sini</a>
+Sudah punya akun?//pertanyaan untuk opsi jika tidak punya akun, bisa langsung klik link untuk masuk
+<a href="login.php">Masuk di sini</a>//link untuk masuk ke halaman login
 
 </p>
 
