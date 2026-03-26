@@ -1,13 +1,3 @@
-<?php
-$title = "Login - Bandung Heritage";
-?>
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title><?php echo $title; ?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
     :root {
         --color-primary-green: #4A8645;
         --color-secondary-brown: #000000; 
@@ -253,117 +243,21 @@ $title = "Login - Bandung Heritage";
             font-size: 16px;
         }
     }
-    </style>
-</head>
-<body>
+    
 
-<div class="outer-container">
-    <div class="image-panel">
-        <div id="slideshow-bg"></div>
-        <div class="image-content">
-            <h3 id="slide-title">Jelajahi Warisan Bandung</h3>
-            <p id="slide-description">Temukan sejarah, seni, dan budaya yang kaya di Kota Kembang.</p>
-        </div>
-    </div>
+.form-alert {
+    margin-bottom: 16px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.form-alert-error {
+    background: rgba(190, 24, 24, 0.12);
+    color: #9f1239;
+}
+.form-alert-success {
+    background: rgba(22, 163, 74, 0.12);
+    color: #166534;
+}
 
-    <div class="login-container">
-        <div class="logo-header">
-            <span>WeBandoo+</span>
-        </div>
-        
-        <div class="greeting">
-            <h1>Selamat Datang</h1>
-            <p>Masukkan data diri anda untuk mengakses layanan.</p>
-        </div>
-
-        <form action="proses_login.php" method="POST">
-            <div class="input-box">
-                <input type="email" name="email" placeholder="Email" required>
-            </div>
-
-            <div class="input-box pass-container">
-                <input type="password" id="password" name="password" placeholder="Password" required>
-                <i class="fa-regular fa-eye toggle-pass" id="togglePassword"></i>
-            </div>
-            
-            <div class="forgot-password">
-                <a href="#">Lupa Kata Sandi?</a>
-            </div>
-
-            <button type="submit" class="btn">Masuk</button> 
-        </form>
-
-        <div class="register">
-            Belum punya akun? <a href="registrasi.php">Daftar sekarang</a>
-        </div>
-    </div>
-</div>
-
-<script>
-    const slides = [
-        {
-            imageUrl: 'bdg1.jpg', 
-            title: "Jelajahi Warisan Bandung",
-            description: "Temukan sejarah, seni, dan budaya yang kaya di Kota Kembang."
-        },
-        {
-            imageUrl: 'bdg2.jpg', 
-            title: "Asia Afrika yang Legendaris",
-            description: "Susuri jalan bersejarah dengan arsitektur kolonial yang ikonik."
-        },
-        {
-            imageUrl: 'bdg3.jpg', 
-            title: "Pesona Jalan Braga",
-            description: "Nikmati suasana klasik, kafe, dan bangunan art deco yang memukau."
-        },
-        {
-            imageUrl: 'bdg4.jpg', 
-            title: "Kota Kembang di Malam Hari",
-            description: "Saksikan gemerlap lampu dan kehidupan malam yang eksotis."
-        }
-    ];
-
-    const slideshowElement = document.getElementById('slideshow-bg');
-    const titleElement = document.getElementById('slide-title');
-    const descriptionElement = document.getElementById('slide-description');
-    const imageContent = document.querySelector('.image-content');
-
-    let currentIndex = 0;
-    const intervalTime = 2000;
-
-    function changeSlide() {
-        const activeSlide = slides[currentIndex];
-        imageContent.style.opacity = 0; 
-
-        setTimeout(() => {
-            titleElement.textContent = activeSlide.title;
-            descriptionElement.textContent = activeSlide.description;
-            
-            const tempImg = new Image();
-            tempImg.onload = function() {
-                slideshowElement.style.backgroundImage = `url('${activeSlide.imageUrl}')`;
-                imageContent.style.opacity = 1;
-            };
-            tempImg.src = activeSlide.imageUrl;
-        }, 500);
-
-        currentIndex = (currentIndex + 1) % slides.length;
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        changeSlide();
-        setInterval(changeSlide, intervalTime);
-    });
-
-    const togglePassword = document.getElementById('togglePassword');
-    const passwordInput = document.getElementById('password');
-
-    togglePassword.addEventListener('click', function() {
-        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordInput.setAttribute('type', type);
-        this.classList.toggle('fa-eye');
-        this.classList.toggle('fa-eye-slash');
-    });
-</script>
-</body>
-</html>
