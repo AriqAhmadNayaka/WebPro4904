@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <title>Bergabung dengan Bandung Heritage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        /* Definisi Warna Brand WeBandoo+ */
         :root {
-            --primary: #4A8645;
-            --primary-light: #6ba366;
-            --accent: #E6B325;
-            --dark: #1a1a1a;
-            --glass: rgba(255, 255, 255, 0.85);
+            --primary: #4A8645;       /* Hijau Utama */
+            --primary-light: #6ba366; /* Hijau Terang saat Hover */
+            --accent: #E6B325;        /* Warna Emas/Aksen */
+            --dark: #1a1a1a;          /* Warna Teks Gelap */
+            --glass: rgba(255, 255, 255, 0.85); /* Efek Transparansi Kaca */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -23,24 +26,25 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #0f1710;
+            background: #0f1710; /* Latar gelap agar blob warna lebih menyala */
             overflow: hidden;
             position: relative;
         }
 
+        /* Blobs: Dekorasi lingkaran warna di latar belakang */
         .bg-blobs {
             position: absolute;
             width: 100%;
             height: 100%;
             z-index: -1;
-            filter: blur(60px);
+            filter: blur(60px); /* Membuat lingkaran jadi blur/halus */
         }
 
         .blob {
             position: absolute;
             border-radius: 50%;
             opacity: 0.5;
-            animation: move 20s infinite alternate;
+            animation: move 20s infinite alternate; /* Animasi gerak lambat */
         }
 
         @keyframes move {
@@ -48,17 +52,18 @@
             to { transform: translate(100px, 100px) scale(1.2); }
         }
 
+        /* Glass Card: Kontainer utama dengan efek kaca (blur backdrop) */
         .glass-card {
             display: flex;
             width: 1050px;
             height: 680px;
             background: var(--glass);
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px); /* Efek blur tembus pandang */
             border-radius: 40px;
             border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 40px 100px rgba(0,0,0,0.4);
             overflow: hidden;
-            animation: fadeIn 1s ease-out;
+            animation: fadeIn 1s ease-out; /* Muncul perlahan saat load */
         }
 
         @keyframes fadeIn {
@@ -66,6 +71,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Panel Kiri: Gambar dan Text Promosi */
         .visual-panel {
             width: 42%;
             background: linear-gradient(rgba(74, 134, 69, 0.6), rgba(26, 26, 26, 0.8)), url('gedung.png') center/cover;
@@ -78,8 +84,8 @@
         }
 
         .visual-panel h2 { font-size: 42px; font-weight: 800; line-height: 1.1; }
-        .visual-panel p { font-size: 16px; line-height: 1.6; opacity: 0.9; }
         
+        /* Badge status di pojok atas panel kiri */
         .badge {
             background: rgba(255, 255, 255, 0.2);
             padding: 8px 15px;
@@ -89,6 +95,7 @@
             width: fit-content;
         }
 
+        /* Panel Kanan: Area Formulir */
         .form-panel {
             width: 58%;
             padding: 60px;
@@ -99,8 +106,8 @@
 
         .form-header { margin-bottom: 35px; }
         .form-header h1 { font-size: 36px; color: var(--dark); margin-bottom: 10px; }
-        .form-header p { color: #666; font-size: 15px; }
 
+        /* Wrapper Input: Untuk mengatur posisi ikon di dalam input */
         .input-wrapper {
             position: relative;
             margin-bottom: 20px;
@@ -126,6 +133,7 @@
             transition: 0.3s all ease;
         }
 
+        /* Efek saat input diketik/fokus */
         .input-wrapper input:focus {
             border-color: var(--primary);
             background: #fff;
@@ -134,6 +142,7 @@
 
         .input-wrapper input:focus + i { color: var(--primary); }
 
+        /* Strength Meter: Indikator kekuatan password */
         .strength-meter {
             height: 4px;
             width: 100%;
@@ -150,6 +159,7 @@
             transition: 0.5s;
         }
 
+        /* Tombol Submit Premium */
         .btn-register {
             width: 100%;
             padding: 18px;
@@ -161,19 +171,15 @@
             font-weight: 700;
             cursor: pointer;
             transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            margin-top: 10px;
             box-shadow: 0 15px 30px rgba(74, 134, 69, 0.25);
         }
 
         .btn-register:hover {
             transform: scale(1.02);
             background: var(--primary-light);
-            box-shadow: 0 20px 40px rgba(74, 134, 69, 0.35);
         }
 
-        .login-link { text-align: center; margin-top: 30px; font-size: 14px; color: #555; }
-        .login-link a { color: var(--primary); text-decoration: none; font-weight: 700; }
-
+        /* Responsive: Tampilan untuk HP */
         @media (max-width: 950px) {
             .glass-card { width: 95%; flex-direction: column; height: auto; border-radius: 25px; }
             .visual-panel { width: 100%; height: 200px; padding: 30px; }
@@ -193,7 +199,7 @@
             <div class="badge">#1 Bandung Heritage Platform</div>
             <div>
                 <h2>Temukan <br><span style="color: var(--accent);">Nostalgia</span> Anda.</h2>
-                <p style="margin-top: 20px;">Daftar hari ini untuk mendapatkan panduan eksklusif bangunan bersejarah dan event budaya di Bandung.</p>
+                <p style="margin-top: 20px;">Daftar hari ini untuk mendapatkan panduan eksklusif bangunan bersejarah di Bandung.</p>
             </div>
             <div style="font-size: 12px; opacity: 0.7;">© 2024 WeBandoo+ Technology</div>
         </div>
@@ -204,28 +210,29 @@
                 <p>Silakan lengkapi formulir untuk memulai perjalanan.</p>
             </div>
 
-            <form id="" method="POST" action="proses_simpan.php">
+            <form id="regForm" method="POST" action="proses_simpan.php">
                 <div class="input-wrapper">
                     <i class="fa-solid fa-user-tag"></i>
-                    <input type="text" name="nama" id="regName" placeholder="Nama Lengkap" required>
+                    <input type="text" name="nama" placeholder="Nama Lengkap" required>
                 </div>
+                
                 <div class="input-wrapper">
                     <i class="fa-solid fa-envelope"></i>
-                    <input type="email" name="email" id="regEmail" placeholder="Alamat Email" required>
+                    <input type="email" name="email" placeholder="Alamat Email" required>
                 </div>
+                
                 <div class="input-wrapper">
                     <i class="fa-solid fa-key"></i>
                     <input type="password" name="password" id="regPass" placeholder="Buat Password" required oninput="checkStrength(this.value)">
                 </div>
+
                 <div class="strength-meter">
                     <div id="strengthBar" class="strength-bar"></div>
                 </div>
-                <!-- <div class="input-wrapper">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <input type="password" id="confirmPass" placeholder="Konfirmasi Password" required>
-                </div> -->
 
-                <button type="submit" class="btn-register">Buat Akun Sekarang <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i></button>
+                <button type="submit" class="btn-register">
+                    Buat Akun Sekarang <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i>
+                </button>
             </form>
 
             <div class="login-link">
@@ -235,41 +242,34 @@
     </div>
 
     <script>
-
+        /**
+         * Fungsi untuk mengecek seberapa kuat password yang diketik.
+         * Logic: Panjang karakter, adanya huruf besar, dan angka.
+         */
         function checkStrength(password) {
             let strength = 0;
             const bar = document.getElementById('strengthBar');
-            if (password.length >= 6) strength += 33;
-            if (password.match(/[A-Z]/)) strength += 33;
-            if (password.match(/[0-9]/)) strength += 34;
+            
+            if (password.length >= 6) strength += 33;       // Syarat 1: Panjang min 6
+            if (password.match(/[A-Z]/)) strength += 33;    // Syarat 2: Ada Huruf Besar
+            if (password.match(/[0-9]/)) strength += 34;    // Syarat 3: Ada Angka
 
             bar.style.width = strength + "%";
             
-            if (strength <= 33) bar.style.background = "#ff4d4d";
-            else if (strength <= 66) bar.style.background = "#ffd633";
-            else bar.style.background = "#4A8645";
+            // Perubahan warna bar berdasarkan kekuatan
+            if (strength <= 33) bar.style.background = "#ff4d4d";      // Lemah (Merah)
+            else if (strength <= 66) bar.style.background = "#ffd633"; // Sedang (Kuning)
+            else bar.style.background = "#4A8645";                     // Kuat (Hijau)
         }
 
+        /**
+         * Logika validasi dan animasi loading saat form dikirim
+         */
         document.getElementById('regForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const pass = document.getElementById('regPass').value;
-            const confirm = document.getElementById('confirmPass').value;
-
-            if (pass !== confirm) {
-                alert("Wah, passwordnya nggak sama nih. Cek lagi ya!");
-                return;
-            }
-
-            localStorage.setItem('userEmail', document.getElementById('regEmail').value);
-            localStorage.setItem('userPass', pass);
-            
+            // Kita tidak memanggil e.preventDefault() agar data tetap terkirim ke PHP
             const btn = document.querySelector('.btn-register');
+            btn.style.pointerEvents = "none"; // Mencegah klik ganda
             btn.innerHTML = "Memproses... <i class='fa-solid fa-spinner fa-spin'></i>";
-            
-            setTimeout(() => {
-                alert("Selamat! Akun kamu sudah siap digunakan.");
-                window.location.href = "index.php";
-            }, 1500);
         });
     </script>
 </body>
