@@ -1,0 +1,151 @@
+/* --- ROOT WARNA  --- */
+:root {
+    --purple: #6c63ff;
+    --purple-light: #e0e3ff;
+    --green: #1cc88a;
+    --red: #ff5c5c;
+}
+
+/* --- GLOBAL --- */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6fb;
+    padding: 20px;
+}
+
+/* --- JUDUL HALAMAN --- */
+h2 {
+    margin-bottom: 10px;
+    color: var(--purple);
+}
+
+
+a {
+    text-decoration: none;
+}
+
+a[href="tambah_anak.php"] {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    background: var(--green);
+    color: white;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+a[href="tambah_anak.php"]:hover {
+    background: #16a86b;
+}
+
+/* --- TABLE UTAMA --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background: white;
+}
+
+/* --- BORDER & ISI TABEL --- */
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+/* --- HEADER TABEL --- */
+th {
+    background: var(--purple-light);
+    color: var(--purple);
+}
+
+/* --- BUTTON (EDIT & HAPUS) --- */
+td a {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+/* EDIT */
+td a:first-child {
+    background: var(--purple);
+    color: white;
+}
+
+td a:first-child:hover {
+    background: #5a54e7;
+}
+
+/* HAPUS */
+td a:last-child {
+    background: var(--red);
+    color: white;
+}
+
+td a:last-child:hover {
+    background: #e04848;
+}
+
+/* --- TABLE HOVER --- */
+table tr:hover {
+    background: var(--purple-light);
+    transition: 0.2s;
+}
+
+/* CONTAINER FORM */
+form {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    width: 350px;
+    margin-top: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* LABEL */
+form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: 500;
+    color: #444;
+}
+
+/* INPUT & SELECT */
+form input[type="text"],
+form input[type="number"],
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+/* FOCUS */
+form input:focus,
+form select:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 5px rgba(108, 99, 255, 0.3);
+}
+
+/* BUTTON */
+form button,
+form input[type="submit"] {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    background: var(--purple);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+form button:hover,
+form input[type="submit"]:hover {
+    background: #5a54e7;
+}
