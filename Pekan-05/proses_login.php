@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_login'] = $user['nama']; // memastikan data apakah sama dengan yang ada di database
 
             // Lanjut ke dashboard kalau login sukses
-            header("Location: dashboard.php"); 
+            header("Location: dasboard.php"); 
             exit; 
         }
     }

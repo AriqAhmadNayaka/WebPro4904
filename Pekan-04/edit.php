@@ -17,7 +17,6 @@ if(isset($_POST['update'])){// Mengambil data dari form input
     exit;
 }
 ?>
-
 <h2>Edit Tempat</h2>
 
 <form method="POST">
