@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Data Pasien</title>
+    <link rel="stylesheet" href="inputdatastyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        
+         <aside class="sidebar">
+            <a href="nuids.html" class="sidebar-logo"><img src="logo Nuids..png" width="50px" style="margin-left: -1px;"></i></a>
+            <nav class="sidebar-nav">
+                <a href="nuids.html" class="nav-item"><i class="fa-solid fa-house"></i></a>
+                <a href="inputdata.html" class="nav-item active"><i class="fa-solid fa-file"></i></a>
+                <a href="chatbox.html" class="nav-item"><i class="fa-solid fa-comment"></i></a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-file-lines"></i></a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i></a>
+                <div class="user-avatar-small">
+                    <img src="IMG_1386.JPG" alt="Avatar Haikal">
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h1 class="page-title">Input Data Pasien</h1>
+
+            <section class="glass-section input-form-section">
+                <form class="input-grid" id="formPasien" method="POST" action="proses.php" enctype="multipart/form-data">  method post untuk kirim data ke server dan action untuk menghubungkan ke proses.php
+
+                    <div class="input-group">
+                        <label>Nama</label>
+                        <input type="text" name="nama" required> nama adalah nama variabel di php dan required berarti wajib diisi
+                    </div>
+
+                    <div class="input-group">
+                        <label>Tanggal Lahir</label>
+                        <input type="date" name="tanggal" required> input tanggal lahir
+                    </div>
+
+                    <div class="input-group">
+                        <label>Jenis Kelamin</label>
+                        <input type="text" name="jk" required> input jenis kelamin
+                    </div>
+
+                    <div class="input-group">
+                        <label>Berat Badan</label>
+                        <input type="text" name="berat"> input berat badan
+                    </div>
+
+                    <div class="input-group">
+                        <label>Tinggi Badan</label>
+                        <input type="text" name="tinggi"> input tinggi badan
+                    </div>
+
+                    <div class="input-group">
+                        <label>Lingkar Kepala</label>
+                        <input type="text" name="lingkar"> input lingkar kepala
+                    </div>
+
+                    <div class="input-group">
+                        <label>Upload Foto / File</label>
+                        <input type="file" name="file"> untuk upload file, dan name=file itu nama variabel di php
+                    </div>
+
+                    <div class="input-group">
+                        <button type="submit" class="btn-submit"> untuk submit data ke server
+                            Submit Data
+                        </button>
+                    </div>
+
+                </form>
+            </section>
+            
+            <section class="glass-section data-table-section">
+                <h4 class="section-title">Data Pasien</h4>
+                <div class="table-responsive">
+                    <table class="data-pasien-table">
+                        <thead>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Tanggal Lahir/Usia</th>
+                                <th>Jenis Kelamin</th>
+                                <th>Berat Badan</th>
+                                <th>Tinggi Badan</th>
+                                <th>Lingkar Kepala</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelPasien">
+                            <!-- <tr>
+                                <td>Haikal Syawal Al Bukhari</td>
+                                <td>25 Oktober 2008/17</td>
+                                <td>Laki-Laki</td>
+                                <td>45 kg</td>
+                                <td>166 cm</td>
+                                <td>30 cm</td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+        document.getElementById("formPasien").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const nama = document.getElementById("nama").value;
+    const tanggal = document.getElementById("tanggal-lahir").value;
+    const jk = document.getElementById("jenis-kelamin").value;
+    const berat = document.getElementById("berat-badan").value;
+    const tinggi = document.getElementById("tinggi-badan").value;
+    const lingkar = document.getElementById("lingkar-kepala").value;
+
+    if (!nama || !tanggal || !jk) {
+        alert("Mohon lengkapi data pasien!");
+        return;
+    }
+
+    const tabel = document.getElementById("tabelPasien");
+    console.log(tabel)
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+        
+    <td>${nama}</td>
+    <td>${tanggal}</td>
+    <td>${jk}</td>
+    <td>${berat} kg</td>
+    <td>${tinggi} cm</td>
+    <td>${lingkar} cm</td>
+                            
+    `;
+
+    tabel.appendChild(row)
+    console.log(row)
+
+    document.getElementById("formPasien").reset();
+});
+
+    document.getElementById("formPasien").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    fetch("proses.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.text())
+    .then(data => {
+        alert("Data berhasil disimpan!");
+        location.reload();
+    })
+    .catch(err => console.log(err));
+});
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>
