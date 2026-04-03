@@ -1,10 +1,9 @@
 <?php
-session_start();
-session_destroy();
+session_start(); // memulai session
+session_destroy(); // menghapus semua data session
 
-// hapus cookie juga
-setcookie("username", "", time() - 3600);
+setcookie("username", "", time() - 3600); //set expired cookie
 
-header("Location: login2.php");
-exit;
+header("Location: login2.php"); // redirect ke halaman login
+exit; // hentikan eksekusi program
 ?>

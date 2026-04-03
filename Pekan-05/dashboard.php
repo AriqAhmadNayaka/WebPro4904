@@ -1,16 +1,17 @@
 <?php
-session_start();
+session_start(); //memulai session
 
-if(!isset($_SESSION['username'])){
-    header("Location: login2.php");
-    exit();
+if(isset($_SESSION['username'])){
+    header("Location: dashboard.php"); //kalau user sudah login, 
+                                     //agar user tidak harus balik ke halaman login
+    exit;
 }
 
 if(isset($_COOKIE['username']) && !isset($_SESSION['username'])){
-    $_SESSION['username'] = $_COOKIE['username'];
+    $_SESSION['username'] = $_COOKIE['username']; //mengecek apakah ada cookie bernama username
 }
 
-$username = $_SESSION['username'];
+$username = $_SESSION['username']; // simpan username ke variabel lokal
 ?>
 
 <!DOCTYPE html>

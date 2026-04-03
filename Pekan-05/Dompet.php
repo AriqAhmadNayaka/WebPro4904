@@ -4,20 +4,23 @@ include "koneksi.php";
 //menghubungkan file PHP dengan database MySQL 
 // agar bisa menjalankan perintah seperti simpan, ambil, ubah, dan hapus data
 
+// ambil username dari cookie jika belum ada session
 if(isset($_COOKIE['username']) && !isset($_SESSION['username'])){
     $_SESSION['username'] = $_COOKIE['username'];
 }
 
-if(!isset($_SESSION['username'])){
-    header("Location: login2.php");
+if(isset($_SESSION['username'])){
+    header("Location: dashboard.php"); //kalau user sudah login, 
+                                     //agar user tidak harus balik ke halaman login
     exit;
 }
 
 // ================= DELETE =================
 if(isset($_GET['hapus'])){
-    $id = (int) $_GET['hapus'];
-    $username = $_SESSION['username'];
+    $id = (int) $_GET['hapus']; //ambil id dari URL
+    $username = $_SESSION['username']; //ambil username login
 
+    //hapus data sesuai id dan user
     mysqli_query($conn, "DELETE FROM laporan WHERE id=$id AND username='$username'");
 
     echo "<script>
@@ -33,10 +36,10 @@ if(isset($_GET['hapus'])){
 $editData = null;
 
 if(isset($_GET['edit'])){
-    $id = $_GET['edit'];
+    $id = $_GET['edit']; //ambil id dari URL
 
     $result = mysqli_query($conn, "SELECT * FROM laporan WHERE id=$id");
-    $editData = mysqli_fetch_assoc($result);
+    $editData = mysqli_fetch_assoc($result); 
 }
 //mengambil data dari database berdasarkan id yang dipilih 
 //untuk ditampilkan kembali ke dalam form agar bisa diedit oleh pengguna
@@ -44,19 +47,20 @@ if(isset($_GET['edit'])){
 // ================= INSERT & UPDATE =================
 if(isset($_POST['tanggal'])){
 
+    // ambil data dari form
     $tanggal = $_POST['tanggal'];
     $keterangan = $_POST['keterangan'];
     $jenis = $_POST['jenis'];
     $jumlah = $_POST['jumlah'];
 
     // ================= FILE =================
-    $namaFile = $_FILES['file']['name'];
+    $namaFile = $_FILES['file']['name']; //ambil nama file
 
     if($namaFile != ""){
-        $tmpFile = $_FILES['file']['tmp_name'];
-        move_uploaded_file($tmpFile, "uploads/" . $namaFile);
+        $tmpFile = $_FILES['file']['tmp_name']; //file sementara
+        move_uploaded_file($tmpFile, "uploads/" . $namaFile); //folder simpan file
     } else {
-        $namaFile = $editData['file'] ?? "";
+        $namaFile = $editData['file'] ?? ""; //memakai file lama
     }
 
     // CEK UPDATE ATAU INSERT
@@ -98,6 +102,7 @@ if(isset($_POST['tanggal'])){
 // ================= TAMPIL DATA =================
 $username = $_SESSION['username'];
 
+// ambil semua data milik user
 $dataLaporan = mysqli_query($conn, 
     "SELECT * FROM laporan WHERE username='$username' ORDER BY id DESC"
 );

@@ -10,12 +10,13 @@ if(isset($_COOKIE['username'])){
 
 if(isset($_SESSION['username'])){
     header("Location: dashboard.php"); //kalau user sudah login, 
-}                                      //agar user tidak harus balik ke halaman login
+                                     //agar user tidak harus balik ke halaman login
     exit;
+}
 
 $error = ""; //untuk menyimpan pesan error
 
-if(isset($_POST['login'])){ //mengecek apakah tombol login sudah diteka
+if(isset($_POST['login'])){ //mengecek apakah tombol login sudah ditekan
 
     //ambil data dari form
     $username = mysqli_real_escape_string($conn, $_POST['username']); 
