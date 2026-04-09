@@ -108,12 +108,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["login"])) {
 
     <div class="login-wrapper">
         <div class="image-box">
-            <img src="../PertemuanMinggu_3/cybersecurity_NicoElNino-AlamyStockPhoto.jpg" alt="Cyber Security Login">
+            <img src="cybersecurity_NicoElNino-AlamyStockPhoto.jpg" alt="Cyber Security Login">
         </div>
         
         <div class="form-box">
             <div class="top">
-                <img src="../PertemuanMinggu_3/0x0-1024x576 (1).webp" alt="Logo CyberVault" style="width: 80px; margin-bottom: 10px;">
+                <img src="0x0-1024x576 (1).webp" alt="Logo CyberVault" style="width: 80px; margin-bottom: 10px;">
                 <h2>CyberVault</h2>
                 <p>Masuk ke akun Anda untuk mengakses dashboard keamanan modern.</p>
             </div>
