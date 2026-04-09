@@ -16,13 +16,11 @@ $success = "";
 $role = $_SESSION["role"];
 $session_email = $_SESSION["email"];
 
-// --- LOGIKA UTAMA: SIMPAN DATA & UPLOAD FILE ---
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_action"])) {
     
     $nama = mysqli_real_escape_string($conn, trim($_POST["nama"]));
     $email = mysqli_real_escape_string($conn, trim($_POST["email"]));
     
-    // Inisialisasi variabel file
     $namaFile = $_FILES['foto']['name'];
     $tmpName = $_FILES['foto']['tmp_name'];
     $errorFile = $_FILES['foto']['error'];
@@ -36,17 +34,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_action"])) {
         if (!in_array($ekstensiFile, $ekstensiValid)) {
             $error = "Format file tidak didukung (Gunakan JPG/PNG)!";
         } else {
-            // Generate nama unik dan pindahkan ke folder img/
+            
             $namaFileBaru = uniqid() . '.' . $ekstensiFile;
             
             if (move_uploaded_file($tmpName, 'img/' . $namaFileBaru)) {
                 
                 if ($role === 'admin') {
-                    // LOGIKA ADMIN: Tambah User Baru (Create)
+                    
                     $passwordInput = trim($_POST["password"]);
                     $passwordHash = password_hash($passwordInput, PASSWORD_DEFAULT);
                     
-                    // Cek Email Duplikat
                     $cek = mysqli_query($conn, "SELECT email FROM datauser WHERE email = '$email'");
                     if (mysqli_num_rows($cek) > 0) {
                         $error = "Email tersebut sudah terdaftar di sistem!";
@@ -56,7 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_action"])) {
                         if (mysqli_query($conn, $sql)) $success = "User baru dan foto berhasil ditambahkan!";
                     }
                 } else {
-                    // LOGIKA USER: Update Foto Profil Sendiri (Update)
                     $sql = "UPDATE datauser SET gambar = '$namaFileBaru' WHERE email = '$session_email'";
                     if (mysqli_query($conn, $sql)) $success = "Foto profil Anda berhasil diperbarui!";
                 }
@@ -67,7 +63,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_action"])) {
     }
 }
 
-// Ambil Data untuk Tabel (Read)
 $result = mysqli_query($conn, "SELECT * FROM datauser ORDER BY id DESC");
 ?>
 
@@ -84,7 +79,6 @@ $result = mysqli_query($conn, "SELECT * FROM datauser ORDER BY id DESC");
         .welcome-card { background: rgba(0, 212, 255, 0.05); border-left: 4px solid #00d4ff; padding: 20px; border-radius: 8px; margin-bottom: 30px; }
         .crud-box { background: #11111d; border: 1px solid #1a1a2e; padding: 25px; border-radius: 12px; }
         
-        /* Form Styling */
         .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px; align-items: end; }
         .input-group { display: flex; flex-direction: column; gap: 5px; }
         .input-group label { color: #00d4ff; font-size: 12px; font-weight: bold; }
@@ -92,7 +86,6 @@ $result = mysqli_query($conn, "SELECT * FROM datauser ORDER BY id DESC");
         
         .btn-submit { background: #00d4ff; color: #000; border: none; padding: 11px; border-radius: 6px; font-weight: bold; cursor: pointer; }
         
-        /* Table Styling */
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         th { text-align: left; padding: 12px; color: #00d4ff; border-bottom: 2px solid #1a1a2e; }
         td { padding: 12px; border-bottom: 1px solid #1a1a2e; font-size: 14px; }

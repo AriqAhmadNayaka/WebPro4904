@@ -1,15 +1,12 @@
 <?php
-// 1. Inisialisasi Environment
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 require_once "session_init.php";
 require "koneksi.php"; 
 
-// Pastikan variabel koneksi tersedia secara global
 global $conn;
 
-// Jika sudah login, tidak perlu daftar lagi, langsung ke dashboard
 if (isset($_SESSION["login"]) && $_SESSION["login"] === true) {
     header("Location: dashboard.php");
     exit;
@@ -17,19 +14,16 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] === true) {
 
 $error = "";
 
-// Cek kesehatan koneksi
 if (!isset($conn)) {
     die("Gagal memuat koneksi database. Periksa file koneksi.php!");
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["daftar"])) {
-    // Mengamankan input
     $nama = mysqli_real_escape_string($conn, trim($_POST["nama"]));
     $email = mysqli_real_escape_string($conn, trim($_POST["email"]));
     $passwordInput = trim($_POST["password"]);
     $confirmPassword = trim($_POST["confirm_password"]);
 
-    // Validasi input
     if ($nama === "" || $email === "" || $passwordInput === "" || $confirmPassword === "") {
         $error = "Semua field wajib diisi!";
     } elseif ($passwordInput !== $confirmPassword) {
@@ -37,21 +31,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["daftar"])) {
     } elseif (strlen($passwordInput) < 6) {
         $error = "Password minimal 6 karakter!";
     } else {
-        // Cek duplikasi email
         $cek = mysqli_query($conn, "SELECT id FROM datauser WHERE email = '$email'");
 
         if ($cek && mysqli_num_rows($cek) > 0) {
             $error = "Email sudah terdaftar! Gunakan email lain.";
         } else {
-            // Hash password untuk keamanan
             $passwordHash = password_hash($passwordInput, PASSWORD_DEFAULT);
             
-            // Simpan ke database dengan role default 'user'
             $sql = "INSERT INTO datauser (name, email, password, role) 
                     VALUES ('$nama', '$email', '$passwordHash', 'user')";
 
             if (mysqli_query($conn, $sql)) {
-                // Set pesan sukses untuk ditampilkan di halaman login
                 $_SESSION["success"] = "Pendaftaran akun $nama berhasil! Silakan login.";
                 header("Location: login.php");
                 exit;
@@ -71,7 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["daftar"])) {
     <title>Daftar Akun - CyberVault</title>
     <link rel="stylesheet" href="HomePage.css">
     <style>
-        /* Style tambahan untuk alert error */
         .error {
             background: rgba(255, 71, 87, 0.1);
             color: #ff4757;

@@ -18,7 +18,6 @@ if (!mysqli_select_db($conn, $dbName)) {
     die("Gagal memilih database: " . mysqli_error($conn));
 }
 
-// Tambahkan kolom 'role' di sini
 $createTableQuery = "
     CREATE TABLE IF NOT EXISTS datauser (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -35,7 +34,6 @@ if (!mysqli_query($conn, $createTableQuery)) {
     die("Gagal menyiapkan tabel datauser: " . mysqli_error($conn));
 }
 
-// Tambahkan pengecekan kolom 'role' agar otomatis terbuat jika belum ada
 $requiredColumns = [
     "name" => "ALTER TABLE datauser ADD COLUMN name VARCHAR(100) NOT NULL AFTER id",
     "role" => "ALTER TABLE datauser ADD COLUMN role ENUM('admin', 'user') DEFAULT 'user' AFTER password",

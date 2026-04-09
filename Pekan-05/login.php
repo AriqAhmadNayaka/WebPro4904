@@ -42,21 +42,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["login"])) {
         exit;
     }
 
-    // --- LOGIN VIA DATABASE (Admin & User Terdaftar) ---
     $query = "SELECT * FROM datauser WHERE email = '$email'";
     $result = mysqli_query($conn, $query);
 
     if ($result && mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
 
-        // Verifikasi password dengan hash yang tersimpan di DB
         if (password_verify($password, $row["password"])) {
             $_SESSION["login"] = true;
             $_SESSION["id_user"] = $row["id"];
             $_SESSION["nama"] = $row["name"];
             $_SESSION["email"] = $row["email"];
             
-            // Mengambil role (admin/user). Jika kosong di DB, default ke 'user'
             $_SESSION["role"] = (!empty($row["role"])) ? $row["role"] : "user";
 
             header("Location: dashboard.php");

@@ -1,16 +1,12 @@
 <?php
-// 1. Inisialisasi Error Reporting
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// 2. Memuat Session dan Koneksi
 require_once "session_init.php";
 require_once "koneksi.php";
 
-// Pastikan variabel koneksi tersedia
 global $conn;
 
-// 3. Proteksi Halaman: Hanya Admin yang bisa masuk
 if (!isset($_SESSION["login"]) || $_SESSION["role"] !== "admin") {
     header("Location: login.php");
     exit;
@@ -19,7 +15,6 @@ if (!isset($_SESSION["login"]) || $_SESSION["role"] !== "admin") {
 $error = "";
 $success = "";
 
-// 4. Validasi Parameter ID
 if (!isset($_GET["id"]) || empty($_GET["id"])) {
     header("Location: dashboard.php");
     exit;
@@ -27,17 +22,13 @@ if (!isset($_GET["id"]) || empty($_GET["id"])) {
 
 $id = (int) $_GET["id"];
 
-// 5. Ambil Data User Lama
 $queryUser = mysqli_query($conn, "SELECT * FROM datauser WHERE id = $id");
 $user = mysqli_fetch_assoc($queryUser);
-
-// Jika user tidak ditemukan
 if (!$user) {
     header("Location: dashboard.php");
     exit;
 }
 
-// 6. Logika Update Data
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["update"])) {
     $nama = mysqli_real_escape_string($conn, trim($_POST["nama"]));
     $email = mysqli_real_escape_string($conn, trim($_POST["email"]));
@@ -89,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["update"])) {
     <title>Edit User - CyberVault</title>
     <link rel="stylesheet" href="HomePage.css">
     <style>
-        /* Desain Khusus Halaman Edit (Sesuai Minggu 3/4) */
+      
         body {
             background-color: #0a0a0f;
             color: #e0e6ed;

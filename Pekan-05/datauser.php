@@ -1,25 +1,17 @@
 <?php
 session_start();
-
-// Cek login
 if(!isset($_SESSION['login']) || $_SESSION['role'] != "admin"){
     header("Location: login.php");
     exit;
 }
-
 $conn = mysqli_connect("localhost", "root", "", "cybervault");
-
 if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
-
-// Proses tambah data
 if(isset($_POST['tambah'])){
     $nama = mysqli_real_escape_string($conn, trim($_POST['nama']));
     $email = mysqli_real_escape_string($conn, trim($_POST['email']));
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-    // Cek email sudah ada
     $cek = mysqli_query($conn, "SELECT email FROM datauser WHERE email = '$email'");
     if (mysqli_num_rows($cek) > 0) {
         $error = "Email sudah terdaftar!";
@@ -32,15 +24,11 @@ if(isset($_POST['tambah'])){
         }
     }
 }
-
-// Ambil data untuk tabel
 $query = "SELECT id, nama, email FROM datauser ORDER BY id DESC";
 $result = mysqli_query($conn, $query);
-
 $success = isset($success) ? $success : "";
 $error = isset($error) ? $error : "";
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -59,21 +47,16 @@ $error = isset($error) ? $error : "";
             </ul>
         </nav>
     </header>
-
     <div class="table-container">
         <h2>Manajemen User</h2>
-
         <?php if($success != ""){ ?>
             <div style="background: rgba(40, 167, 69, 0.2); color: #90ee90; padding: 0.75rem; border-radius: 10px; margin-bottom: 1rem; text-align: center; border: 1px solid #28a745;">
                 <?php echo $success; ?>
             </div>
         <?php } ?>
-
         <?php if($error != ""){ ?>
             <div class="error"><?php echo $error; ?></div>
         <?php } ?>
-
-        <!-- Form Tambah User -->
         <form action="" method="POST" style="margin-bottom: 2rem;">
             <div style="display: flex; gap: 1rem; align-items: flex-end;">
                 <div style="flex: 1;">
@@ -91,8 +74,6 @@ $error = isset($error) ? $error : "";
                 <button type="submit" name="tambah" style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #00d4ff, #0099cc); border: none; border-radius: 10px; color: #0a0a0f; font-weight: 600; cursor: pointer;">Tambah</button>
             </div>
         </form>
-
-        <!-- Tabel Data User -->
         <table>
             <thead>
                 <tr>
