@@ -1,7 +1,7 @@
 <?php
 require_once "koneksi.php";
 
-$Auth = new Auth();
+$auth = new Auth();
 if (!$auth->check()) {
     header("Location: login.php");
     exit;
