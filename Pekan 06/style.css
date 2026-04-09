@@ -1,0 +1,127 @@
+/* Pengaturan Dasar */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+h2 {
+    color: #2c3e50;
+    text-align: center;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+/* Container untuk Form dan Tabel */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* tabel */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 500px;
+    margin: 0 auto 30px auto;
+}
+
+input[type="text"], 
+input[type="password"], 
+textarea, 
+input[type="file"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+/* Tombol Simpan */
+button[name="simpan"], 
+button[name="login"],
+button[name="register"] {
+    background-color: #27ae60;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+button[name="simpan"]:hover, 
+button[name="login"]:hover,
+button[name="register"]:hover {
+    background-color: #219150;
+}
+
+/* tabel */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #34495e;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    padding: 10px;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* link */
+a {
+    text-decoration: none;
+    color: #3498db;
+    text-align: center;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+.logout-btn {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #e74c3c;
+    color: white !important;
+    border-radius: 4px;
+}
