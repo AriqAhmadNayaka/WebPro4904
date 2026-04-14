@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nuids | Login & Dashboard</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="admin.css" />
+
+    <style>
+        /* CSS Tambahan untuk kontrol transisi antar halaman */
+        .hidden-page {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="loginSection" class="login-container">
+        <div class="login-header">
+            <img src="logo Nuids..png" alt="Foto Anak" class="foto-ikon">
+            <h2>Nuids.Login</h2>
+            <p>Monitor Administrator</p>
+        </div>
+        <form id="loginForm">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="login-btn">Masuk <i class="fas fa-arrow-right"></i></button>
+        </form>
+        <p id="errorMessage" class="error-message" style="display:none;">Username atau password salah!</p>
+        <div class="footer">
+            <p>Lupa password? <a href="#">Hubungi admin</a></p>
+        </div>
+    </div>
+
+    <div id="dashboardSection" class="admin-wrapper hidden-page">
+      <aside class="admin-sidebar acrylic-card">
+        <div class="profile-sidebar">
+          <div class="avatar-placeholder">👤</div>
+          <h3 class="adminName">Admin</h3>
+          <p>Super Administrator</p>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="#" class="nav-item active" data-target=".main-dashboard">Dashboard Utama</a>
+          <a href="#" class="nav-item" data-target="#manajemenUser">Manajemen User</a>
+          <a href="#" class="nav-item" data-target="#manajemenDokter">Manajemen Dokter</a>
+          <a href="#" class="nav-item" data-target="#dataGizi">Konten edukasi</a>
+          <a href="#" class="nav-item" data-target="#laporanAnalitik">Laporan & Analitik</a>
+          <a href="#" class="nav-item" data-target="#pengaturanSistem">Pengaturan Sistem</a>
+          <a href="#" id="logoutBtn" class="nav-item" style="color: #ff4d4d; margin-top: 20px;">Keluar</a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <section class="page-section show main-dashboard">
+          <h2 class="section-title" style="text-align: left; margin-top: 0">Ringkasan Harian</h2>
+          <div class="stats-grid">
+            <div class="acrylic-card stat-card">
+              <div class="stat-icon">🟢</div>
+              <h4>User Online</h4>
+              <div class="stat-value" id="onlineUserCount">0</div>
+              <p>Pengguna aktif saat ini.</p>
+            </div>
+            <div class="acrylic-card stat-card">
+              <div class="stat-icon">📥</div>
+              <h4>Total Registrasi</h4>
+              <div class="stat-value" id="totalRegistrations">0</div>
+              <p>Total akun terdaftar.</p>
+            </div>
+          </div>
+          </section>
+        
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+    <script src="main.js"></script>
+    <script>
+        // Logika Penggabungan Login dan Dashboard
+        const loginSection = document.getElementById('loginSection');
+        const dashboardSection = document.getElementById('dashboardSection');
+        const loginForm = document.getElementById('loginForm');
+        const errorMessage = document.getElementById('errorMessage');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        // Cek apakah sudah login sebelumnya
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            showDashboard();
+        }
+
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Validasi sesuai file login.js Anda
+            if (username === 'admin' && password === 'password') {
+                localStorage.setItem('isLoggedIn', 'true');
+                showDashboard();
+            } else {
+                errorMessage.style.display = 'block';
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 3000);
+            }
+        });
+
+        function showDashboard() {
+            loginSection.classList.add('hidden-page');
+            dashboardSection.classList.remove('hidden-page');
+            document.body.dataset.page = "admin"; // Menjaga fungsi admin.js tetap jalan
+        }
+
+        // Fungsi Logout
+        logoutBtn.addEventListener('click', function() {
+            localStorage.removeItem('isLoggedIn');
+            location.reload(); // Segarkan halaman untuk kembali ke tampilan login
+        });
+    </script>
+</body>
+</html>
