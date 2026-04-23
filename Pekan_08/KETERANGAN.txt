@@ -1,0 +1,16 @@
+PEKAN 07 - CODEIGNITER 3 MVC
+
+Project utama:
+- d:\xampp\htdocs\ci3_project
+
+Folder ini dirapikan sebagai pendamping pengumpulan pekan 7.
+
+Isi folder:
+- db_webprodata.sql : database lama dari pekan 6 yang dipakai ulang
+- dokumentasi\README_PEKAN7.txt : ringkasan fitur dan struktur MVC
+- dokumentasi\STRUKTUR_MVC.txt : penjelasan controller, model, dan view
+
+Login aplikasi:
+- URL: http://localhost/ci3_project/
+- Username: admin
+- Password: 12345
