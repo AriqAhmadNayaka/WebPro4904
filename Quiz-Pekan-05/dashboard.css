@@ -1,3 +1,4 @@
+/* Reset dasar untuk menyamakan perilaku elemen di browser. */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,6 +6,7 @@
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Menempatkan konten dashboard di tengah dengan latar gradien. */
 body {
     min-height: 100vh;
     display: flex;
@@ -16,6 +18,7 @@ body {
     padding: 24px;
 }
 
+/* Kartu utama yang menampung seluruh isi dashboard. */
 .dashboard-card {
     width: 100%;
     max-width: 720px;
@@ -28,17 +31,20 @@ body {
     box-shadow: 0 24px 50px rgba(15, 23, 42, 0.3);
 }
 
+/* Judul sapaan untuk pengguna yang login. */
 h1 {
     font-size: 2rem;
     margin-bottom: 10px;
 }
 
+/* Paragraf deskripsi umum pada dashboard. */
 p {
     color: rgba(255, 255, 255, 0.82);
     line-height: 1.6;
     margin-bottom: 24px;
 }
 
+/* Grid responsif untuk dua kotak informasi utama. */
 .info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -46,27 +52,32 @@ p {
     margin-bottom: 28px;
 }
 
+/* Kotak informasi untuk status session dan cookie. */
 .info-box {
     background: rgba(15, 23, 42, 0.26);
     border-radius: 18px;
     padding: 18px;
 }
 
+/* Judul kecil di dalam setiap kotak informasi. */
 .info-box h2 {
     font-size: 1rem;
     margin-bottom: 8px;
 }
 
+/* Menonjolkan nilai informasi utama. */
 .info-box strong {
     font-size: 1.05rem;
 }
 
+/* Area tombol aksi di bagian bawah dashboard. */
 .actions {
     display: flex;
     flex-wrap: wrap;
     gap: 14px;
 }
 
+/* Gaya dasar semua link yang tampil seperti tombol. */
 .actions a {
     text-decoration: none;
     padding: 12px 18px;
@@ -75,17 +86,20 @@ p {
     transition: transform 0.2s ease;
 }
 
+/* Tombol utama untuk aksi yang paling penting. */
 .primary-link {
     background: #ffffff;
     color: #0f172a;
 }
 
+/* Tombol sekunder untuk aksi tambahan. */
 .secondary-link {
     background: rgba(255, 255, 255, 0.16);
     color: #ffffff;
     border: 1px solid rgba(255, 255, 255, 0.22);
 }
 
+/* Efek hover sederhana pada semua tombol link. */
 .actions a:hover {
     transform: translateY(-2px);
 }

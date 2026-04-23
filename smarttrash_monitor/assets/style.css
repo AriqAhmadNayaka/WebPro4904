@@ -1,0 +1,292 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #222;
+}
+
+a {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.site-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #cccccc;
+    padding: 15px 0;
+}
+
+.nav-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.brand-title {
+    margin: 0;
+    font-size: 24px;
+}
+
+.eyebrow {
+    margin: 0 0 5px;
+    font-size: 12px;
+    color: #666666;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.welcome-text,
+.helper-text,
+.muted-text {
+    color: #666666;
+}
+
+.auth-layout,
+.page-layout {
+    padding: 30px 0;
+}
+
+.auth-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.hero-card,
+.form-card,
+.panel,
+.stat-card {
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.hero-card h2,
+.form-card h3,
+.page-intro h2,
+.panel h3 {
+    margin-top: 0;
+}
+
+.form-grid {
+    display: grid;
+    gap: 15px;
+}
+
+.form-grid label,
+.file-preview {
+    display: grid;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 14px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    color: #222;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn:hover {
+    text-decoration: none;
+    background-color: #eeeeee;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    background-color: #bb2d3b;
+}
+
+.btn-small {
+    padding: 8px 12px;
+    font-size: 13px;
+}
+
+.alert {
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.alert-success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+.page-intro {
+    margin-bottom: 20px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-card span {
+    display: block;
+    margin-bottom: 8px;
+    color: #666666;
+}
+
+.stat-card strong {
+    font-size: 24px;
+}
+
+.panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+th,
+td {
+    border: 1px solid #dddddd;
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+    font-size: 14px;
+}
+
+th {
+    background-color: #f1f1f1;
+}
+
+.empty-state {
+    text-align: center;
+    color: #666666;
+}
+
+.action-cell {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.badge-ringan {
+    background-color: #198754;
+}
+
+.badge-sedang {
+    background-color: #fd7e14;
+}
+
+.badge-berat {
+    background-color: #dc3545;
+}
+
+.site-footer {
+    margin-top: 30px;
+    padding: 20px 0;
+    background-color: #ffffff;
+    border-top: 1px solid #cccccc;
+}
+
+.footer-wrap {
+    text-align: center;
+    color: #666666;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .auth-layout,
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-wrap,
+    .panel-heading {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

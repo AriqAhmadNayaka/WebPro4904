@@ -1,10 +1,12 @@
- * {
+        /* Reset dasar agar ukuran elemen lebih konsisten di semua browser. */
+        * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        /* Mengatur halaman agar kartu login berada tepat di tengah layar. */
         body {
             min-height: 100vh;
             display: flex;
@@ -16,6 +18,7 @@
             padding: 24px;
         }
 
+        /* Kartu utama yang membungkus seluruh form login. */
         .login-card {
             width: 100%;
             max-width: 420px;
@@ -28,11 +31,13 @@
             color: #ffffff;
         }
 
+        /* Area judul dan deskripsi aplikasi. */
         .brand {
             text-align: center;
             margin-bottom: 28px;
         }
 
+        /* Judul utama halaman login. */
         .brand h1 {
             font-size: 2rem;
             font-weight: 700;
@@ -40,12 +45,14 @@
             letter-spacing: 0.5px;
         }
 
+        /* Teks pendukung di bawah judul. */
         .brand p {
             color: rgba(255, 255, 255, 0.82);
             font-size: 0.95rem;
             line-height: 1.5;
         }
 
+        /* Kotak informasi akun contoh dari database. */
         .demo-box {
             background: rgba(15, 23, 42, 0.28);
             border-radius: 16px;
@@ -55,6 +62,7 @@
             line-height: 1.6;
         }
 
+        /* Tampilan untuk pesan error login. */
         .error-message {
             background: rgba(239, 68, 68, 0.18);
             border: 1px solid rgba(254, 202, 202, 0.35);
@@ -65,10 +73,12 @@
             font-size: 0.92rem;
         }
 
+        /* Memberi jarak antar kelompok input. */
         .input-group {
             margin-bottom: 18px;
         }
 
+        /* Label untuk setiap field input. */
         .input-group label {
             display: block;
             margin-bottom: 8px;
@@ -76,6 +86,7 @@
             font-weight: 600;
         }
 
+        /* Gaya utama untuk kotak input username dan password. */
         .input-group input {
             width: 100%;
             border: none;
@@ -87,10 +98,12 @@
             font-size: 1rem;
         }
 
+        /* Warna teks placeholder agar tetap terbaca namun tidak dominan. */
         .input-group input::placeholder {
             color: #64748b;
         }
 
+        /* Area checkbox remember me dan teksnya. */
         .checkbox-group {
             display: flex;
             align-items: center;
@@ -100,11 +113,13 @@
             color: rgba(255, 255, 255, 0.88);
         }
 
+        /* Ukuran checkbox disesuaikan agar mudah diklik. */
         .checkbox-group input {
             width: 16px;
             height: 16px;
         }
 
+        /* Tombol utama untuk submit form login. */
         button {
             width: 100%;
             border: none;
@@ -118,11 +133,13 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
+        /* Efek hover agar tombol terasa lebih interaktif. */
         button:hover {
             transform: translateY(-2px);
             box-shadow: 0 12px 24px rgba(255, 255, 255, 0.2);
         }
 
+        /* Catatan kecil di bagian bawah form. */
         .footer-note {
             margin-top: 20px;
             text-align: center;
