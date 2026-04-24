@@ -1,0 +1,8 @@
+# Prevent directory listing
+Options -Indexes
+
+# Allow image and PDF files only
+<FilesMatch "\.(jpg|jpeg|png|gif|pdf)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>

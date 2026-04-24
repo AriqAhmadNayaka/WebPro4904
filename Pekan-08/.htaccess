@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /Pemograman_Web/WebPro4904/Pekan-08/
+
+# Bypass file dan folder yang benar-benar ada
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Semua request diteruskan ke index.php
+RewriteRule ^(.*)$ index.php/$1 [L]
