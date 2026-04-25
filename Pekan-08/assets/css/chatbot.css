@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins, sans-serif;
+}
+
+body {
+  background: #f5f7fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.chat-wrapper {
+  width: 420px;
+  height: 620px;
+  background: #ffffff;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+  overflow: hidden;
+}
+
+/* HEADER */
+.chat-header {
+  padding: 16px 18px;
+  background: #6C63FF;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-title {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.chat-title i {
+  font-size: 26px;
+}
+
+.chat-title h3 {
+  font-size: 16px;
+}
+
+.chat-title span {
+  font-size: 12px;
+  opacity: .85;
+}
+
+.back-btn {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+/* BODY */
+.chat-body {
+  flex: 1;
+  padding: 18px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: #f8fafc;
+}
+
+/* CHAT BUBBLE */
+.chat {
+  max-width: 80%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.chat.bot {
+  background: #eceaff;
+  align-self: flex-start;
+}
+
+.chat.user {
+  background: #6C63FF;
+  color: white;
+  align-self: flex-end;
+}
+
+.chat-container {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.floating-back {
+  width: 42px;
+  height: 42px;
+  background: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6C63FF;
+  font-size: 22px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  transition: all .2s ease;
+}
+
+.floating-back:hover {
+  background: #6C63FF;
+  color: white;
+  transform: translateX(-3px);
+}
+
+
+/* INPUT */
+.chat-input {
+  padding: 14px;
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  outline: none;
+}
+
+.chat-input button {
+  border: none;
+  background: #6C63FF;
+  color: white;
+  width: 42px;
+  border-radius: 12px;
+  cursor: pointer;
+}
