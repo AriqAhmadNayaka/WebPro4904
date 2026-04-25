@@ -1,0 +1,19 @@
+CREATE DATABASE IF NOT EXISTS db_ci3;
+USE db_ci3;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama VARCHAR(100) DEFAULT NULL,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(50) NOT NULL
+);
+
+INSERT IGNORE INTO users (nama, username, password) VALUES
+('Administrator', 'admin', 'admin123');
+
+CREATE TABLE IF NOT EXISTS posts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    judul VARCHAR(150) NOT NULL,
+    deskripsi TEXT NOT NULL,
+    file VARCHAR(255) DEFAULT NULL
+);
