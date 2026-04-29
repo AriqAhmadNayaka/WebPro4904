@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Nuids</title>
+
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="container-login">
+      <h2 class="greeting">Hi! Selamat Datang Kembali di Nuids.</h2>
+
+      <div class="acrylic-card">
+        <div class="logo-container">
+          <img src="logo.png" alt="" width="50px" />
+        </div>
+
+        <form id="loginForm">
+          <div class="form-group">
+            <input
+              id="loginEmail"
+              type="email"
+              class="custom-input input-teal"
+              placeholder="Email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              id="loginPassword"
+              type="password"
+              class="custom-input input-pink"
+              placeholder="Password"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn-login" id="loginBtn">
+            <span class="btn-text">Login</span>
+            <div class="loader"></div>
+          </button>
+        </form>
+        <a href="register.html">Belum punya akun? Daftar sekarang</a>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
