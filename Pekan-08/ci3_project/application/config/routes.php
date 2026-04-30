@@ -58,5 +58,6 @@ $route['register'] = 'auth/register';
 $route['logout'] = 'auth/logout';
 $route['dashboard'] = 'dashboard';
 $route['peserta'] = 'peserta';
+$route['register_API'] = 'Register_API/register_API';
 $route['peserta/simpan'] = 'peserta/save';
 $route['peserta/hapus/(:num)'] = 'peserta/delete/$1';

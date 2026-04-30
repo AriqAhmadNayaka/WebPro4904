@@ -89,6 +89,48 @@ class Auth extends CI_Controller
 
         $this->load->view('auth/register', $data);
     }
+     public function register_API()
+    {
+        // User yang sudah login tidak perlu membuka halaman register lagi.
+        if ($this->session->userdata('user_id')) {
+            redirect('dashboard');
+        }
+
+        $data['title'] = 'Register | InkluSkill';
+
+        if ($this->input->method() === 'post') {
+            // Validasi data register sebelum disimpan ke database.
+            $this->form_validation->set_rules('username', 'Nama Lengkap', 'required|trim|min_length[3]');
+            $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[ci3_users.email]');
+            $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[5]');
+
+            if ($this->form_validation->run()) {
+                // Password disimpan dalam bentuk hash agar lebih aman.
+                $payload = array(
+                    'username' => $this->input->post('username', true),
+                    'email' => $this->input->post('email', true),
+                    'password' => password_hash($this->input->post('password', false), PASSWORD_DEFAULT),
+                    'role' => 'sekolah',
+                );
+                 $payload2 = [
+                    'username' => $this->input->post('username', true),
+                    'email' => $this->input->post('email', true),
+                    'password' => password_hash($this->input->post('password', false), PASSWORD_DEFAULT),
+                    'role' => 'sekolah',
+                 ];
+
+                $this->User_model->create($payload);
+               // $this->session->unset_userdata('error');
+                //$this->session->set_flashdata('success', 'Registrasi berhasil. Silakan login.');
+                //redirect('login');
+
+            }
+        }
+                
+                echo json_encode($payload2);
+
+       //$this->load->view('auth/register_API', $data);
+    }
 
     public function logout()
     {

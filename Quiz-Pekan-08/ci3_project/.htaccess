@@ -1,0 +1,8 @@
+# Menjadikan index.php sebagai file utama saat folder diakses.
+DirectoryIndex index.php
+
+# Mengaktifkan rewrite ringan hanya untuk root folder project.
+RewriteEngine On
+
+# Saat folder ci3_project dibuka langsung, arahkan ke halaman portofolio utama.
+RewriteRule ^$ index.php/portfolio [L]
