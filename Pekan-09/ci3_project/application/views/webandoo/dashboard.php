@@ -1,21 +1,5 @@
-﻿     <?php
-session_start();
-require_once 'koneksi.php';
-require_once 'profil_helper.php';
-
-$profileRepository = new ProfileRepository($conn);
-$fileManager = new ProfileFileManager(__DIR__);
-$sessionManager = new ProfileSessionManager();
-$profileService = new ProfileService($profileRepository, $fileManager, $sessionManager);
-
-$user_data = $profileService->boot();
-$nama_user = !empty($_SESSION['nama_lengkap']) ? $_SESSION['nama_lengkap'] : (isset($_SESSION['username']) ? $_SESSION['username'] : 'Tamu');
-$foto_profil = isset($_SESSION['foto_profil']) ? $_SESSION['foto_profil'] : $fileManager->getDefaultPhoto();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Dashboard WeBandoo - Warisan Bandung (V2)</title>
@@ -24,29 +8,26 @@ $foto_profil = isset($_SESSION['foto_profil']) ? $_SESSION['foto_profil'] : $fil
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.css">
-
-    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/dashboard.css'); ?>">
 </head>
-
-    <body>
-
-        <nav class="navbar">
-            <a href="dashboard.php" class="logo">WeBandoo+</a>
-            <ul class="nav-links">
-                <li><a href="dashboard.php" class="nav-link active"><i class="fas fa-chart-line"></i> Dashboard</a></li>
-                <li><a href="warisan.html" class="nav-link"><i class="fas fa-landmark"></i> Warisan & Cagar Budaya</a></li>
-                <li><a href="peta.html" class="nav-link"><i class="fas fa-map-pin"></i> Peta Lokasi</a></li>
-                <li><a href="event.html" class="nav-link"><i class="fas fa-calendar-day"></i> Event & Jadwal</a></li>
-                <li><a href="eduction.html" class="nav-link"><i class="fas fa-book"></i> Belajar</a></li>
-            </ul>
-            <div class="navbar-right">
-                <a href="profil.php" class="avatar" title="Buka Profil Saya">
-                    <img src="<?php echo htmlspecialchars($foto_profil); ?>" alt="Avatar">
-                </a>
-                <a href="profil.php" class="toggle-btn-leave"><i class="fas fa-user"></i> Profil</a>
-                <a href="keluar.php" class="toggle-btn-set"><i class="fas fa-sign-out-alt"></i> Keluar</a>
-            </div>
-        </nav>
+<body>
+    <nav class="navbar">
+        <a href="<?php echo site_url('dashboard'); ?>" class="logo">WeBandoo+</a>
+        <ul class="nav-links">
+            <li><a href="<?php echo site_url('dashboard'); ?>" class="nav-link active"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="<?php echo site_url('warisan'); ?>" class="nav-link"><i class="fas fa-landmark"></i> Warisan & Cagar Budaya</a></li>
+            <li><a href="<?php echo site_url('peta'); ?>" class="nav-link"><i class="fas fa-map-pin"></i> Peta Lokasi</a></li>
+            <li><a href="<?php echo site_url('event'); ?>" class="nav-link"><i class="fas fa-calendar-day"></i> Event & Jadwal</a></li>
+            <li><a href="<?php echo site_url('belajar'); ?>" class="nav-link"><i class="fas fa-book"></i> Belajar</a></li>
+        </ul>
+        <div class="navbar-right">
+            <a href="<?php echo site_url('profil'); ?>" class="avatar" title="Buka Profil Saya">
+                <img src="<?php echo base_url(htmlspecialchars($foto_profil)); ?>" alt="Avatar">
+            </a>
+            <a href="<?php echo site_url('profil'); ?>" class="toggle-btn-leave"><i class="fas fa-user"></i> Profil</a>
+            <a href="<?php echo site_url('logout'); ?>" class="toggle-btn-set"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+        </div>
+    </nav>
 
     <div class="main-content">
         <div class="header-bar">
@@ -63,20 +44,20 @@ $foto_profil = isset($_SESSION['foto_profil']) ? $_SESSION['foto_profil'] : $fil
         <div class="hero-slider">
             <div class="slider-container">
                 <div class="hero-item active">
-                    <img src="FOTO/bdg2.jpg" alt="Gedung Sate" class="hero-img">
+                    <img src="<?php echo base_url('FOTO/bdg2.jpg'); ?>" alt="Gedung Sate" class="hero-img">
                     <div class="hero-overlay"></div>
                     <div class="hero-content">
                         <span class="badge badge-location"><i class="fas fa-map-marker-alt"></i> Destinasi Ikonik</span>
                         <h1>Gedung Sate</h1>
                         <p>Jelajahi keindahan arsitektur klasik Bandung. Buka setiap hari untuk kunjungan edukasi.</p>
                         <div class="hero-buttons">
-                            <a href="warisan.html" class="btn-play">Detail Lokasi</a>
+                            <a href="<?php echo site_url('warisan'); ?>" class="btn-play">Detail Lokasi</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="hero-item">
-                    <img src="FOTO/KOPI1.jpg" alt="Festival Angklung" class="hero-img">
+                    <img src="<?php echo base_url('FOTO/KOPI1.jpg'); ?>" alt="Festival Angklung" class="hero-img">
                     <div class="hero-overlay"></div>
                     <div class="hero-content">
                         <span class="badge badge-event"><i class="fas fa-calendar-check"></i> Event Mendatang</span>
@@ -87,7 +68,7 @@ $foto_profil = isset($_SESSION['foto_profil']) ? $_SESSION['foto_profil'] : $fil
                         <h1>Festival Angklung 2025</h1>
                         <p>Akan diadakan di Kopi Mandja Progo pada tanggal 20 Desember 2025.</p>
                         <div class="hero-buttons">
-                            <a href="event.html?id=festival-angklung" class="btn-play">
+                            <a href="<?php echo site_url('event'); ?>" class="btn-play">
                                 <i class="fas fa-paper-plane"></i> Daftar Sekarang
                             </a>
 
@@ -111,7 +92,7 @@ $foto_profil = isset($_SESSION['foto_profil']) ? $_SESSION['foto_profil'] : $fil
 
     <div class="main-content">
         <div class="dashboard-grid">
-            <a href="peta.html" class="link-card-wrapper">
+            <a href="<?php echo site_url('peta'); ?>" class="link-card-wrapper">
                 <div class="info-card">
                     <div class="card-icon"><i class="fas fa-chess-rook"></i></div>
                     <h4>Total Lokasi Wisata</h4>
@@ -120,7 +101,7 @@ $foto_profil = isset($_SESSION['foto_profil']) ? $_SESSION['foto_profil'] : $fil
                 </div>
             </a>
 
-            <a href="warisan.html" class="link-card-wrapper">
+            <a href="<?php echo site_url('warisan'); ?>" class="link-card-wrapper">
                 <div class="info-card">
                     <div class="card-icon"><i class="fas fa-star"></i></div>
                     <h4>Rekomendasi Populer</h4>
@@ -129,7 +110,7 @@ $foto_profil = isset($_SESSION['foto_profil']) ? $_SESSION['foto_profil'] : $fil
                 </div>
             </a>
 
-            <a href="event.html" class="link-card-wrapper">
+            <a href="<?php echo site_url('event'); ?>" class="link-card-wrapper">
                 <div class="info-card">
                     <div class="card-icon brown"><i class="fas fa-ticket-alt"></i></div>
                     <h4>Event Warisan Mendatang</h4>
@@ -143,7 +124,7 @@ $foto_profil = isset($_SESSION['foto_profil']) ? $_SESSION['foto_profil'] : $fil
     <div class="main-content main-content-spaced">
         <div class="section-header section-header-inline section-header-gap-sm">
             <h3><i class="fas fa-map-marked-alt"></i> Eksplorasi Sekitarmu</h3>
-            <a href="peta.html" class="view-full-map">Lihat Peta Full Screen <i class="fas fa-external-link-alt"></i></a>
+            <a href="<?php echo site_url('peta'); ?>" class="view-full-map">Lihat Peta Full Screen <i class="fas fa-external-link-alt"></i></a>
         </div>
 
         <div class="dashboard-map-wrapper">
@@ -157,7 +138,7 @@ $foto_profil = isset($_SESSION['foto_profil']) ? $_SESSION['foto_profil'] : $fil
 
                 <div class="nearby-list">
                     <div class="nearby-card js-focus-map" data-lat="-6.9175" data-lng="107.6191" tabindex="0" role="button">
-                        <img src="FOTO/bdg5.jpg" alt="Gedung Sate">
+                        <img src="<?php echo base_url('FOTO/bdg5.jpg'); ?>" alt="Gedung Sate">
                         <div class="details">
                             <strong>Gedung Sate</strong>
                             <span><i class="fas fa-map-marker-alt"></i> 1.2 km dari Anda</span>
@@ -165,7 +146,7 @@ $foto_profil = isset($_SESSION['foto_profil']) ? $_SESSION['foto_profil'] : $fil
                     </div>
 
                     <div class="nearby-card js-focus-map" data-lat="-6.9211" data-lng="107.6110" tabindex="0" role="button">
-                        <img src="FOTO/bdg6.jpg" alt="Jalan Braga">
+                        <img src="<?php echo base_url('FOTO/bdg6.jpg'); ?>" alt="Jalan Braga">
                         <div class="details">
                             <strong>Jalan Braga</strong>
                             <span><i class="fas fa-map-marker-alt"></i> 0.5 km dari Anda</span>
@@ -178,17 +159,16 @@ $foto_profil = isset($_SESSION['foto_profil']) ? $_SESSION['foto_profil'] : $fil
 
     <div class="main-content">
         <div class="dashboard-bottom-section dashboard-bottom-section-spaced">
-
             <div class="section-wrapper section-wrapper-spaced">
                 <div class="section-header section-header-inline section-header-gap-lg">
                     <h3 style="font-size: 1.2rem; color: #2d3436;"><i class="fas fa-calendar-day" style="color: #27ae60; margin-right: 10px;"></i>Agenda Budaya Terdekat</h3>
-                    <a href="event.html" class="view-all-btn">Lihat Semua</a>
+                    <a href="<?php echo site_url('event'); ?>" class="view-all-btn">Lihat Semua</a>
                 </div>
 
                 <div class="horizontal-scroll-wrapper">
                     <div class="event-card-mini">
                         <div class="card-image">
-                            <img src="FOTO/event1.jpg" alt="Event">
+                            <img src="<?php echo base_url('FOTO/event1.jpg'); ?>" alt="Event">
                             <div class="date-tag">24 <br> <span>MAR</span></div>
                         </div>
                         <div class="card-details">
@@ -199,7 +179,7 @@ $foto_profil = isset($_SESSION['foto_profil']) ? $_SESSION['foto_profil'] : $fil
 
                     <div class="event-card-mini">
                         <div class="card-image">
-                            <img src="FOTO/event2.jpg" alt="Event">
+                            <img src="<?php echo base_url('FOTO/event2.jpg'); ?>" alt="Event">
                             <div class="date-tag">10 <br> <span>FEB</span></div>
                         </div>
                         <div class="card-details">
@@ -213,7 +193,7 @@ $foto_profil = isset($_SESSION['foto_profil']) ? $_SESSION['foto_profil'] : $fil
             <div class="section-wrapper">
                 <div class="section-header section-header-inline section-header-gap-lg">
                     <h3 style="font-size: 1.2rem; color: #2d3436;"><i class="fas fa-graduation-cap" style="color: #3498db; margin-right: 10px;"></i>Materi Pembelajaran Baru</h3>
-                    <a href="belajar.html" class="view-all-btn">Mulai Belajar</a>
+                    <a href="<?php echo site_url('belajar'); ?>" class="view-all-btn">Mulai Belajar</a>
                 </div>
 
                 <div class="horizontal-scroll-wrapper">
@@ -261,8 +241,7 @@ $foto_profil = isset($_SESSION['foto_profil']) ? $_SESSION['foto_profil'] : $fil
         <div class="footer-container">
             <div class="footer-col">
                 <h3>WeBandoo+</h3>
-                <p>Platform digital pelestarian cagar budaya dan warisan sejarah Kota Bandung. Menghubungkan
-                    generasi muda dengan akar budaya tanah Pasundan.</p>
+                <p>Platform digital pelestarian cagar budaya dan warisan sejarah Kota Bandung. Menghubungkan generasi muda dengan akar budaya tanah Pasundan.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -274,18 +253,17 @@ $foto_profil = isset($_SESSION['foto_profil']) ? $_SESSION['foto_profil'] : $fil
             <div class="footer-col">
                 <h4>Navigasi</h4>
                 <ul>
-                    <li><a href="home page.html">Dashboard Utama</a></li>
-                    <li><a href="warisan.html">Daftar Warisan</a></li>
-                    <li><a href="peta.html">Eksplorasi Peta</a></li>
-                    <li><a href="event.html">Agenda Budaya</a></li>
+                    <li><a href="<?php echo site_url('dashboard'); ?>">Dashboard Utama</a></li>
+                    <li><a href="<?php echo site_url('warisan'); ?>">Daftar Warisan</a></li>
+                    <li><a href="<?php echo site_url('peta'); ?>">Eksplorasi Peta</a></li>
+                    <li><a href="<?php echo site_url('event'); ?>">Agenda Budaya</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
                 <h4>Hubungi Kami</h4>
                 <ul>
-                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Jl. Telekomunikasi No.1</a>
-                    </li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Jl. Telekomunikasi No.1</a></li>
                     <li><a href="#"><i class="fas fa-phone"></i> (022) 123-4567</a></li>
                     <li><a href="#"><i class="fas fa-envelope"></i> info@webandoo.id</a></li>
                 </ul>
@@ -299,7 +277,6 @@ $foto_profil = isset($_SESSION['foto_profil']) ? $_SESSION['foto_profil'] : $fil
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-gesture-handling"></script>
-
-    <script src="assets/js/dashboard.js"></script>
-
+    <script src="<?php echo base_url('assets/js/dashboard.js'); ?>"></script>
+</body>
 </html>

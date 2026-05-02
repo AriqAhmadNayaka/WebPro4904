@@ -1,0 +1,10 @@
+ALTER TABLE users
+ADD COLUMN nama_lengkap VARCHAR(100) NULL AFTER username,
+ADD COLUMN no_hp VARCHAR(20) NULL AFTER nama_lengkap,
+ADD COLUMN tanggal_lahir DATE NULL AFTER no_hp,
+ADD COLUMN jenis_kelamin VARCHAR(20) NULL AFTER tanggal_lahir,
+ADD COLUMN alamat TEXT NULL AFTER jenis_kelamin,
+ADD COLUMN kota VARCHAR(100) NULL AFTER alamat,
+ADD COLUMN pekerjaan VARCHAR(100) NULL AFTER kota,
+ADD COLUMN bio TEXT NULL AFTER pekerjaan,
+ADD COLUMN foto_profil VARCHAR(255) NULL AFTER bio;
