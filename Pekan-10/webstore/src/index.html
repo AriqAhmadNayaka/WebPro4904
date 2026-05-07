@@ -1,0 +1,66 @@
+<!doctype html> <!-- dokumen HTML5 -->
+<html lang="id"> <!-- bahasa Indonesia -->
+  <head> <!-- metadata dan sumber daya -->
+    <meta charset="UTF-8" /> <!-- encoding karakter -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- responsive viewport -->
+    <title>Vanilla JS Web Store</title> <!-- judul halaman -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" /> <!-- preconnect Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> <!-- preconnect font statis -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@400;700&display=swap"
+      rel="stylesheet"
+    /> <!-- muat font dari Google -->
+    <link rel="stylesheet" href="style.css" /> <!-- muat stylesheet utama -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> <!-- muat jQuery -->
+    <script type="module" src="app.js" defer></script> <!-- muat skrip aplikasi -->
+  </head>
+  <body> <!-- tubuh halaman -->
+    <div id="app"> <!-- root aplikasi -->
+      <div class="container"> <!-- pembungkus konten -->
+        <div class="listing-header"> <!-- header daftar produk -->
+          <nav class="breadcrumb" aria-label="Breadcrumb"> <!-- breadcrumb navigasi -->
+            <a href="#"> <!-- link home -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"> <!-- ikon home -->
+                <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" /> <!-- path ikon -->
+              </svg>
+              Home <!-- teks tautan home -->
+            </a>
+            <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"> <!-- ikon panah -->
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7" /> <!-- path panah kanan -->
+            </svg>
+            <a href="#">Products</a> <!-- tautan kategori -->
+            <svg class="chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"> <!-- ikon panah kedua -->
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7" /> <!-- path panah kanan -->
+            </svg>
+            <span>Electronics</span> <!-- label kategori saat ini -->
+          </nav>
+
+          <div class="toolbar"> <!-- toolbar aksi -->
+            <h2 class="page-title">Electronics</h2> <!-- judul halaman -->
+            <div class="toolbar-actions"> <!-- grup tombol -->
+              <button class="btn-secondary" type="button"> <!-- tombol filter -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"> <!-- ikon filter -->
+                  <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M18.796 4H5.204a1 1 0 0 0-.753 1.659l5.302 6.058a1 1 0 0 1 .247.659v4.874a.5.5 0 0 0 .2.4l3 2.25a.5.5 0 0 0 .8-.4v-7.124a1 1 0 0 1 .247-.659l5.302-6.059c.566-.646.106-1.658-.753-1.658Z" /> <!-- path ikon filter -->
+                </svg>
+                Filters <!-- teks tombol filter -->
+              </button>
+              <button class="btn-secondary" type="button"> <!-- tombol sort -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"> <!-- ikon sort -->
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M7 4l3 3M7 4 4 7m9-3h6l-6 6h6m-6.5 10 3.5-7 3.5 7M14 18h4" /> <!-- path ikon sort -->
+                </svg>
+                Sort <!-- teks tombol sort -->
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <main class="store-layout"> <!-- layout utama toko -->
+          <section> <!-- area produk -->
+            <div id="product-list" class="product-grid"></div> <!-- kontainer produk -->
+          </section>
+          <aside id="cart" class="cart-section" aria-label="Shopping cart"></aside> <!-- area keranjang -->
+        </main>
+      </div>
+    </div>
+  </body>
+</html> <!-- akhir dokumen HTML -->

@@ -1,0 +1,379 @@
+:root { /* variabel tema global */
+  --primary: #0D9488; /* warna utama */
+  --primary-hover: #0F766E; /* warna utama saat hover */
+  --primary-light: #CCFBF1; /* warna latar primer */
+  --bg-color: #F9FAFB; /* warna latar halaman */
+  --card-bg: #FFFFFF; /* warna latar kartu */
+  --text-main: #111827; /* warna teks utama */
+  --text-muted: #6B7280; /* warna teks sekunder */
+  --border-color: #E5E7EB; /* warna garis batas */
+  --rating-star: #FACC15; /* warna bintang rating */
+  --font-serif: 'Merriweather', serif; /* font serif */
+  --font-sans: 'Inter', sans-serif; /* font sans-serif */
+  --radius: 8px; /* radius border */
+}
+
+* { /* aturan global reset */
+  box-sizing: border-box; /* kotak menghitung padding dan border */
+  margin: 0; /* hapus margin default */
+  padding: 0; /* hapus padding default */
+}
+
+body { /* gaya dasar body */
+  font-family: var(--font-sans); /* font utama */
+  background: var(--bg-color); /* latar belakang */
+  color: var(--text-main); /* warna teks */
+  line-height: 1.5; /* tinggi baris */
+  -webkit-font-smoothing: antialiased; /* haluskan font pada WebKit */
+}
+
+.container { /* pembatas konten utama */
+  max-width: 1280px; /* lebar maksimum */
+  margin: 0 auto; /* pusatkan konten */
+  padding: 32px 16px; /* jarak dalam */
+}
+
+.flex-row,
+.breadcrumb,
+.breadcrumb a,
+.toolbar,
+.toolbar-actions,
+.feature,
+.rating-row,
+.card-footer { /* aturan flex baris umum */
+  display: flex; /* gunakan layout flex */
+  align-items: center; /* rata tengah secara vertikal */
+}
+
+.btn-primary,
+.btn-secondary { /* gaya tombol umum */
+  display: inline-flex; /* tampilkan sebagai inline-flex */
+  align-items: center; /* rata tengah isi tombol */
+  justify-content: center; /* pusatkan isi tombol */
+  gap: 8px; /* jarak antar isi tombol */
+  border-radius: var(--radius); /* sudut tombol */
+  font-size: 0.875rem; /* ukuran font */
+  font-weight: 500; /* ketebalan font */
+  cursor: pointer; /* kursor pointer */
+  transition: 0.2s; /* transisi halus */
+}
+
+svg { /* gaya ikon SVG umum */
+  width: 16px; /* lebar ikon */
+  height: 16px; /* tinggi ikon */
+}
+
+.listing-header { /* jarak bawah header */
+  margin-bottom: 32px;
+}
+
+.page-title { /* gaya judul halaman */
+  font-family: var(--font-serif); /* font serif */
+  font-size: 1.875rem; /* ukuran font */
+  font-weight: 700; /* ketebalan font */
+}
+
+.toolbar { /* gaya toolbar */
+  justify-content: space-between; /* sebar elemen */
+  flex-wrap: wrap; /* bungkus jika ruang habis */
+  margin-top: 16px; /* jarak atas */
+  gap: 16px; /* jarak elemen */
+}
+
+.toolbar-actions { /* gaya grup aksi toolbar */
+  gap: 12px; /* jarak antar tombol */
+}
+
+.breadcrumb { /* gaya breadcrumb */
+  gap: 8px; /* jarak antar item */
+  font-size: 0.875rem; /* ukuran font */
+  color: var(--text-muted); /* warna teks */
+  margin-bottom: 12px; /* jarak bawah */
+}
+
+.breadcrumb a { /* gaya tautan breadcrumb */
+  color: var(--text-muted); /* warna tautan */
+  text-decoration: none; /* tanpa garis bawah */
+  gap: 6px; /* jarak antar isi */
+}
+
+.breadcrumb a:hover { /* hover breadcrumb */
+  color: var(--primary); /* ubah warna */
+}
+
+.btn-secondary { /* tombol sekunder */
+  background: white; /* latar belakang putih */
+  border: 1px solid var(--border-color); /* garis batas */
+  color: var(--text-main); /* warna teks */
+  padding: 8px 12px; /* jarak dalam */
+}
+
+.btn-secondary:hover { /* hover tombol sekunder */
+  background: #F3F4F6; /* latar belakang */
+  color: var(--primary); /* warna teks */
+}
+
+.btn-primary { /* tombol primer */
+  background: var(--primary); /* latar primer */
+  color: white; /* teks putih */
+  border: none; /* tanpa garis */
+  padding: 10px 20px; /* jarak dalam */
+}
+
+.btn-primary:hover { /* hover tombol primer */
+  background: var(--primary-hover); /* latar hover */
+}
+
+.btn-primary svg { /* ikon pada tombol primer */
+  width: 20px; /* lebar ikon */
+  height: 20px; /* tinggi ikon */
+}
+
+.product-grid { /* grid daftar produk */
+  display: grid; /* layout grid */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* kolom responsif */
+  gap: 24px; /* jarak antar item */
+  margin-bottom: 32px; /* jarak bawah */
+}
+
+.product-card { /* gaya kartu produk */
+  background: var(--card-bg); /* latar kartu */
+  border: 1px solid var(--border-color); /* garis batas */
+  border-radius: var(--radius); /* sudut kartu */
+  overflow: hidden; /* sembunyikan overflow */
+  display: flex; /* layout flex */
+  flex-direction: column; /* susun vertikal */
+  transition: box-shadow 0.2s; /* transisi bayangan */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* bayangan halus */
+}
+
+.product-card:hover { /* hover kartu */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* bayangan lebih besar */
+}
+
+.card-image { /* area gambar kartu */
+  height: 220px; /* tinggi area */
+  padding: 24px; /* jarak dalam */
+  display: flex; /* layout flex */
+  justify-content: center; /* pusatkan gambar */
+  background: white; /* latar putih */
+}
+
+.card-image img { /* gaya gambar produk */
+  max-height: 100%; /* tinggi maksimum */
+  max-width: 100%; /* lebar maksimum */
+  object-fit: contain; /* skala proporsional */
+}
+
+.card-content { /* isi kartu */
+  padding: 24px; /* jarak dalam */
+  display: flex; /* layout flex */
+  flex-direction: column; /* susun vertikal */
+  flex: 1; /* isi penuh */
+}
+
+.badge { /* label promosi */
+  background: var(--primary-light); /* latar badge */
+  color: var(--primary); /* teks badge */
+  font-size: 0.75rem; /* ukuran font */
+  font-weight: 600; /* ketebalan font */
+  padding: 2px 10px; /* jarak dalam */
+  border-radius: 4px; /* sudut kecil */
+  width: fit-content; /* ukuran sesuai isi */
+  margin-bottom: 12px; /* jarak bawah */
+}
+
+.card-title { /* judul kartu */
+  font-size: 1.125rem; /* ukuran font */
+  font-weight: 600; /* ketebalan font */
+  color: var(--text-main); /* warna teks */
+  text-decoration: none; /* tanpa garis bawah */
+  margin-bottom: 8px; /* jarak bawah */
+  line-height: 1.4; /* tinggi baris */
+  display: -webkit-box; /* untuk clamp teks */
+  -webkit-line-clamp: 2; /* batasi dua baris */
+  line-clamp: 2; /* batasi dua baris */
+  -webkit-box-orient: vertical; /* orientasi vertikal */
+  overflow: hidden; /* sembunyikan kelebihan teks */
+}
+
+.card-title:hover { /* hover judul kartu */
+  text-decoration: underline; /* garis bawah */
+}
+
+.rating-row { /* baris rating */
+  gap: 8px; /* jarak antar elemen */
+  margin-bottom: 16px; /* jarak bawah */
+}
+
+.stars { /* area bintang */
+  display: flex; /* layout flex */
+  color: var(--rating-star); /* warna bintang */
+}
+
+.rating-score { /* skor rating */
+  font-size: 0.875rem; /* ukuran font */
+  font-weight: 600; /* ketebalan font */
+}
+
+.rating-count,
+.feature { /* teks kecil */
+  font-size: 0.875rem; /* ukuran font */
+  color: var(--text-muted); /* warna teks sekunder */
+}
+
+.features-list { /* daftar fitur */
+  display: flex; /* layout flex */
+  gap: 12px; /* jarak antar fitur */
+  margin-bottom: 20px; /* jarak bawah */
+}
+
+.feature { /* item fitur */
+  gap: 6px; /* jarak antar isi */
+}
+
+.card-footer { /* footer kartu */
+  margin-top: auto; /* dorong ke bawah */
+  justify-content: space-between; /* sebar ruang */
+}
+
+.price { /* harga produk */
+  font-size: 1.5rem; /* ukuran font besar */
+  font-weight: 800; /* ketebalan font */
+}
+
+#cart-sidebar { /* sidebar keranjang */
+  background: white; /* latar putih */
+  border-left: 1px solid var(--border-color); /* garis batas kiri */
+  padding: 24px; /* jarak dalam */
+  width: 350px; /* lebar tetap */
+  position: fixed; /* posisi tetap */
+  right: 0; /* posisikan di kanan */
+  top: 0; /* posisikan di atas */
+  bottom: 0; /* posisikan di bawah */
+  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.05); /* bayangan sisi */
+  overflow-y: auto; /* scroll vertikal jika perlu */
+  transform: translateX(100%); /* sembunyikan di luar layar */
+  transition: transform 0.3s; /* transisi efek */
+  z-index: 50; /* urutan tampilan */
+  display: flex; /* layout flex */
+  flex-direction: column; /* susun vertikal */
+}
+
+#cart-sidebar.open { /* sidebar terbuka */
+  transform: translateX(0); /* tampilkan sidebar */
+}
+
+#cart-sidebar h2 { /* judul sidebar */
+  margin-bottom: 24px; /* jarak bawah */
+  font-family: var(--font-serif); /* font serif */
+}
+
+.empty-msg { /* pesan kosong */
+  color: var(--text-muted); /* warna teks lemah */
+  font-style: italic; /* miring */
+}
+
+.cart-list { /* daftar item keranjang */
+  flex: 1; /* isi ruang tersedia */
+  overflow-y: auto; /* scroll vertikal */
+  display: flex; /* layout flex */
+  flex-direction: column; /* susun vertikal */
+  gap: 16px; /* jarak antar item */
+  margin-bottom: 24px; /* jarak bawah */
+}
+
+.cart-item { /* item keranjang */
+  display: flex; /* layout flex */
+  align-items: center; /* rata tengah */
+  gap: 12px; /* jarak antar isi */
+  padding-bottom: 12px; /* jarak bawah dalam */
+  border-bottom: 1px solid var(--border-color); /* garis bawah */
+}
+
+.cart-item img { /* gambar item */
+  width: 50px; /* lebar gambar */
+  height: 50px; /* tinggi gambar */
+  object-fit: cover; /* isi gambar */
+  border-radius: 4px; /* sudut gambar */
+  border: 1px solid var(--border-color); /* garis batas */
+}
+
+.cart-details h4 { /* judul item keranjang */
+  font-size: 0.875rem; /* ukuran font */
+  font-weight: 600; /* ketebalan font */
+  margin-bottom: 4px; /* jarak bawah */
+  display: -webkit-box; /* untuk clamp teks */
+  -webkit-line-clamp: 1; /* batasi satu baris */
+  line-clamp: 1; /* batasi satu baris */
+  -webkit-box-orient: vertical; /* orientasi vertikal */
+  overflow: hidden; /* sembunyikan kelebihan teks */
+}
+
+.cart-details span { /* teks detail item */
+  font-size: 0.875rem; /* ukuran font */
+  color: var(--text-muted); /* warna sekunder */
+}
+
+.cart-footer-summary { /* ringkasan keranjang */
+  border-top: 2px solid var(--border-color); /* garis atas */
+  padding-top: 20px; /* jarak atas */
+  margin-top: auto; /* dorong ke bawah */
+}
+
+.total-row { /* baris total */
+  display: flex; /* layout flex */
+  justify-content: space-between; /* sebar ruang */
+  align-items: center; /* rata tengah */
+  margin-bottom: 16px; /* jarak bawah */
+  font-weight: 700; /* ketebalan font */
+  font-size: 1.125rem; /* ukuran font */
+}
+
+.total-price { /* harga total */
+  color: var(--primary); /* warna utama */
+}
+
+#checkout-btn { /* tombol checkout */
+  width: 100%; /* lebar penuh */
+}
+
+.newsletter-section { /* section newsletter */
+  margin-top: 64px; /* jarak atas */
+  background: var(--card-bg); /* latar kartu */
+  border-top: 1px solid var(--border-color); /* garis atas */
+  padding: 48px 0; /* jarak vertikal */
+  text-align: center; /* teks rata tengah */
+}
+
+.newsletter-content { /* konten newsletter */
+  max-width: 500px; /* lebar maksimal */
+  margin: 0 auto; /* pusatkan konten */
+}
+
+.newsletter-content h3 { /* judul newsletter */
+  font-family: var(--font-serif); /* font serif */
+  font-size: 1.5rem; /* ukuran font */
+  margin-bottom: 8px; /* jarak bawah */
+}
+
+.newsletter-content p { /* paragraf newsletter */
+  color: var(--text-muted); /* warna teks sekunder */
+  margin-bottom: 24px; /* jarak bawah */
+}
+
+.newsletter-content form { /* form newsletter */
+  display: flex; /* layout flex */
+  gap: 8px; /* jarak antar elemen */
+}
+
+.newsletter-content input { /* input email */
+  flex: 1; /* isi ruang tersisa */
+  padding: 10px; /* jarak dalam */
+  border: 1px solid var(--border-color); /* garis batas */
+  border-radius: var(--radius); /* sudut input */
+}
+
+#app { /* root app */
+  width: 100%; /* lebar penuh */
+}
