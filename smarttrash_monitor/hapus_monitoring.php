@@ -20,9 +20,17 @@ if ($user["role"] !== "admin") {
 $db = new Database();
 $conn = $db->connect();
 
-$id = $_GET["id"];
+if (!isset($_GET["id"]) || !ctype_digit($_GET["id"])) {
+    header("Location: dashboard.php");
+    exit;
+}
 
-mysqli_query($conn, "DELETE FROM datauser WHERE id=$id");
+$id = (int) $_GET["id"];
+$deleteQuery = mysqli_query($conn, "DELETE FROM datauser WHERE id=$id");
+
+if (!$deleteQuery) {
+    die("Gagal menghapus user: " . mysqli_error($conn));
+}
 
 header("Location: dashboard.php");
 exit;

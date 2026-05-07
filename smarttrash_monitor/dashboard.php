@@ -211,8 +211,8 @@ $result = mysqli_query(
                             <td><span style="font-size: 11px; color: #00d4ff; border: 1px solid #00d4ff; padding: 2px 6px; border-radius: 10px;"><?= strtoupper($row['role']); ?></span></td>
                             <td>
                                 <?php if ($role === 'admin'): ?>
-                                    <a href="edit.php?id=<?= $row['id']; ?>" class="btn-action edit">Edit</a>
-                                    <a href="hapus.php?id=<?= $row['id']; ?>" class="btn-action hapus" onclick="return confirm('Hapus user?')">Hapus</a>
+                                    <a href="edit_monitoring.php?id=<?= $row['id']; ?>" class="btn-action edit">Edit</a>
+                                    <a href="hapus_monitoring.php?id=<?= $row['id']; ?>" class="btn-action hapus" onclick="return confirm('Hapus user?')">Hapus</a>
                                 <?php else: ?>
                                     <span style="color: #444;">Read Only</span>
                                 <?php endif; ?>
