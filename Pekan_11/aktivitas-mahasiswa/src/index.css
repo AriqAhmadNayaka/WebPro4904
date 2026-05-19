@@ -1,0 +1,16 @@
+/* Reset sederhana agar sizing elemen konsisten. */
+* {
+  box-sizing: border-box;
+}
+
+/* Background global aplikasi dengan gradient dekoratif. */
+body {
+  margin: 0;
+  font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+  background:
+    radial-gradient(circle at 15% 15%, #d7edff 0%, transparent 40%),
+    radial-gradient(circle at 85% 10%, #d9fff3 0%, transparent 35%),
+    linear-gradient(160deg, #eef4ff 0%, #edf8f5 60%, #f9fcff 100%);
+  min-height: 100vh;
+  color: #1f2933;
+}

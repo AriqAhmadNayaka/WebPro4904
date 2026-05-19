@@ -1,0 +1,155 @@
+/* Kartu utama aplikasi dengan efek glassmorphism ringan. */
+.app-container {
+  width: min(760px, 92vw);
+  margin: 42px auto;
+  padding: 30px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 24px 46px rgba(20, 51, 96, 0.18);
+  backdrop-filter: blur(8px);
+}
+
+/* Area judul dan deskripsi aplikasi. */
+.app-header {
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #197a62;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  color: #152238;
+}
+
+.subtitle {
+  margin: 10px 0 0;
+  color: #516078;
+}
+
+/* Styling form tambah aktivitas. */
+.activity-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.activity-form input {
+  flex: 1;
+  padding: 12px 14px;
+  font-size: 1rem;
+  border: 1px solid #d2dced;
+  border-radius: 12px;
+  background: #f9fbff;
+  transition: 0.2s border-color, 0.2s box-shadow;
+}
+
+.activity-form input:focus {
+  outline: none;
+  border-color: #2f75f3;
+  box-shadow: 0 0 0 3px rgba(47, 117, 243, 0.16);
+}
+
+/* Tombol tambah dan hapus memakai gaya visual konsisten. */
+.activity-form button,
+.activity-item button {
+  border: 0;
+  border-radius: 12px;
+  padding: 11px 16px;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: 600;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.activity-form button {
+  background: linear-gradient(135deg, #2f75f3, #1fb68d);
+}
+
+.activity-form button:hover,
+.activity-item button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+
+.summary {
+  margin: 0 0 18px;
+  color: #3a4a64;
+}
+
+.summary strong {
+  color: #1f52b3;
+}
+
+/* Daftar aktivitas tampil sebagai card list modern. */
+.activity-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.activity-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #e4e9f2;
+  border-radius: 14px;
+  padding: 12px 14px;
+  background: #ffffff;
+  animation: fadeSlideIn 0.35s ease;
+}
+
+.activity-item span {
+  color: #23314d;
+}
+
+.activity-item button {
+  background: linear-gradient(135deg, #f1557a, #d13455);
+}
+
+/* Empty state saat data aktivitas kosong. */
+.empty-message {
+  margin: 0;
+  padding: 18px;
+  text-align: center;
+  font-style: italic;
+  color: #647089;
+  background: #f5f8ff;
+  border-radius: 12px;
+  border: 1px dashed #ccd7ee;
+}
+
+/* Animasi masuk item saat render list. */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .app-container {
+    margin: 18px auto;
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .activity-form {
+    flex-direction: column;
+  }
+}
