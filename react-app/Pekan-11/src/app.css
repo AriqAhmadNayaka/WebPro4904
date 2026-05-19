@@ -1,0 +1,142 @@
+.app-shell {
+  min-height: 100svh;
+  padding: 48px 20px;
+  display: grid;
+  place-items: start center;
+  box-sizing: border-box;
+}
+
+.activity-panel {
+  width: min(720px, 100%);
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.panel-header {
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  margin-bottom: 8px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.activity-form {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.activity-form label {
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
+.activity-form input {
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-h);
+  background: var(--bg);
+  font: inherit;
+}
+
+.activity-form input:focus {
+  border-color: var(--accent);
+  outline: 3px solid var(--accent-bg);
+}
+
+button {
+  border: 0;
+  border-radius: 6px;
+  color: white;
+  background: var(--accent);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--accent-strong);
+}
+
+.form-row button {
+  padding: 0 18px;
+}
+
+.activity-list {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.activity-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+.activity-item span {
+  color: var(--text-h);
+  overflow-wrap: anywhere;
+}
+
+.activity-item button {
+  padding: 8px 12px;
+  background: #d92d20;
+}
+
+.activity-item button:hover {
+  background: #b42318;
+}
+
+.empty-message {
+  padding: 24px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  background: var(--bg);
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .app-shell {
+    padding: 24px 14px;
+  }
+
+  .activity-panel {
+    padding: 22px;
+  }
+
+  .form-row,
+  .activity-item {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row button,
+  .activity-item button {
+    min-height: 44px;
+  }
+}
