@@ -16,6 +16,15 @@ class Auth extends MX_Controller {
         $this->load->library('jwt');
         // Memuat library form_validation untuk kebutuhan validasi input.
         $this->load->library('form_validation');
+        // Mengatur CORS agar frontend React di Vite boleh mengakses API.
+        $this->_cors();
+        // Menjawab request preflight browser sebelum POST/GET API sebenarnya dikirim.
+        if (strtoupper($this->input->method(TRUE)) === 'OPTIONS') {
+            // Mengirim status sukses tanpa body untuk preflight CORS.
+            http_response_code(204);
+            // Menghentikan eksekusi karena preflight tidak perlu memanggil method login/me.
+            exit;
+        }
     }
 
     // Endpoint API untuk mendaftarkan user baru.
@@ -238,6 +247,8 @@ class Auth extends MX_Controller {
     // Method private untuk mengatur response sebagai JSON.
     private function _json()
     {
+        // Mengatur CORS setiap kali response JSON dikirim.
+        $this->_cors();
         // Membersihkan output buffer agar JSON tidak tercampur output lain.
         if (ob_get_level() > 0) {
             ob_clean();
@@ -276,5 +287,16 @@ class Auth extends MX_Controller {
         echo json_encode($response, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         // Menghentikan eksekusi agar tidak ada output tambahan.
         exit;
+    }
+
+    // Method private untuk mengatur header CORS yang dibutuhkan frontend React.
+    private function _cors()
+    {
+        // Mengizinkan frontend lokal dari Vite atau browser localhost mengakses API.
+        header('Access-Control-Allow-Origin: *');
+        // Mengizinkan browser mengirim header Authorization untuk token Bearer JWT.
+        header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
+        // Mengizinkan method yang dipakai endpoint auth.
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
     }
 }

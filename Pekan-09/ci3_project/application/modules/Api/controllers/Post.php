@@ -14,6 +14,15 @@ class Post extends MX_Controller {
         $this->load->model('Post_model');
         // Memuat library JWT untuk validasi token API.
         $this->load->library('jwt');
+        // Mengatur CORS agar frontend React di Vite boleh mengakses API.
+        $this->_cors();
+        // Menjawab request preflight browser sebelum request post sebenarnya dikirim.
+        if (strtoupper($this->input->method(TRUE)) === 'OPTIONS') {
+            // Mengirim status sukses tanpa body untuk preflight CORS.
+            http_response_code(204);
+            // Menghentikan eksekusi karena preflight tidak perlu validasi token.
+            exit;
+        }
     }
 
     // Method utama untuk mengarahkan request API berdasarkan HTTP method dan ID.
@@ -196,6 +205,8 @@ class Post extends MX_Controller {
     // Method private untuk mengatur response menjadi JSON.
     private function _json()
     {
+        // Mengatur CORS setiap kali response JSON dikirim.
+        $this->_cors();
         // Membersihkan output buffer agar JSON tidak tercampur output lain.
         ob_clean();
         // Mengatur header content type sebagai JSON UTF-8.
@@ -218,5 +229,16 @@ class Post extends MX_Controller {
         echo json_encode($response, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         // Menghentikan eksekusi agar tidak ada output tambahan.
         exit;
+    }
+
+    // Method private untuk mengatur header CORS yang dibutuhkan frontend React.
+    private function _cors()
+    {
+        // Mengizinkan frontend lokal dari Vite atau browser localhost mengakses API.
+        header('Access-Control-Allow-Origin: *');
+        // Mengizinkan browser mengirim header Authorization untuk token Bearer JWT.
+        header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
+        // Mengizinkan semua method CRUD yang dipakai controller post.
+        header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
     }
 }

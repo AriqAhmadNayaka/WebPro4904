@@ -1,0 +1,24 @@
+/* Mengaktifkan reset style dasar Tailwind. */
+@tailwind base;
+
+/* Mengaktifkan class komponen Tailwind bila nanti ditambahkan. */
+@tailwind components;
+
+/* Mengaktifkan utility class Tailwind seperti bg-gray-100, px-4, dan grid. */
+@tailwind utilities;
+
+/* Root disiapkan sesuai modul agar browser memahami dukungan mode terang/gelap. */
+:root {
+  color-scheme: light;
+}
+
+/* Font global dibuat mirip Inter agar tampilan tetap rapi tanpa dependency font tambahan. */
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Box sizing global mencegah padding membuat layout melebar dari layar. */
+* {
+  box-sizing: border-box;
+}
