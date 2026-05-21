@@ -49,43 +49,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'webandoo';
-$route['login'] = 'webandoo/login';
-$route['register'] = 'webandoo/register';
-$route['dashboard'] = 'webandoo/dashboard';
-$route['profil'] = 'webandoo/profile';
-$route['logout'] = 'webandoo/logout';
-$route['warisan'] = 'webandoo/warisan';
-$route['peta'] = 'webandoo/peta';
-$route['event'] = 'webandoo/event';
-$route['belajar'] = 'webandoo/belajar';
-$route['proses-login'] = 'webandoo/process_login';
-$route['proses-register'] = 'webandoo/process_register';
-$route['proses-update-profil'] = 'webandoo/update_profile';
-$route['posts'] = 'posts/posts/index';
-$route['posts/create'] = 'posts/posts/create';
-$route['posts/store']['post'] = 'posts/posts/store';
-$route['posts/edit/(:num)'] = 'posts/posts/edit/$1';
-$route['posts/update/(:num)']['post'] = 'posts/posts/update/$1';
-$route['posts/delete/(:num)']['post'] = 'posts/posts/delete/$1';
-$route['api/auth/register']['post'] = 'api/auth/register';
-$route['api/auth/login']['post'] = 'api/auth/login';
-$route['api/auth/logout']['post'] = 'api/auth/logout';
-$route['api/auth/me']['get'] = 'api/auth/me';
-$route['api/auth/me']['post'] = 'api/auth/me';
-$route['api/posts']['get'] = 'api/post/index';
-$route['api/posts']['post'] = 'api/post/store';
-$route['api/posts/(:num)']['get'] = 'api/post/show/$1';
-$route['api/posts/(:num)']['post'] = 'api/post/update/$1';
-$route['api/posts/(:num)']['put'] = 'api/post/update/$1';
-$route['api/posts/(:num)']['delete'] = 'api/post/delete/$1';
-$route['api/posts/(:num)/delete']['post'] = 'api/post/delete/$1';
-$route['api/post']['get'] = 'api/post/index';
-$route['api/post']['post'] = 'api/post/store';
-$route['api/post/(:num)']['get'] = 'api/post/show/$1';
-$route['api/post/(:num)']['post'] = 'api/post/update/$1';
-$route['api/post/(:num)']['put'] = 'api/post/update/$1';
-$route['api/post/(:num)']['delete'] = 'api/post/delete/$1';
-$route['api/post/(:num)/delete']['post'] = 'api/post/delete/$1';
+$route['default_controller'] = 'posts';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+// -------------------- API Routes --------------------
+
+// Auth endpoints
+$route['api/auth/register'] = 'Api/Auth/register';
+$route['api/auth/login'] = 'Api/Auth/login';
+$route['api/auth/logout'] = 'Api/Auth/logout';
+$route['api/auth/me'] = 'Api/Auth/me';
+
+// Fallback untuk Postman/PDF copy-paste yang menyisipkan karakter tersembunyi di akhir URL.
+$route['api/auth/register(.*)'] = 'Api/Auth/register';
+$route['api/auth/login(.*)'] = 'Api/Auth/login';
+$route['api/auth/logout(.*)'] = 'Api/Auth/logout';
+$route['api/auth/me(.*)'] = 'Api/Auth/me';
+
+// Post endpoints (HTTP verb routing via controller check)
+$route['api/post/(:num)'] = 'Api/Post/handle/$1';
+$route['api/post'] = 'Api/Post/handle';
+$route['api/post/(.*)'] = 'Api/Post/handle/$1';
+$route['api/post(.*)'] = 'Api/Post/handle';

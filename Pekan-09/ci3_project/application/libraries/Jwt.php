@@ -1,15 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/**
- * JWT Library for CodeIgniter 3
- * Simple JWT implementation for token-based authentication.
- */
-class Jwt
-{
+class Jwt {
+
     private $secret_key = 'your_secret_key_change_this_in_production';
     private $algorithm = 'HS256';
-    private $expiration = 604800; // 7 days in seconds
+    private $expiration = 604800; 
 
     public function __construct()
     {
@@ -18,16 +14,16 @@ class Jwt
     }
 
     /**
-     * Create JWT token.
-     *
-     * @param array $payload Data to encode in token
-     * @return string JWT token
+     * Create JWT token
+     * 
+     * @param array $payload - Data to encode in token
+     * @return string - JWT token
      */
     public function create($payload = array())
     {
         $header = array(
             'typ' => 'JWT',
-            'alg' => $this->algorithm,
+            'alg' => $this->algorithm
         );
 
         $payload['iat'] = time();
@@ -48,10 +44,10 @@ class Jwt
     }
 
     /**
-     * Verify and decode JWT token.
-     *
-     * @param string $token JWT token to verify
-     * @return object|false Decoded payload or false if invalid
+     * Verify and decode JWT token
+     * 
+     * @param string $token - JWT token to verify
+     * @return object|false - Decoded payload or false if invalid
      */
     public function verify($token = '')
     {
@@ -88,10 +84,10 @@ class Jwt
     }
 
     /**
-     * Get token from request header.
+     * Get token from request header
      * Authorization: Bearer <token>
-     *
-     * @return string|false Token or false if not found
+     * 
+     * @return string|false - Token or false if not found
      */
     public function get_token_from_request()
     {
@@ -114,16 +110,13 @@ class Jwt
             return false;
         }
 
-        if (preg_match('/Bearer\s(\S+)/', $auth_header, $matches)) {
+        if (preg_match('/bearer\s+(\S+)/i', $auth_header, $matches)) {
             return $matches[1];
         }
 
         return false;
     }
 
-    /**
-     * Base64 URL encode.
-     */
     private function base64_url_encode($input)
     {
         return str_replace(
@@ -133,9 +126,6 @@ class Jwt
         );
     }
 
-    /**
-     * Base64 URL decode.
-     */
     private function base64_url_decode($input)
     {
         $remainder = strlen($input) % 4;

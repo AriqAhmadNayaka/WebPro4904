@@ -1,0 +1,24 @@
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated, loading } = useAuth();
+
+  // Menunggu pengecekan token dari localStorage sebelum menentukan route.
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-gray-100">
+        <p className="text-gray-600">Loading...</p>
+      </div>
+    );
+  }
+
+  // User yang belum login akan diarahkan kembali ke halaman login.
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+};
+
+export default ProtectedRoute;

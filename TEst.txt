@@ -1,0 +1,18 @@
+<Route path="/login" element={<Login />} />
+<Route
+  path="/posts"
+  element={
+    <ProtectedRoute>
+      <PostList />
+    </ProtectedRoute>
+  }
+/>
+<Route
+  path="/posts/:id"
+  element={
+    <ProtectedRoute>
+      <PostDetail />
+    </ProtectedRoute>
+  }
+/>
+<Route path="/" element={<Navigate to="/posts" replace />} />

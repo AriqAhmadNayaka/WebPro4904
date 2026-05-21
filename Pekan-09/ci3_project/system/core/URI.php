@@ -133,6 +133,8 @@ class CI_URI {
 						$uri = $this->_parse_query_string();
 						break;
 					case 'PATH_INFO':
+						$uri = isset($_SERVER[$protocol]) ? $_SERVER[$protocol] : '';
+						break;
 					default:
 						$uri = isset($_SERVER[$protocol])
 							? $_SERVER[$protocol]
@@ -216,15 +218,13 @@ class CI_URI {
 
 		if (isset($_SERVER['SCRIPT_NAME'][0]))
 		{
-			$decoded_uri = rawurldecode($uri);
-
-			if (strpos($decoded_uri, $_SERVER['SCRIPT_NAME']) === 0)
+			if (strpos($uri, $_SERVER['SCRIPT_NAME']) === 0)
 			{
-				$uri = (string) substr($decoded_uri, strlen($_SERVER['SCRIPT_NAME']));
+				$uri = (string) substr($uri, strlen($_SERVER['SCRIPT_NAME']));
 			}
-			elseif (strpos($decoded_uri, dirname($_SERVER['SCRIPT_NAME'])) === 0)
+			elseif (strpos($uri, dirname($_SERVER['SCRIPT_NAME'])) === 0)
 			{
-				$uri = (string) substr($decoded_uri, strlen(dirname($_SERVER['SCRIPT_NAME'])));
+				$uri = (string) substr($uri, strlen(dirname($_SERVER['SCRIPT_NAME'])));
 			}
 		}
 

@@ -1,27 +1,23 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Crudjs extends MX_Controller
-{
+class Crudjs extends CI_Controller {
+
     public function __construct()
     {
         parent::__construct();
         $this->load->model('Crudjs_model');
         $this->load->helper(array('url', 'form'));
         $this->load->library(array('form_validation', 'upload', 'session'));
-        $this->Crudjs_model->ensure_table();
     }
 
-    /**
-     * Debug page to check setup.
-     */
     public function debug()
     {
         $debug_info = array();
 
         $debug_info['database'] = array(
             'connected' => $this->db->conn_id ? 'Yes' : 'No',
-            'database' => $this->db->database,
+            'database' => $this->db->database
         );
 
         $debug_info['table_exists'] = $this->db->table_exists('posts') ? 'Yes' : 'No';
@@ -30,10 +26,10 @@ class Crudjs extends MX_Controller
         $debug_info['table_accessible'] = $query ? 'Yes' : 'No';
         $debug_info['record_count'] = $this->db->count_all('posts');
 
-        $upload_path = './uploads/posts/';
+        $upload_path = FCPATH . 'uploads/posts/';
         $debug_info['upload_folder'] = array(
             'exists' => is_dir($upload_path) ? 'Yes' : 'No',
-            'writable' => is_writable($upload_path) ? 'Yes' : 'No',
+            'writable' => is_writable($upload_path) ? 'Yes' : 'No'
         );
 
         $debug_info['sample_records'] = array();
@@ -43,7 +39,7 @@ class Crudjs extends MX_Controller
                 $first = $records[0];
                 $debug_info['sample_records'] = array(
                     'count' => count($records),
-                    'first_record' => $first,
+                    'first_record' => $first
                 );
             }
         } catch (Exception $e) {
@@ -53,18 +49,12 @@ class Crudjs extends MX_Controller
         echo '<pre>' . json_encode($debug_info, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . '</pre>';
     }
 
-    /**
-     * Display main index page.
-     */
     public function index()
     {
         $data['title'] = 'CRUD with AJAX';
         $this->load->view('crudjs/index', $data);
     }
 
-    /**
-     * Get all records via AJAX.
-     */
     public function get_all()
     {
         ob_clean();
@@ -72,25 +62,22 @@ class Crudjs extends MX_Controller
 
         try {
             $records = $this->Crudjs_model->get_all();
+
             $response = array(
                 'status' => 'success',
-                'data' => $records,
+                'data' => $records
             );
 
             echo json_encode($response, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         } catch (Exception $e) {
             echo json_encode(array(
                 'status' => 'error',
-                'message' => 'Failed to load records: ' . $e->getMessage(),
+                'message' => 'Failed to load records: ' . $e->getMessage()
             ));
         }
-
         exit;
     }
 
-    /**
-     * Get single record via AJAX.
-     */
     public function get_record($id)
     {
         ob_clean();
@@ -100,7 +87,7 @@ class Crudjs extends MX_Controller
             if (!$this->Crudjs_model->exists($id)) {
                 echo json_encode(array(
                     'status' => 'error',
-                    'message' => 'Record not found',
+                    'message' => 'Record not found'
                 ));
                 exit;
             }
@@ -109,21 +96,17 @@ class Crudjs extends MX_Controller
 
             echo json_encode(array(
                 'status' => 'success',
-                'data' => $record,
+                'data' => $record
             ), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         } catch (Exception $e) {
             echo json_encode(array(
                 'status' => 'error',
-                'message' => 'Failed to load record: ' . $e->getMessage(),
+                'message' => 'Failed to load record: ' . $e->getMessage()
             ));
         }
-
         exit;
     }
 
-    /**
-     * Store new record via AJAX.
-     */
     public function store()
     {
         ob_clean();
@@ -137,7 +120,7 @@ class Crudjs extends MX_Controller
             if ($this->form_validation->run() === FALSE) {
                 echo json_encode(array(
                     'status' => 'error',
-                    'message' => 'Validation error: ' . strip_tags(validation_errors()),
+                    'message' => 'Validation error: ' . strip_tags(validation_errors())
                 ));
                 exit;
             }
@@ -147,7 +130,7 @@ class Crudjs extends MX_Controller
                 'author' => $this->input->post('author'),
                 'article' => $this->input->post('article'),
                 'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             );
 
             if (!empty($_FILES['image']['name'])) {
@@ -158,7 +141,7 @@ class Crudjs extends MX_Controller
                 } else {
                     echo json_encode(array(
                         'status' => 'error',
-                        'message' => $upload_result['error'],
+                        'message' => $upload_result['error']
                     ));
                     exit;
                 }
@@ -171,27 +154,23 @@ class Crudjs extends MX_Controller
                 echo json_encode(array(
                     'status' => 'success',
                     'message' => 'Record created successfully!',
-                    'data' => $new_record,
+                    'data' => $new_record
                 ), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
             } else {
                 echo json_encode(array(
                     'status' => 'error',
-                    'message' => 'Failed to create record',
+                    'message' => 'Failed to create record'
                 ));
             }
         } catch (Exception $e) {
             echo json_encode(array(
                 'status' => 'error',
-                'message' => 'Exception error: ' . $e->getMessage(),
+                'message' => 'Exception error: ' . $e->getMessage()
             ));
         }
-
         exit;
     }
 
-    /**
-     * Update record via AJAX.
-     */
     public function update($id)
     {
         ob_clean();
@@ -201,7 +180,7 @@ class Crudjs extends MX_Controller
             if (!$this->Crudjs_model->exists($id)) {
                 echo json_encode(array(
                     'status' => 'error',
-                    'message' => 'Record not found',
+                    'message' => 'Record not found'
                 ));
                 exit;
             }
@@ -212,13 +191,13 @@ class Crudjs extends MX_Controller
             if ($this->form_validation->run() === FALSE) {
                 echo json_encode(array(
                     'status' => 'error',
-                    'message' => 'Validation error: ' . strip_tags(validation_errors()),
+                    'message' => 'Validation error: ' . strip_tags(validation_errors())
                 ));
                 exit;
             }
 
             $data = array(
-                'updated_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
             );
 
             if ($this->input->post('title')) {
@@ -234,7 +213,7 @@ class Crudjs extends MX_Controller
             if (!empty($_FILES['image']['name'])) {
                 $old_record = $this->Crudjs_model->get_by_id($id);
                 if ($old_record->image) {
-                    $old_image_path = './uploads/' . $old_record->image;
+                    $old_image_path = FCPATH . 'uploads/' . $old_record->image;
                     if (file_exists($old_image_path)) {
                         unlink($old_image_path);
                     }
@@ -247,7 +226,7 @@ class Crudjs extends MX_Controller
                 } else {
                     echo json_encode(array(
                         'status' => 'error',
-                        'message' => $upload_result['error'],
+                        'message' => $upload_result['error']
                     ));
                     exit;
                 }
@@ -260,27 +239,23 @@ class Crudjs extends MX_Controller
                 echo json_encode(array(
                     'status' => 'success',
                     'message' => 'Record updated successfully!',
-                    'data' => $updated_record,
+                    'data' => $updated_record
                 ), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
             } else {
                 echo json_encode(array(
                     'status' => 'error',
-                    'message' => 'Failed to update record',
+                    'message' => 'Failed to update record'
                 ));
             }
         } catch (Exception $e) {
             echo json_encode(array(
                 'status' => 'error',
-                'message' => 'Exception error: ' . $e->getMessage(),
+                'message' => 'Exception error: ' . $e->getMessage()
             ));
         }
-
         exit;
     }
 
-    /**
-     * Delete record via AJAX.
-     */
     public function delete($id)
     {
         ob_clean();
@@ -292,13 +267,13 @@ class Crudjs extends MX_Controller
             if (!$record) {
                 echo json_encode(array(
                     'status' => 'error',
-                    'message' => 'Record not found',
+                    'message' => 'Record not found'
                 ));
                 exit;
             }
 
             if ($record->image) {
-                $image_path = './uploads/' . $record->image;
+                $image_path = FCPATH . 'uploads/' . $record->image;
                 if (file_exists($image_path)) {
                     unlink($image_path);
                 }
@@ -309,27 +284,23 @@ class Crudjs extends MX_Controller
             if ($result) {
                 echo json_encode(array(
                     'status' => 'success',
-                    'message' => 'Record deleted successfully!',
+                    'message' => 'Record deleted successfully!'
                 ));
             } else {
                 echo json_encode(array(
                     'status' => 'error',
-                    'message' => 'Failed to delete record',
+                    'message' => 'Failed to delete record'
                 ));
             }
         } catch (Exception $e) {
             echo json_encode(array(
                 'status' => 'error',
-                'message' => 'Exception error: ' . $e->getMessage(),
+                'message' => 'Exception error: ' . $e->getMessage()
             ));
         }
-
         exit;
     }
 
-    /**
-     * Test simple endpoint.
-     */
     public function test()
     {
         ob_clean();
@@ -337,27 +308,35 @@ class Crudjs extends MX_Controller
         echo json_encode(array('status' => 'success', 'message' => 'API is working'));
         exit;
     }
-
-    /**
-     * Private method to handle image upload.
-     */
     private function _upload_image()
     {
-        $upload_path = './uploads/posts/';
+        $upload_path = FCPATH . 'uploads/posts/';
 
         if (!is_dir($upload_path)) {
-            mkdir($upload_path, 0777, true);
+            if (!mkdir($upload_path, 0755, true)) {
+                return array(
+                    'status' => FALSE,
+                    'error' => 'Failed to create upload folder.'
+                );
+            }
+        }
+
+        if (!is_writable($upload_path)) {
+            return array(
+                'status' => FALSE,
+                'error' => 'Upload folder is not writable.'
+            );
         }
 
         $original_name = $_FILES['image']['name'];
         $sanitized_name = preg_replace('/[^A-Za-z0-9._-]/', '_', $original_name);
         $file_name = time() . '_' . $sanitized_name;
 
-        $config['upload_path'] = $upload_path;
+        $config['upload_path']   = $upload_path;
         $config['allowed_types'] = 'jpg|jpeg|png';
-        $config['max_size'] = 2048;
-        $config['file_name'] = $file_name;
-        $config['overwrite'] = FALSE;
+        $config['max_size']      = 2048; // 2MB
+        $config['file_name']     = $file_name;
+        $config['overwrite']     = FALSE;
 
         $this->upload->initialize($config);
 
@@ -365,13 +344,13 @@ class Crudjs extends MX_Controller
             $upload_data = $this->upload->data();
             return array(
                 'status' => TRUE,
-                'file_name' => $upload_data['file_name'],
+                'file_name' => $upload_data['file_name']
+            );
+        } else {
+            return array(
+                'status' => FALSE,
+                'error' => $this->upload->display_errors('', '')
             );
         }
-
-        return array(
-            'status' => FALSE,
-            'error' => $this->upload->display_errors('', ''),
-        );
     }
 }

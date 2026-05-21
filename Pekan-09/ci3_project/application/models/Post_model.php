@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Crudjs_model extends CI_Model {
+class Post_model extends CI_Model {
 
     private $table = 'posts';
 
@@ -14,31 +14,31 @@ class Crudjs_model extends CI_Model {
     public function get_all()
     {
         $query = $this->db->get($this->table);
-        $records = $query->result();
+        $posts = $query->result();
 
-        foreach ($records as $record) {
-            if ($record->image) {
-                $imagePath = str_replace('posts/', '', $record->image);
-                $record->image_url = base_url('uploads/posts/' . $imagePath);
+        foreach ($posts as $post) {
+            if ($post->image) {
+                $imagePath = str_replace('posts/', '', $post->image);
+                $post->image_url = base_url('uploads/posts/' . $imagePath);
             } else {
-                $record->image_url = null;
+                $post->image_url = null;
             }
         }
 
-        return $records;
+        return $posts;
     }
-    
+
     public function get_by_id($id)
     {
         $query = $this->db->get_where($this->table, array('id' => $id));
-        $record = $query->row();
+        $post = $query->row();
 
-        if ($record && $record->image) {
-            $imagePath = str_replace('posts/', '', $record->image);
-            $record->image_url = base_url('uploads/posts/' . $imagePath);
+        if ($post && $post->image) {
+            $imagePath = str_replace('posts/', '', $post->image);
+            $post->image_url = base_url('uploads/posts/' . $imagePath);
         }
 
-        return $record;
+        return $post;
     }
 
     public function insert($data)
