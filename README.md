@@ -1,22 +1,32 @@
-# Repository Pengumpulan Tugas
-
-Selamat datang! Repository ini digunakan untuk mengumpulkan tugas mingguan. 
-Harap ikuti instruksi di bawah ini dengan teliti.
-
-## Aturan Branching & Folder
-1. Setiap mahasiswa wajib membuat **Branch baru** dengan nama masing-masing (Format: `NamaLengkap-NIM`).
-2. Di dalam branch tersebut, buatlah folder berdasarkan pekan tugas (Contoh: `Pekan-01`, `Pekan-02`).
-3. Dilarang mengubah isi branch `main` atau branch milik mahasiswa lain.
-
-## Cara Mengumpulkan Tugas (Terminal/Git Bash)
-1. **Clone repository ini:**
-   `git clone https://github.com/AriqAhmadNayaka/WebPro4902.git`
-2. **Masuk ke folder:**
-   `cd WebPro4904`
-3. **Buat dan pindah ke branch sendiri (hanya dilakukan sekali):**
-   `git checkout -b Nama-NIM`
-4. **Buat folder pekan dan masukkan file tugas.**
-5. **Simpan dan kirim perubahan:**
-   `git add .`
-   `git commit -m "Mengumpulkan tugas pekan 01"`
-   `git push origin Nama-NIM`
+{
+  "name": "react-blog",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.16.1",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-router-dom": "^7.15.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "autoprefixer": "^10.4.24",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.19",
+    "vite": "^8.0.12"
+  }
+}
