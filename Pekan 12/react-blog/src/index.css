@@ -1,0 +1,53 @@
+/* Mengimpor modul dasar (base styles) dari Tailwind CSS */
+@tailwind base;
+
+/* Mengimpor komponen pra-desain (component classes) dari Tailwind CSS */
+@tailwind components;
+
+/* Mengimpor utilitas pembantu (utility classes) dari Tailwind CSS */
+@tailwind utilities;
+
+:root {
+  /* Mengatur skema warna default root agar mendukung tampilan gelap/terang secara global */
+  color-scheme: dark;
+}
+
+body {
+  /* Menerapkan font kustom 'Inter' dan fallback sistem font modern untuk tampilan premium */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* 
+  Mendefinisikan gaya CSS kustom untuk kontainer pemuatan halaman (loading container) 
+  yang digunakan di dalam komponen ProtectedRoute.
+*/
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f3f4f6; /* Sama dengan bg-gray-100 */
+}
+
+/* 
+  Mendefinisikan spinner animasi putar (loading spinner) menggunakan CSS Keyframes 
+*/
+.loading-spinner {
+  width: 3rem; /* Ukuran h-12 */
+  height: 3rem; /* Ukuran w-12 */
+  border-radius: 9999px; /* rounded-full */
+  border-bottom-width: 2px; /* border-b-2 */
+  border-color: #3b82f6; /* border-blue-600 */
+  animation: spin 1s linear infinite; /* animate-spin */
+}
+
+/* Animasi putar spinner */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
