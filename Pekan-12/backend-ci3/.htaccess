@@ -1,0 +1,8 @@
+RewriteEngine On
+# Jika user membuka root project, arahkan langsung ke halaman posts.
+RewriteRule ^$ index.php/posts [L]
+
+# Jika file/folder asli tidak ditemukan, teruskan request ke CodeIgniter.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
