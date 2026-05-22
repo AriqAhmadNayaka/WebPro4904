@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix Pekan-12 run dev",
+    "build": "npm --prefix Pekan-12 run build",
+    "lint": "npm --prefix Pekan-12 run lint",
+    "preview": "npm --prefix Pekan-12 run preview"
+  }
+}
