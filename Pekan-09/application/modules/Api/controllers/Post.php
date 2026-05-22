@@ -16,7 +16,7 @@ class Post extends MX_Controller {
      */
     private function parse_multipart_form()
     {
-        $content_type = $_SERVER['CONTENT_TYPE'] ?? '';
+        $content_type = $_SERVER['CONTENT_TYPE'] ?? ($_SERVER['HTTP_CONTENT_TYPE'] ?? '');
         $input = [];
         
         // If it's multipart/form-data, parse manually
@@ -39,13 +39,18 @@ class Post extends MX_Controller {
                 }
                 
                 // Split headers from content
-                $split = preg_split("/\r\n\r\n/", trim($part), 2);
+                $part = ltrim($part, "\r\n");
+                $part = preg_replace("/\r\n--$/", '', $part);
+                $split = preg_split("/\r\n\r\n/", $part, 2);
                 if (count($split) !== 2) {
                     continue;
                 }
                 
                 $headers = $split[0];
-                $content = rtrim($split[1], "\r\n");
+                $content = $split[1];
+                if (substr($content, -2) === "\r\n") {
+                    $content = substr($content, 0, -2);
+                }
                 
                 // Extract field name
                 if (preg_match('/name="([^"]+)"/', $headers, $matches)) {
@@ -403,16 +408,6 @@ class Post extends MX_Controller {
             if (!$input) {
                 $input = $this->parse_multipart_form();
                 
-                // If file exists in parsed data, repopulate $_FILES for upload library
-                if (!empty($input['image']) && is_array($input['image']) && isset($input['image']['content'])) {
-                    $_FILES['image'] = [
-                        'name' => $input['image']['name'] ?? 'image_' . time() . '.png',
-                        'type' => $input['image']['type'] ?? 'image/png',
-                        'tmp_name' => $this->_save_temp_file($input['image']['content']),
-                        'error' => 0,
-                        'size' => strlen($input['image']['content'])
-                    ];
-                }
             }
 
             // Validate input
@@ -434,20 +429,30 @@ class Post extends MX_Controller {
             // Handle file upload if present (optional for PUT)
             if (!empty($_FILES['image']['name']) || (isset($input['image']) && is_array($input['image']) && !empty($input['image']['name']))) {
                 $old_post = $this->Post_model->get_by_id($id);
-                
-                // Delete old image
+
+                if (isset($input['image']) && is_array($input['image']) && isset($input['image']['content'])) {
+                    $image_name = $this->_save_parsed_image($input['image']);
+                } else {
+                    $image_name = $this->_upload_image();
+                }
+
+                if (!$image_name) {
+                    http_response_code(400);
+                    echo json_encode([
+                        'status' => false,
+                        'message' => 'Failed to upload image. Make sure the file is a valid JPG, JPEG, PNG, GIF, or WEBP image under 2MB.'
+                    ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+                    exit;
+                }
+
+                $post_data['image'] = 'posts/' . $image_name;
+
                 if (!empty($old_post->image)) {
-                    $old_file = FCPATH . 'uploads/posts/' . $old_post->image;
-                    if (file_exists($old_file)) {
+                    $old_file = FCPATH . 'uploads/' . $old_post->image;
+                    if (is_file($old_file)) {
                         unlink($old_file);
                     }
                 }
-
-                $image_name = $this->_upload_image();
-                if ($image_name) {
-                    $post_data['image'] = 'posts/' . $image_name;
-                }
-                // If image upload fails, just skip it - don't fail the whole request for PUT
             }
 
             // Update post
@@ -591,10 +596,50 @@ class Post extends MX_Controller {
         return $temp_path;
     }
 
+    private function _save_parsed_image($image)
+    {
+        $upload_path = FCPATH . 'uploads/posts/';
+        $allowed_extensions = ['gif', 'jpg', 'jpeg', 'png', 'webp'];
+        $max_size = 2048 * 1024;
+
+        if (!is_dir($upload_path)) {
+            mkdir($upload_path, 0755, true);
+        }
+
+        $original_name = $image['name'] ?? 'image';
+        $content = $image['content'] ?? '';
+        $extension = strtolower(pathinfo($original_name, PATHINFO_EXTENSION));
+
+        if ($content === '' || !in_array($extension, $allowed_extensions)) {
+            return false;
+        }
+
+        if (strlen($content) > $max_size) {
+            return false;
+        }
+
+        $tmp_file = $this->_save_temp_file($content);
+        if (@getimagesize($tmp_file) === false) {
+            @unlink($tmp_file);
+            return false;
+        }
+
+        $safe_name = preg_replace('/[^A-Za-z0-9._-]/', '_', $original_name);
+        $file_name = 'post_' . time() . '_' . uniqid() . '_' . $safe_name;
+        $destination = $upload_path . $file_name;
+
+        if (!rename($tmp_file, $destination)) {
+            @unlink($tmp_file);
+            return false;
+        }
+
+        return $file_name;
+    }
+
     private function _upload_image()
     {
         $config['upload_path'] = FCPATH . 'uploads/posts/';
-        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|webp';
         $config['max_size'] = 2048; // 2MB
         $config['file_name'] = 'post_' . time() . '_' . uniqid();
 
