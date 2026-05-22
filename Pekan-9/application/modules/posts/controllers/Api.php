@@ -7,14 +7,27 @@ class Api extends REST_Controller {
 
     public function __construct()
     {
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE');
+        header('Access-Control-Allow-Headers: Content-Type, Content-Length, Accept-Encoding, Authorization, Accept');
+        if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+            exit;
+        }
+
         parent::__construct();
-        // Model posts dipakai untuk semua operasi database CRUD.
         $this->load->model('Posts_model');
+    }
+
+    public function test_get()
+    {
+        return $this->response(array(
+            'status' => TRUE,
+            'message' => 'API backend Pekan-9 berhasil terhubung!'
+        ));
     }
 
     public function posts_get($id = NULL)
     {
-        // GET /api/posts/{id} mengambil satu data berdasarkan id.
         if ($id !== NULL)
         {
             $post = $this->Posts_model->get_by_id($id);
@@ -33,7 +46,6 @@ class Api extends REST_Controller {
             ));
         }
 
-        // GET /api/posts mengambil semua data posts.
         return $this->response(array(
             'status' => TRUE,
             'data' => $this->Posts_model->get_all()
@@ -42,7 +54,6 @@ class Api extends REST_Controller {
 
     public function posts_post()
     {
-        // POST /api/posts membuat data baru dari body JSON.
         $data = $this->_post_payload();
 
         if ($data === FALSE)
@@ -64,7 +75,6 @@ class Api extends REST_Controller {
 
     public function posts_put($id = NULL)
     {
-        // PUT /api/posts/{id} mengubah data yang id-nya dikirim di URL.
         if ($id === NULL || !$this->Posts_model->exists($id))
         {
             return $this->response(array(
@@ -76,7 +86,6 @@ class Api extends REST_Controller {
         $payload = $this->input_data();
         $data = array('updated_at' => date('Y-m-d H:i:s'));
 
-        // Hanya field yang dikirim client yang akan di-update.
         foreach (array('title', 'author', 'article', 'image') as $field)
         {
             if (isset($payload[$field]) && $payload[$field] !== '')
@@ -96,7 +105,6 @@ class Api extends REST_Controller {
 
     public function posts_delete($id = NULL)
     {
-        // DELETE /api/posts/{id} menghapus data berdasarkan id.
         if ($id === NULL)
         {
             return $this->response(array(
@@ -117,7 +125,6 @@ class Api extends REST_Controller {
 
         if (!empty($post->image))
         {
-            // Jika post memiliki gambar, file gambarnya ikut dihapus dari folder uploads.
             $image_path = FCPATH.'uploads/'.$post->image;
 
             if (file_exists($image_path))
@@ -136,7 +143,6 @@ class Api extends REST_Controller {
 
     private function _post_payload()
     {
-        // Validasi sederhana untuk memastikan field wajib tidak kosong.
         $payload = $this->input_data();
 
         if (empty($payload['title']) || empty($payload['author']) || empty($payload['article']))

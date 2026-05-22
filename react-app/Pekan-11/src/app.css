@@ -17,8 +17,30 @@
   text-align: left;
 }
 
+.login-panel {
+  width: min(440px, 100%);
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  box-sizing: border-box;
+  text-align: left;
+}
+
 .panel-header {
   margin-bottom: 28px;
+}
+
+.title-row {
+  display: flex;
+  gap: 16px;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.welcome-text {
+  margin-top: 10px;
 }
 
 .eyebrow {
@@ -35,7 +57,22 @@
   margin-bottom: 24px;
 }
 
+.login-form {
+  display: grid;
+  gap: 16px;
+}
+
+.form-group {
+  display: grid;
+  gap: 8px;
+}
+
 .activity-form label {
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+.login-form label {
   color: var(--text-h);
   font-weight: 600;
 }
@@ -46,7 +83,8 @@
   gap: 10px;
 }
 
-.activity-form input {
+.activity-form input,
+.login-form input {
   min-width: 0;
   padding: 12px 14px;
   border: 1px solid var(--border);
@@ -56,7 +94,8 @@
   font: inherit;
 }
 
-.activity-form input:focus {
+.activity-form input:focus,
+.login-form input:focus {
   border-color: var(--accent);
   outline: 3px solid var(--accent-bg);
 }
@@ -77,6 +116,27 @@ button:hover {
 
 .form-row button {
   padding: 0 18px;
+}
+
+.login-button {
+  min-height: 46px;
+}
+
+.logout-button {
+  padding: 10px 14px;
+  background: #475467;
+}
+
+.logout-button:hover {
+  background: #344054;
+}
+
+.login-error {
+  padding: 10px 12px;
+  border: 1px solid #fda29b;
+  border-radius: 6px;
+  color: #b42318;
+  background: #fef3f2;
 }
 
 .activity-list {
@@ -128,6 +188,14 @@ button:hover {
 
   .activity-panel {
     padding: 22px;
+  }
+
+  .login-panel {
+    padding: 22px;
+  }
+
+  .title-row {
+    display: grid;
   }
 
   .form-row,
