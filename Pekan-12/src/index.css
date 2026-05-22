@@ -1,0 +1,16 @@
+/* Tailwind base mereset style dasar browser dan menyiapkan fondasi desain. */
+@tailwind base;
+/* Tailwind components memuat kelas komponen yang dibuat oleh Tailwind atau plugin. */
+@tailwind components;
+/* Tailwind utilities menyediakan utility class seperti flex, margin, padding, dan warna. */
+@tailwind utilities;
+
+/* Root document menggunakan color-scheme dark agar browser menyesuaikan kontrol bawaan ke mode gelap. */
+:root {
+  color-scheme: dark;
+}
+
+/* Body memakai font Inter jika tersedia, lalu fallback ke font sistem yang umum di berbagai OS. */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}

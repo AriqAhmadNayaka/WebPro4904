@@ -1,0 +1,52 @@
+/* Root aplikasi bawaan Vite membatasi lebar konten dan membuatnya berada di tengah layar. */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Style logo mengatur ukuran, jarak, dan transisi efek filter saat hover. */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+/* Efek hover logo memberi bayangan warna biru pada logo umum. */
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+/* Efek hover khusus logo React memakai warna cyan khas React. */
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+/* Keyframes logo-spin mendefinisikan putaran penuh untuk animasi logo React. */
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animasi hanya berjalan jika user tidak mengaktifkan preferensi reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+/* Kelas card memberi padding standar pada kontainer kartu bawaan template. */
+.card {
+  padding: 2em;
+}
+
+/* Teks dokumentasi dibuat abu-abu agar tidak lebih menonjol dari konten utama. */
+.read-the-docs {
+  color: #888;
+}
