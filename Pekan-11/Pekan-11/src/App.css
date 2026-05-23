@@ -1,0 +1,91 @@
+h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.activity-input {
+  flex: 1;
+  padding: 9px 12px;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-family: inherit;
+  background: #fff;
+}
+
+.activity-input:focus {
+  border-color: #888;
+}
+
+.btn-add {
+  padding: 9px 18px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  background-color: #4a90d9;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-add:hover {
+  background-color: #3a7fc1;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin-bottom: 16px;
+}
+
+.activity-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.activity-text {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.btn-delete {
+  padding: 5px 12px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+.empty-text {
+  color: #888;
+  font-size: 0.9rem;
+}
