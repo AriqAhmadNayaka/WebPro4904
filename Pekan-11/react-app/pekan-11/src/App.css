@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  min-height: 100vh;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 70%, #533483 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+
+.app-wrapper::before,
+.app-wrapper::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+.app-wrapper::before {
+  width: 420px;
+  height: 420px;
+  background: #7b2ff7;
+  top: -100px;
+  left: -100px;
+}
+.app-wrapper::after {
+  width: 320px;
+  height: 320px;
+  background: #00d4ff;
+  bottom: -80px;
+  right: -80px;
+}
+
+
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 300;
+}
+
+.input-group {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.activity-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-size: 0.9rem;
+  font-family: 'Outfit', sans-serif;
+  color: #ffffff;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.activity-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.activity-input:focus {
+  border-color: rgba(123, 47, 247, 0.7);
+  background: rgba(255, 255, 255, 0.11);
+}
+
+.btn-add {
+  background: linear-gradient(135deg, #7b2ff7, #00d4ff);
+  border: none;
+  border-radius: 10px;
+  padding: 11px 20px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
+  color: #ffffff;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn-add:hover {
+  opacity: 0.85;
+}
+
+.btn-add:active {
+  transform: scale(0.96);
+}
+
+.activity-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 12px 16px;
+  transition: background 0.2s;
+}
+
+.activity-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.activity-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7b2ff7, #00d4ff);
+  flex-shrink: 0;
+  margin-right: 12px;
+}
+
+.activity-name {
+  flex: 1;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  word-break: break-word;
+}
+
+.btn-delete {
+  background: rgba(255, 80, 100, 0.12);
+  border: 1px solid rgba(255, 80, 100, 0.3);
+  border-radius: 7px;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
+  color: rgba(255, 140, 150, 0.95);
+  cursor: pointer;
+  margin-left: 12px;
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-delete:hover {
+  background: rgba(255, 80, 100, 0.3);
+  color: #ffffff;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.empty-icon {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 10px;
+  opacity: 0.5;
+}
+
+.app-footer {
+  text-align: right;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.35);
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.app-footer strong {
+  color: rgba(255, 255, 255, 0.65);
+}
