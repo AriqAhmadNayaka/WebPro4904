@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include("Koneksi.php"); //mengambil file koneksi database
 session_start(); //memulai session
 

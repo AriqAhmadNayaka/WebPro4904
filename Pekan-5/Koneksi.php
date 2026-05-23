@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 //membuat konfigurasi koneksi ke database//
 $host = "localhost";

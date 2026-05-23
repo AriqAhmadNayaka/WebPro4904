@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 //koneksi ke database
 $host = "localhost";
 $username = "root";

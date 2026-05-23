@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include 'koneksi.php'; //mengambil file koneksi database
     //mengambil data dari HTML
     $name = $_POST["name"];

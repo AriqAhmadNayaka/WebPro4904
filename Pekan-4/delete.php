@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 //konfig database
 $host = "localhost";
 $username = "root";

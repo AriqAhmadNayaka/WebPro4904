@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include("Koneksi.php"); // menambahkan ini agar bisa konek ke database
 
 //untuk menyimpan pesan yang akan di ketik user

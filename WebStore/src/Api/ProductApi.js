@@ -1,4 +1,4 @@
-export const fetchProducts = async () => {
+﻿export const fetchProducts = async () => {
 return new Promise((resolve) => {
 
 setTimeout(() => {

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include("Koneksi.php");
 session_start();
 
@@ -194,37 +194,52 @@ $loggedInUser = $_SESSION["user"]["email"] ?? $_SESSION["user"]["nama"] ?? "Peng
             <input type="hidden" name="id" value="<?= (int) $data["id"]; ?>">
 
             <div class="form-grid">
-                    <div>
-                        <label>Lokasi TPS</label>
-                        <input type="text" name="lokasi" placeholder="lokasi" required>
-                    </div>
+                <div>
+                    <label>Nama</label>
+                    <input type="text" name="name" value="<?= htmlspecialchars($data["nama"]); ?>" required>
+                </div>
 
-                    <div>
-                        <label>Waktu TPS</label>
-                        <input type="text" name="waktu" placeholder="Waktu" required>
-                    </div>
+                <div>
+                    <label>Alamat</label>
+                    <input type="text" name="addres" value="<?= htmlspecialchars($data["alamat"]); ?>" required>
+                </div>
 
-                    <div>
-                        <label>Berat Sampah</label>
-                        <input type="text" name="berat" placeholder="Berat(kg)" required>
-                    </div>
+                <div>
+                    <label>Nomor Telepon</label>
+                    <input type="text" name="number" maxlength="12" value="<?= htmlspecialchars($data["notlp"]); ?>" required>
+                </div>
 
-                    <div>
-                        <label>Status Kapasitas</label>
-                        <input type="text" name="status"  placeholder="Status" required>
-                    </div>
+                <div>
+                    <label>Jenis Kelamin</label>
+                    <select name="gender" required>
+                        <option value="">Pilih jenis kelamin</option>
+                        <option value="Laki-laki" <?= $data["jeniskelamin"] === "Laki-laki" ? "selected" : ""; ?>>Laki-laki</option>
+                        <option value="Perempuan" <?= $data["jeniskelamin"] === "Perempuan" ? "selected" : ""; ?>>Perempuan</option>
+                    </select>
+                </div>
 
-                    <div>
-                        <label>Deskripsi</label>
-                        <input type="text" name="deskripsi"  placeholder="Penjelasan singkat kondisi lapangan" required>
-                    </div>
+                <div>
+                    <label>Tanggal Lahir</label>
+                    <input type="date" name="date" value="<?= htmlspecialchars($data["tanggallahir"]); ?>" required>
+                </div>
 
-                    <div>
-                        <label>Foto Bukti</label>
-                        <input type="img" name="img" placeholder="foto" required>
-                    </div>
+                <div>
+                    <label>Berat Badan (kg)</label>
+                    <input type="number" name="weight" value="<?= htmlspecialchars($data["beratbadan"]); ?>" required>
+                </div>
 
-                <div class="button-row">
+                <div>
+                    <label>Tinggi Badan (cm)</label>
+                    <input type="number" name="height" value="<?= htmlspecialchars($data["tinggibadan"]); ?>" required>
+                </div>
+
+                <div>
+                    <label>Jenis Kanker</label>
+                    <input type="text" name="text" value="<?= htmlspecialchars($data["jeniskanker"]); ?>" required>
+                </div>
+            </div>
+
+            <div class="button-row">
                 <button type="submit">Simpan Perubahan</button>
                 <a class="secondary-link" href="dashboard.php">Kembali</a>
             </div>
