@@ -1,0 +1,37 @@
+INSERT INTO detil barang masuk VALUES
+('DB01', 'BRG01', 'BM001', 5),
+('DB02', 'BRG02', 'BM002', 10),
+('DB03', 'BRG03', 'BM003', 100),
+('DB04', 'BRG05', 'BM004', 8),
+
+INSERT INTO `barangmasuk` VALUES
+('BM001', '2025-02-10', 'SUP01'),
+('BM002', '2025-02-15', 'SUP03'),
+('BM003', '2025-02-20', 'SUP05'),
+('BM004', '2025-02-25', 'SUP02'),
+('BM005', '2025-03-01', 'SUP06');
+
+INSERT INTO supplier_telp (id_supplier, nomor_telp) VALUES
+(1, '081234567890'),
+(2, '081234567891'),
+(3, '081234567892'),
+(4, '081234567893'),
+(5, '081234567894'),
+(6, '081234567895'),
+(7, '081234567896'),
+(8, '081234567897');
+
+INSERT INTO pelanggan (nama, alamat, pekerjaan) VALUES
+('Algie', 'Jl. Diponegoro', 'Surabaya', 'Wiraswasta'),
+('Syah', 'Jl. Gajah Mada', 'Semarang', 'Mahasiswa'),
+('Swargani', 'Jl. Sudirman', 'Yogyakarta', 'Karyawan');
+
+DELETE FROM Detail_Penjualan WHERE id_transaksi IN (SELECT t.id_transaksi FROM Transaksi t
+    JOIN Pelanggan p ON t.id_pelanggan = p.id_pelanggan
+    WHERE p.nama_pelanggan = 'Ahmad Wijaya'
+)
+AND id_barang IN (
+    SELECT id_barang 
+    FROM Barang 
+    WHERE nama_barang = 'Smartphone Samsung'
+);

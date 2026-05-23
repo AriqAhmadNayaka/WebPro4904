@@ -1,0 +1,8 @@
+# Priven directory listing
+Options -indexes
+
+# Allow image files
+<FileMatch "/.(jpg|jpeg|png|gif)$">
+    Order Allow,Deny.
+    Allow from all
+</FileMatch>

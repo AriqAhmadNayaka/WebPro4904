@@ -1,0 +1,86 @@
+:root {
+    --primary-teal: #0f766e;
+    --bg-light: #f4f7f6;
+    --text-slate: #334155;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-slate);
+    margin: 0;
+}
+
+header {
+    background: var(--white);
+    padding: 15px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo {
+    color: var(--primary-teal);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-slate);
+    margin: 0 15px;
+    font-size: 0.9rem;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    background: #f8fafc;
+    box-sizing: border-box;
+}
+
+.table-container {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #f1f5f9;
+    color: var(--primary-teal);
+    padding: 15px;
+    text-align: left;
+    font-size: 0.85rem;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #f1f5f9;
+}

@@ -1,0 +1,154 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5dabc;
+  color: #172033;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 48px 16px;
+}
+
+.container {
+  width: min(100%, 560px);
+  background: #ffffff4b;
+  padding: 28px;
+  border-radius: 20px;
+  border: 1px solid #dce4ef;
+  box-shadow: 0 12px 32px rgba(23, 32, 51, 0.12);
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  margin: 0 0 8px;
+  color: #172033;
+  font-size: 28px;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.header p {
+  margin: 0;
+  color: #667085;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.input-group input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid #c7d2e0;
+  border-radius: 6px;
+  color: #172033;
+  background: #ffffff65;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+}
+
+.input-group button,
+.delete-btn {
+  border: 0;
+  border-radius: 6px;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.input-group button {
+  padding: 12px 18px;
+  background: #7596df;
+}
+
+.input-group button:hover {
+  background: #1d4ed8;
+}
+
+.activity-list {
+  display: grid;
+  gap: 10px;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px;
+  background: #f8fafc65;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+.activity-item span {
+  overflow-wrap: anywhere;
+  line-height: 1.4;
+}
+
+.delete-btn {
+  flex: 0 0 auto;
+  padding: 9px 13px;
+  background: #ff6565;
+}
+
+.delete-btn:hover {
+  background: #e62626;
+}
+
+.empty-text {
+  margin: 0;
+  padding: 22px;
+  text-align: center;
+  color: #667085;
+  background: #f8fafc;
+  border: 1px dashed #c7d2e0;
+  border-radius: 6px;
+}
+
+@media (max-width: 520px) {
+  .page {
+    padding-top: 24px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  .input-group button {
+    width: 100%;
+  }
+}
