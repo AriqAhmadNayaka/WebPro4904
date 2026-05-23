@@ -9,6 +9,20 @@ class Post extends MX_Controller {
         $this->load->model('Post_model');
         $this->load->library('jwt');
         $this->load->library('upload');
+
+        header('Access-Control-Allow-Origin: *'); 
+        
+        // 2. Mengizinkan metode HTTP yang akan digunakan React
+        header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+        
+        // 3. Mengizinkan header tambahan yang mungkin dikirim oleh axios/fetch
+        header("Access-Control-Allow-Headers: Content-Type, Content-Length, Accept-Encoding, Authorization, X-Requested-With");
+
+        // 4. Menangani Preflight Request dari browser (Sangat Penting)
+        if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+            http_response_code(200);
+            exit(); // Hentikan eksekusi script di sini khusus untuk request OPTIONS
+        }
     }
 
     private function parse_multipart_form()
@@ -78,7 +92,33 @@ class Post extends MX_Controller {
         if (empty($image_filename)) {
             return null;
         }
-        return 'http://localhost/ci3_project/uploads/posts/' . $image_filename;
+
+        // $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+        // $host   = $_SERVER['HTTP_HOST'] ?? 'localhost';
+
+        // // Normalisasi: hapus prefix 'posts/' jika sudah ada di dalam nilai image_filename
+        // // karena controller lama menyimpan image sebagai 'posts/namafile.jpg',
+        // // sedangkan API baru menyimpan hanya 'namafile.jpg'.
+        // // URL akhir harus selalu: /uploads/posts/namafile.jpg
+        // $filename = $image_filename;
+        // if (strpos($filename, 'posts/') === 0) {
+        //     $filename = substr($filename, strlen('posts/'));
+        // }
+
+        // return $scheme . '://' . $host . '/Pemrograman_Web/WebPro4904/Pekan-09/ci3_project/uploads/posts/' . $filename;
+         $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+        $host   = $_SERVER['HTTP_HOST'] ?? 'localhost';
+
+        // Normalisasi: hapus prefix 'posts/' jika sudah ada di dalam nilai image_filename
+        // karena controller lama menyimpan image sebagai 'posts/namafile.jpg',
+        // sedangkan API baru menyimpan hanya 'namafile.jpg'.
+        // URL akhir harus selalu: /uploads/posts/namafile.jpg
+        $filename = $image_filename;
+        if (strpos($filename, 'posts/') === 0) {
+            $filename = substr($filename, strlen('posts/'));
+        }
+
+        return $scheme . '://' . $host . '/Pemrograman_Web/WebPro4904/Pekan-09/ci3_project/uploads/posts/' . $filename;
     }
 
     public function handle($id = null)

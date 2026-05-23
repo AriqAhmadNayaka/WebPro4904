@@ -9,6 +9,20 @@ class Auth extends MX_Controller {
         $this->load->model('User_model');
         $this->load->library('jwt');
         $this->load->library('form_validation');
+
+        header('Access-Control-Allow-Origin: *'); 
+        
+        // 2. Mengizinkan metode HTTP yang akan digunakan React
+        header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+        
+        // 3. Mengizinkan header tambahan yang mungkin dikirim oleh axios/fetch
+        header("Access-Control-Allow-Headers: Content-Type, Content-Length, Accept-Encoding, Authorization, X-Requested-With");
+
+        // 4. Menangani Preflight Request dari browser (Sangat Penting)
+        if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+            http_response_code(200);
+            exit(); // Hentikan eksekusi script di sini khusus untuk request OPTIONS
+        }
     }
 
     public function register()
