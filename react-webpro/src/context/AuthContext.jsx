@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { authService } from '../services/api';
 
 export const AuthContext = createContext();
@@ -10,47 +10,45 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
-    const storedUser = localStorage.getItem('user');
-
-    if (storedToken && storedUser) {
+    if (storedToken) {
       setToken(storedToken);
-      setUser(JSON.parse(storedUser));
     }
-    setLoading(false);
+
+    const bootstrap = async () => {
+      if (!storedToken) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const result = await authService.me();
+        setUser(result.user);
+      } catch (error) {
+        localStorage.removeItem('token');
+        setToken(null);
+        setUser(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    bootstrap();
   }, []);
 
   const login = async (email, password) => {
-    try {
-      const response = await authService.login(email, password);
-      const { token, user } = response.data;
-
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(user));
-
-      setToken(token);
-      setUser(user);
-
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
+    const result = await authService.login({ email, password });
+    localStorage.setItem('token', result.token);
+    setToken(result.token);
+    setUser(result.user);
+    return result;
   };
 
-  const register = async (name, email, password) => {
-    try {
-      const response = await authService.register({ name, email, password });
-      const { token, user } = response.data;
-
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(user));
-
-      setToken(token);
-      setUser(user);
-
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
+  const register = async (payload) => {
+    const result = await authService.register(payload);
+    localStorage.setItem('token', result.token);
+    setToken(result.token);
+    setUser(result.user);
+    return result;
   };
 
   const logout = async () => {
@@ -60,17 +58,18 @@ export const AuthProvider = ({ children }) => {
       console.error('Logout error:', error);
     } finally {
       localStorage.removeItem('token');
-      localStorage.removeItem('user');
       setToken(null);
       setUser(null);
     }
   };
 
+  const refreshProfile = async () => {
+    const result = await authService.me();
+    setUser(result.user);
+    return result.user;
+  };
+
   const isAdmin = user?.role === 'admin';
 
-  return (
-    <AuthContext.Provider value={{ user, token, loading, isAdmin, login, register, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={{ user, token, loading, isAdmin, login, register, logout, refreshProfile, setUser }}>{children}</AuthContext.Provider>;
 };

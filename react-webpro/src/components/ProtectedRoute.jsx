@@ -6,7 +6,12 @@ const ProtectedRoute = ({ children }) => {
   const { token, loading } = useContext(AuthContext);
 
   if (loading) {
-    return <div className="flex items-center justify-center h-screen">Loading...</div>;
+    return (
+      <div className="screen-loader">
+        <div className="loader-orb" />
+        <p>Memuat portal CyberVault...</p>
+      </div>
+    );
   }
 
   if (!token) {

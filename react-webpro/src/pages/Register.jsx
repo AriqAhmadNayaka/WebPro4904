@@ -1,33 +1,35 @@
-import { useState, useContext } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import AuthShell from '../components/AuthShell';
+import AppIcon from '../components/AppIcon';
 
-const Register = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
-  const [loading, setLoading] = useState(false);
-
+function Register() {
   const { register } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirm_password: '',
+    agree: false,
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError('');
-    setSuccess('');
-
-    if (password !== confirmPassword) {
-      setError('Password dan konfirmasi password harus sama.');
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!form.agree) {
+      setError('Anda perlu menyetujui ketentuan layanan terlebih dahulu.');
       return;
     }
 
+    setError('');
     setLoading(true);
     try {
-      await register(name, email, password);
-      setSuccess('Registrasi berhasil. Mengarahkan ke dashboard...');
+      await register(form);
       navigate('/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'Registrasi gagal. Silakan coba lagi.');
@@ -37,94 +39,76 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center px-4 py-12">
-      <div className="bg-gray-800 p-8 rounded-3xl shadow-2xl max-w-lg w-full border border-blue-400/20">
-        <h1 className="text-4xl font-bold text-white mb-4 text-center">Buat Akun Baru</h1>
-        <p className="text-gray-400 text-center mb-8">Daftarkan akun Anda untuk melihat dashboard dan post.</p>
-
-        {error && (
-          <div className="bg-red-900 border border-red-700 text-red-100 px-4 py-3 rounded mb-4">
-            {error}
+    <AuthShell
+      title="Buat Akun"
+      subtitle="Daftar untuk memulai perjalanan Anda bersama CyberVault."
+      footerPrompt="Sudah memiliki akun?"
+      footerLink="/login"
+      footerLabel="Masuk"
+    >
+      {error ? <div className="form-alert form-alert--error">{error}</div> : null}
+      <form className="auth-form" onSubmit={handleSubmit}>
+        <label className="auth-field">
+          <span>Nama Lengkap</span>
+          <div className="auth-input">
+            <AppIcon name="user" className="icon-svg" />
+            <input type="text" placeholder="Nama Anda" value={form.name} onChange={(event) => setForm((prev) => ({ ...prev, name: event.target.value }))} required />
           </div>
-        )}
+        </label>
 
-        {success && (
-          <div className="bg-green-900 border border-green-700 text-green-100 px-4 py-3 rounded mb-4">
-            {success}
+        <label className="auth-field">
+          <span>Alamat Email</span>
+          <div className="auth-input">
+            <AppIcon name="article" className="icon-svg" />
+            <input type="email" placeholder="name@company.com" value={form.email} onChange={(event) => setForm((prev) => ({ ...prev, email: event.target.value }))} required />
           </div>
-        )}
+        </label>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-gray-300 text-sm font-medium mb-2">Nama Lengkap</label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Nama lengkap"
-              className="w-full bg-gray-700 border border-gray-600 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-blue-400"
-              required
-              disabled={loading}
-            />
+        <label className="auth-field">
+          <span>Kata Sandi</span>
+          <div className="auth-input">
+            <AppIcon name="lock" className="icon-svg" />
+            <input type={showPassword ? 'text' : 'password'} placeholder="••••••••" value={form.password} onChange={(event) => setForm((prev) => ({ ...prev, password: event.target.value }))} required />
+            <button type="button" className="ghost-eye" onClick={() => setShowPassword((value) => !value)}>
+              {showPassword ? 'Hide' : 'Show'}
+            </button>
           </div>
+        </label>
 
-          <div>
-            <label className="block text-gray-300 text-sm font-medium mb-2">Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="email@example.com"
-              className="w-full bg-gray-700 border border-gray-600 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-blue-400"
-              required
-              disabled={loading}
-            />
+        <label className="auth-field">
+          <span>Konfirmasi Kata Sandi</span>
+          <div className="auth-input">
+            <AppIcon name="shield" className="icon-svg" />
+            <input type={showConfirm ? 'text' : 'password'} placeholder="••••••••" value={form.confirm_password} onChange={(event) => setForm((prev) => ({ ...prev, confirm_password: event.target.value }))} required />
+            <button type="button" className="ghost-eye" onClick={() => setShowConfirm((value) => !value)}>
+              {showConfirm ? 'Hide' : 'Show'}
+            </button>
           </div>
+        </label>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-gray-300 text-sm font-medium mb-2">Password</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Masukkan password"
-                className="w-full bg-gray-700 border border-gray-600 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-blue-400"
-                required
-                disabled={loading}
-              />
-            </div>
+        <label className="auth-checkbox">
+          <input type="checkbox" checked={form.agree} onChange={(event) => setForm((prev) => ({ ...prev, agree: event.target.checked }))} />
+          <span>Saya menyetujui Ketentuan Layanan dan Kebijakan Privasi.</span>
+        </label>
 
-            <div>
-              <label className="block text-gray-300 text-sm font-medium mb-2">Konfirmasi Password</label>
-              <input
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                placeholder="Ulangi password"
-                className="w-full bg-gray-700 border border-gray-600 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-blue-400"
-                required
-                disabled={loading}
-              />
-            </div>
-          </div>
+        <button type="submit" className="primary-auth-button" disabled={loading}>
+          {loading ? 'Membuat akun...' : 'Buat Akun'}
+        </button>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 text-white font-bold py-3 rounded-xl transition"
-          >
-            {loading ? 'Mendaftar...' : 'Daftar'}
+        <div className="auth-divider">Atau lanjutkan dengan</div>
+        <div className="auth-socials">
+          <button type="button" className="social-auth-button">
+            <span className="social-dot social-dot--google" />
+            Google
           </button>
-        </form>
-
-        <p className="text-gray-400 text-sm text-center mt-6">
-          Sudah punya akun?{' '}
-          <Link to="/login" className="text-blue-400 hover:text-blue-300">Masuk di sini</Link>
-        </p>
-      </div>
-    </div>
+          <button type="button" className="social-auth-button">
+            <span className="social-dot social-dot--microsoft" />
+            Microsoft
+          </button>
+        </div>
+      </form>
+    </AuthShell>
   );
-};
+}
 
 export default Register;

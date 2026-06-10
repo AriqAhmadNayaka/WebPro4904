@@ -1,91 +1,94 @@
-import { useState, useContext } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import AuthShell from '../components/AuthShell';
+import AppIcon from '../components/AppIcon';
 
-const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  
+function Login() {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [form, setForm] = useState({ email: '', password: '', remember: false });
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     setError('');
     setLoading(true);
 
     try {
-      await login(email, password);
+      await login(form.email, form.password);
       navigate('/dashboard');
     } catch (err) {
-      setError(
-        err.response?.data?.message ||
-        err.response?.data?.error ||
-        'Login gagal. Silakan periksa email dan password Anda.'
-      );
+      setError(err.response?.data?.message || 'Login gagal. Silakan periksa kembali akun Anda.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center px-4">
-      <div className="bg-gray-800 p-8 rounded-3xl shadow-2xl max-w-md w-full border border-blue-400/20">
-        <h1 className="text-4xl font-bold text-white mb-6 text-center">Selamat Datang</h1>
-        <p className="text-gray-400 text-center mb-6">Masuk untuk melihat dashboard, daftar post, dan detail artikel.</p>
-
-        {error && (
-          <div className="bg-red-900 border border-red-700 text-red-100 px-4 py-3 rounded mb-4">
-            {error}
+    <AuthShell
+      title="Login"
+      subtitle="Selamat datang kembali! Silakan masukkan detail Anda."
+      footerPrompt="Belum punya akun?"
+      footerLink="/register"
+      footerLabel="Create account"
+    >
+      {error ? <div className="form-alert form-alert--error">{error}</div> : null}
+      <form className="auth-form" onSubmit={handleSubmit}>
+        <label className="auth-field">
+          <span>Alamat Email</span>
+          <div className="auth-input">
+            <AppIcon name="article" className="icon-svg" />
+            <input type="email" placeholder="name@company.com" value={form.email} onChange={(event) => setForm((prev) => ({ ...prev, email: event.target.value }))} required />
           </div>
-        )}
+        </label>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-gray-300 text-sm font-medium mb-2">Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Masukkan email Anda"
-              className="w-full bg-gray-700 border border-gray-600 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-blue-400"
-              required
-              disabled={loading}
-            />
+        <label className="auth-field">
+          <div className="auth-field__row">
+            <span>Kata Sandi</span>
+            <Link to="/reset-password">Lupa Kata Sandi?</Link>
           </div>
-
-          <div>
-            <label className="block text-gray-300 text-sm font-medium mb-2">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Masukkan password Anda"
-              className="w-full bg-gray-700 border border-gray-600 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-blue-400"
-              required
-              disabled={loading}
-            />
+          <div className="auth-input">
+            <AppIcon name="lock" className="icon-svg" />
+            <input type={showPassword ? 'text' : 'password'} placeholder="••••••••" value={form.password} onChange={(event) => setForm((prev) => ({ ...prev, password: event.target.value }))} required />
+            <button type="button" className="ghost-eye" onClick={() => setShowPassword((value) => !value)}>
+              {showPassword ? 'Hide' : 'Show'}
+            </button>
           </div>
+        </label>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 text-white font-bold py-3 rounded-xl transition"
-          >
-            {loading ? 'Memproses...' : 'Login'}
+        <label className="auth-checkbox">
+          <input type="checkbox" checked={form.remember} onChange={(event) => setForm((prev) => ({ ...prev, remember: event.target.checked }))} />
+          <span>Ingat saya selama 30 hari</span>
+        </label>
+
+        <button type="submit" className="primary-auth-button" disabled={loading}>
+          {loading ? 'Memproses...' : 'Login'}
+        </button>
+
+        <div className="auth-divider">Atau lanjutkan dengan</div>
+        <div className="auth-socials">
+          <button type="button" className="social-auth-button">
+            <span className="social-dot social-dot--google" />
+            Google
           </button>
-        </form>
+          <button type="button" className="social-auth-button">
+            <span className="social-dot social-dot--microsoft" />
+            Microsoft
+          </button>
+        </div>
 
-        <p className="text-gray-400 text-sm text-center mt-6">
-          Belum punya akun?{' '}
-          <Link to="/register" className="text-blue-400 hover:text-blue-300">Daftar di sini</Link>
-        </p>
-
-      </div>
-    </div>
+        <div className="auth-linkstack">
+          <Link to="/reset-password">Lupa Kata Sandi?</Link>
+          <p>
+            Belum punya akun? <Link to="/register">Create account</Link>
+          </p>
+        </div>
+      </form>
+    </AuthShell>
   );
-};
+}
 
 export default Login;

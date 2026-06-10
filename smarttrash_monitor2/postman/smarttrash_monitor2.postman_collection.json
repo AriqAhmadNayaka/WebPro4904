@@ -1,0 +1,93 @@
+{
+  "info": {
+    "name": "SmartTrash Monitor 2 API",
+    "_postman_id": "e65877e1-4057-4ffd-b870-e0b2738390e2",
+    "description": "Collection CRUD monitoring untuk SmartTrash Monitor 2.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get All Monitoring",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost/Pemrograman_Web/WebPro4904/smarttrash_monitor2/codeigniter/api/monitoring",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["Pemrograman_Web", "WebPro4904", "smarttrash_monitor2", "codeigniter", "api", "monitoring"]
+        }
+      }
+    },
+    {
+      "name": "Get Monitoring By Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost/Pemrograman_Web/WebPro4904/smarttrash_monitor2/codeigniter/api/monitoring/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["Pemrograman_Web", "WebPro4904", "smarttrash_monitor2", "codeigniter", "api", "monitoring", "1"]
+        }
+      }
+    },
+    {
+      "name": "Create Monitoring",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"bin_code\": \"BIN-004\",\n  \"location_name\": \"Gedung Teknik Lantai 2\",\n  \"waste_level\": 60,\n  \"status\": \"WASPADA\",\n  \"last_collection\": \"2026-06-04 08:30:00\",\n  \"notes\": \"Butuh pengecekan petugas sore hari.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost/Pemrograman_Web/WebPro4904/smarttrash_monitor2/codeigniter/api/monitoring",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["Pemrograman_Web", "WebPro4904", "smarttrash_monitor2", "codeigniter", "api", "monitoring"]
+        }
+      }
+    },
+    {
+      "name": "Update Monitoring",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"bin_code\": \"BIN-004\",\n  \"location_name\": \"Gedung Teknik Lantai 2\",\n  \"waste_level\": 25,\n  \"status\": \"DIANGKUT\",\n  \"last_collection\": \"2026-06-04 10:15:00\",\n  \"notes\": \"Sudah diangkut dan dibersihkan.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost/Pemrograman_Web/WebPro4904/smarttrash_monitor2/codeigniter/api/monitoring/4",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["Pemrograman_Web", "WebPro4904", "smarttrash_monitor2", "codeigniter", "api", "monitoring", "4"]
+        }
+      }
+    },
+    {
+      "name": "Delete Monitoring",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost/Pemrograman_Web/WebPro4904/smarttrash_monitor2/codeigniter/api/monitoring/4",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["Pemrograman_Web", "WebPro4904", "smarttrash_monitor2", "codeigniter", "api", "monitoring", "4"]
+        }
+      }
+    }
+  ]
+}
