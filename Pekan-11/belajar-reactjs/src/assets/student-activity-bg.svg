@@ -1,0 +1,48 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" fill="#EAF3F1"/>
+  <circle cx="185" cy="145" r="84" fill="#FCD34D"/>
+  <path d="M92 263C192 190 326 210 412 286C532 392 692 346 798 254C929 140 1108 130 1237 232C1347 318 1459 334 1532 291V1000H92V263Z" fill="#BFE8DD"/>
+  <path d="M0 442C156 354 286 392 410 483C536 576 691 593 831 482C978 365 1132 390 1253 486C1372 580 1486 594 1600 516V1000H0V442Z" fill="#8DD5C5"/>
+  <path d="M0 640C200 554 337 601 501 680C677 765 800 757 973 666C1173 562 1342 605 1600 709V1000H0V640Z" fill="#61BCAF"/>
+  <rect x="105" y="160" width="280" height="170" rx="20" fill="#FFFFFF" opacity=".9"/>
+  <rect x="137" y="204" width="216" height="16" rx="8" fill="#94A3B8"/>
+  <rect x="137" y="240" width="150" height="16" rx="8" fill="#CBD5E1"/>
+  <rect x="137" y="276" width="188" height="16" rx="8" fill="#CBD5E1"/>
+  <rect x="1222" y="135" width="255" height="205" rx="24" fill="#FFFFFF" opacity=".9"/>
+  <rect x="1262" y="173" width="34" height="128" rx="10" fill="#14B8A6"/>
+  <rect x="1324" y="222" width="34" height="79" rx="10" fill="#2563EB"/>
+  <rect x="1386" y="192" width="34" height="109" rx="10" fill="#F97316"/>
+  <path d="M1274 255L1341 210L1402 225L1450 166" stroke="#0F172A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="956" y="614" width="270" height="98" rx="16" fill="#F8FAFC"/>
+  <rect x="981" y="640" width="72" height="20" rx="10" fill="#14B8A6"/>
+  <rect x="981" y="676" width="168" height="14" rx="7" fill="#CBD5E1"/>
+  <rect x="1128" y="535" width="145" height="210" rx="18" fill="#FFFFFF"/>
+  <rect x="1153" y="566" width="95" height="18" rx="9" fill="#2563EB"/>
+  <rect x="1153" y="610" width="95" height="12" rx="6" fill="#CBD5E1"/>
+  <rect x="1153" y="642" width="66" height="12" rx="6" fill="#CBD5E1"/>
+  <rect x="1153" y="674" width="82" height="12" rx="6" fill="#CBD5E1"/>
+  <path d="M275 775H1325C1373 775 1412 814 1412 862V1000H188V862C188 814 227 775 275 775Z" fill="#2563EB"/>
+  <rect x="391" y="640" width="555" height="68" rx="18" fill="#92400E"/>
+  <rect x="430" y="418" width="446" height="260" rx="32" fill="#F8FAFC"/>
+  <rect x="468" y="454" width="370" height="179" rx="18" fill="#1E293B"/>
+  <rect x="524" y="494" width="96" height="18" rx="9" fill="#38BDF8"/>
+  <rect x="524" y="535" width="232" height="14" rx="7" fill="#64748B"/>
+  <rect x="524" y="572" width="172" height="14" rx="7" fill="#64748B"/>
+  <path d="M416 708H921L972 772H361L416 708Z" fill="#CBD5E1"/>
+  <path d="M570 708H767L795 746H542L570 708Z" fill="#94A3B8"/>
+  <path d="M738 357C738 415 692 462 635 462C578 462 532 415 532 357C532 299 578 252 635 252C692 252 738 299 738 357Z" fill="#F8B88B"/>
+  <path d="M536 362C547 295 584 242 651 246C718 251 754 300 752 367C727 330 693 314 647 314C608 314 572 331 536 362Z" fill="#0F172A"/>
+  <path d="M521 505C542 459 584 432 637 432C691 432 737 459 758 505L788 640H490L521 505Z" fill="#0F766E"/>
+  <path d="M483 517C432 538 395 587 382 646L434 661C449 614 471 585 507 568L483 517Z" fill="#F8B88B"/>
+  <path d="M779 517C829 538 865 587 878 646L827 661C812 614 790 585 754 568L779 517Z" fill="#F8B88B"/>
+  <rect x="287" y="672" width="174" height="34" rx="10" fill="#F97316"/>
+  <rect x="300" y="637" width="174" height="34" rx="10" fill="#FCD34D"/>
+  <rect x="1038" y="698" width="196" height="38" rx="10" fill="#FCD34D"/>
+  <rect x="1055" y="662" width="196" height="38" rx="10" fill="#FB7185"/>
+  <path d="M1032 460C1005 438 1002 399 1025 373C1048 347 1088 344 1115 367C1142 389 1145 429 1122 455C1099 481 1059 483 1032 460Z" fill="#FFFFFF" opacity=".95"/>
+  <path d="M1050 410H1097" stroke="#14B8A6" stroke-width="12" stroke-linecap="round"/>
+  <path d="M1074 386V433" stroke="#14B8A6" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="241" cy="484" r="55" fill="#FFFFFF" opacity=".95"/>
+  <path d="M218 483L239 505L267 461" stroke="#2563EB" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M0 862C183 817 311 829 483 891C665 957 839 956 1012 900C1222 832 1389 825 1600 883V1000H0V862Z" fill="#0F766E" opacity=".28"/>
+</svg>
