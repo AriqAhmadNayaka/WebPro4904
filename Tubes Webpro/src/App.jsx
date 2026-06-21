@@ -1,19 +1,30 @@
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom'
 import AuthLayout from './layouts/AuthLayout.jsx'
 import DashboardLayout from './layouts/DashboardLayout.jsx'
-import BerandaPage from './pages/BerandaPage.jsx'
+import Akun from './pages/Akun.jsx'
+import Asesmen from './pages/Asesmen.jsx'
+import Dashboard from './pages/Dashboard.jsx'
+import Forum from './pages/Forum.jsx'
+import InformasiPeringatan from './pages/InformasiPeringatan.jsx'
 import Login from './pages/Login.jsx'
+import Notifikasi from './pages/Notifikasi.jsx'
 import Logout from './pages/Logout.jsx'
-import PlaceholderPage from './pages/PlaceholderPage.jsx'
+import PembelajaranCSIRT from './pages/PembelajaranCSIRT.jsx'
+import PelaporanInsiden from './pages/PelaporanInsiden.jsx'
+import PemantauPrivasi from './pages/PemantauPrivasi.jsx'
+import Pengaturan from './pages/Pengaturan.jsx'
+import PusatEdukasi from './pages/PusatEdukasi'
+import PusatBantuan from './pages/PusatBantuan.jsx'
 import Register from './pages/Register.jsx'
 import ResetPassword from './pages/ResetPassword.jsx'
+import SertifikatPenilaian from './pages/SertifikatPenilaian.jsx'
 import Timeline from './pages/Timeline.jsx'
 import TidakDitemukanPage from './pages/TidakDitemukanPage.jsx'
 
 const dashboardRoutes = [
   {
     path: '/dashboard',
-    element: <BerandaPage />,
+    element: <Dashboard />,
   },
   {
     path: '/timeline',
@@ -21,24 +32,47 @@ const dashboardRoutes = [
   },
   {
     path: '/pelaporan-insiden',
-    element: (
-      <PlaceholderPage
-        title="Pelaporan Insiden"
-        description="Halaman ini disiapkan untuk alur pelaporan insiden digital secara bertahap."
-      />
-    ),
+    element: <PelaporanInsiden />,
   },
   {
-    path: '/notifikasi',
-    element: <PlaceholderPage title="Notifikasi" description="Pusat notifikasi CyberVault." />,
+    path: '/pemantau-privasi',
+    element: <PemantauPrivasi />,
   },
   {
     path: '/akun',
-    element: <PlaceholderPage title="Akun" description="Kelola informasi akun pengguna CyberVault." />,
+    element: <Akun />,
   },
   {
-    path: '/pusat-edukasi',
-    element: <PlaceholderPage title="Pusat Edukasi" description="Konten edukasi keamanan digital akan ditampilkan di sini." />,
+    path: '/notifikasi',
+    element: <Notifikasi />,
+  },
+  {
+    path: '/informasi-peringatan',
+    element: <InformasiPeringatan />,
+  },
+  {
+    path: '/pembelajaran-csirt',
+    element: <PembelajaranCSIRT />,
+  },
+  {
+    path: '/sertifikat-penilaian',
+    element: <SertifikatPenilaian />,
+  },
+  {
+    path: '/forum',
+    element: <Forum />,
+  },
+  {
+    path: '/asesmen',
+    element: <Asesmen />,
+  },
+  {
+    path: '/pengaturan',
+    element: <Pengaturan />,
+  },
+  {
+    path: '/pusat-bantuan',
+    element: <PusatBantuan />,
   },
   {
     path: '/pelaporan-insiden-digital',
@@ -46,35 +80,27 @@ const dashboardRoutes = [
   },
   {
     path: '/pemantau-privasi-digital',
-    element: <PlaceholderPage title="Pemantau Privasi Digital" description="Area pemantauan privasi digital pengguna." />,
+    element: <Navigate to="/pemantau-privasi" replace />,
   },
   {
     path: '/pusat-informasi-dan-peringatan',
-    element: <PlaceholderPage title="Pusat Informasi & Peringatan" description="Informasi dan peringatan keamanan digital akan ditampilkan di sini." />,
+    element: <Navigate to="/informasi-peringatan" replace />,
   },
   {
     path: '/pusat-pembelajaran-csirt',
-    element: <PlaceholderPage title="Pusat Pembelajaran CSIRT" description="Materi pembelajaran CSIRT akan dikembangkan di halaman ini." />,
+    element: <Navigate to="/pembelajaran-csirt" replace />,
   },
   {
     path: '/sertifikat-dan-penilaian',
-    element: <PlaceholderPage title="Sertifikat dan Penilaian" description="Ringkasan sertifikat dan hasil penilaian pengguna." />,
+    element: <Navigate to="/sertifikat-penilaian" replace />,
   },
   {
     path: '/forum-kesadaran-digital',
-    element: <PlaceholderPage title="Forum Kesadaran Digital" description="Forum diskusi kesadaran digital akan hadir di halaman ini." />,
+    element: <Navigate to="/forum" replace />,
   },
   {
     path: '/asesmen-keamanan-digital',
-    element: <PlaceholderPage title="Asesmen Keamanan Digital" description="Area asesmen keamanan digital pengguna." />,
-  },
-  {
-    path: '/pengaturan',
-    element: <PlaceholderPage title="Pengaturan" description="Pengaturan aplikasi CyberVault." />,
-  },
-  {
-    path: '/pusat-bantuan',
-    element: <PlaceholderPage title="Pusat Bantuan" description="Pusat bantuan pengguna CyberVault." />,
+    element: <Navigate to="/asesmen" replace />,
   },
   {
     path: '/keluar',
@@ -110,6 +136,7 @@ function App() {
 
         <Route element={<ProtectedRoutes />}>
           <Route element={<DashboardLayout />}>
+            <Route path="/pusat-edukasi" element={<PusatEdukasi />} />
             {dashboardRoutes.map((route) => (
               <Route key={route.path} path={route.path} element={route.element} />
             ))}

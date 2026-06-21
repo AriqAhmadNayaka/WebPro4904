@@ -1,0 +1,351 @@
+.cv-incident-page {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  color: #14263a;
+}
+
+.cv-incident-page__hero {
+  padding: 18px 20px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #0e5e9d 0%, #0b548e 100%);
+  box-shadow: 0 10px 24px rgba(0, 62, 109, 0.18);
+  color: #ffffff;
+}
+
+.cv-incident-page__hero h1 {
+  margin: 0 0 6px;
+  font-size: clamp(1.8rem, 2vw, 2.3rem);
+  font-weight: 700;
+}
+
+.cv-incident-page__hero p {
+  max-width: 720px;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cv-incident-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #0f66ab 0%, #0b5d9b 100%);
+  box-shadow: 0 8px 18px rgba(0, 70, 120, 0.16);
+}
+
+.cv-incident-steps__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.cv-incident-steps__number {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #0d65ac;
+  font-size: 0.82rem;
+}
+
+.cv-incident-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 10px;
+  align-items: start;
+}
+
+.cv-incident-main,
+.cv-incident-side {
+  min-width: 0;
+}
+
+.cv-incident-side {
+  display: grid;
+  gap: 10px;
+}
+
+.cv-incident-card {
+  border: 1px solid #d9e8f5;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 10px 20px rgba(0, 70, 120, 0.14);
+}
+
+.cv-incident-form {
+  padding: 10px 12px 12px;
+  background: linear-gradient(180deg, #0f66ab 0%, #0c5a97 100%);
+  color: #ffffff;
+}
+
+.cv-incident-form__section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.cv-incident-form__section-head h2,
+.cv-incident-help-card h2,
+.cv-incident-form__section-title h3 {
+  margin: 0;
+  font-weight: 700;
+}
+
+.cv-incident-form__section-head p {
+  margin: 2px 0 0;
+  font-size: 0.74rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cv-incident-next-button {
+  padding: 4px 14px;
+  border: none;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #0d65ac;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.cv-incident-type-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.cv-incident-type-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #86def1 0%, #6ccfe7 100%);
+  color: #10446e;
+  text-align: left;
+  box-shadow: 0 8px 18px rgba(0, 57, 103, 0.18);
+  transition: transform 160ms ease, box-shadow 160ms ease, outline-color 160ms ease;
+}
+
+.cv-incident-type-card.is-active {
+  outline: 2px solid rgba(255, 255, 255, 0.85);
+  transform: translateY(-1px);
+}
+
+.cv-incident-type-card__icon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.42);
+  font-size: 1rem;
+}
+
+.cv-incident-type-card__body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.cv-incident-type-card__body strong {
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.cv-incident-type-card__body small {
+  margin-top: 2px;
+  font-size: 0.62rem;
+  line-height: 1.25;
+}
+
+.cv-incident-form__details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cv-incident-form__section-title h3 {
+  font-size: 1.55rem;
+}
+
+.cv-incident-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cv-incident-field span {
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.cv-incident-field input,
+.cv-incident-field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #4d6881;
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+.cv-incident-field textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.cv-incident-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  align-items: start;
+}
+
+.cv-incident-field__with-icon {
+  position: relative;
+}
+
+.cv-incident-field__with-icon input {
+  padding-right: 38px;
+}
+
+.cv-incident-field__with-icon i {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0d65ac;
+}
+
+.cv-incident-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 70px;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #0d65ac;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.cv-incident-upload small {
+  color: #6c86a0;
+  font-size: 0.56rem;
+  font-weight: 600;
+}
+
+.cv-incident-help-card {
+  padding: 12px 14px;
+  background: linear-gradient(180deg, #0f66ab 0%, #0b5d9c 100%);
+  color: #ffffff;
+}
+
+.cv-incident-help-card h2 {
+  margin-bottom: 8px;
+  font-size: 1.45rem;
+}
+
+.cv-incident-help-card p,
+.cv-incident-help-card li {
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+.cv-incident-help-card ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.cv-incident-contact-box {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 16px;
+  background: #ffffff;
+  color: #13395c;
+}
+
+.cv-incident-contact-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.cv-incident-contact-item + .cv-incident-contact-item {
+  margin-top: 10px;
+}
+
+.cv-incident-contact-item__dot {
+  width: 10px;
+  height: 10px;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: #1574c2;
+  box-shadow: 0 0 0 4px rgba(21, 116, 194, 0.16);
+}
+
+.cv-incident-contact-item strong {
+  display: block;
+  font-size: 0.76rem;
+}
+
+.cv-incident-contact-item p {
+  margin: 2px 0 0;
+  color: #4b6580;
+}
+
+.cv-incident-next-button,
+.cv-incident-type-card,
+.cv-incident-upload {
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.cv-incident-next-button:hover,
+.cv-incident-type-card:hover,
+.cv-incident-upload:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 1199.98px) {
+  .cv-incident-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-incident-side {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 991.98px) {
+  .cv-incident-steps,
+  .cv-incident-type-grid,
+  .cv-incident-form__grid,
+  .cv-incident-side {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-incident-form__section-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

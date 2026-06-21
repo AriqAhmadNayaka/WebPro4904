@@ -4290,3 +4290,2073 @@ body,
     padding: 14px;
   }
 }
+
+/* Modern SaaS Design System Override */
+
+:root {
+  --cv-primary: #2563eb;
+  --cv-primary-dark: #1d4ed8;
+  --cv-primary-soft: #60a5fa;
+  --cv-accent: #60a5fa;
+  --cv-bg: #f7f9fc;
+  --cv-text: #0f172a;
+  --cv-muted: #64748b;
+  --cv-border: #e7edf5;
+  --cv-white: #ffffff;
+  --cv-radius: 14px;
+  --cv-radius-lg: 14px;
+  --cv-shadow-soft: 0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+body {
+  background: #f7f9fc;
+  color: var(--cv-text);
+}
+
+.cv-dashboard-shell {
+  background: #f7f9fc;
+}
+
+.cv-sidebar {
+  width: 260px;
+  min-width: 260px;
+  max-width: 260px;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  box-shadow: none;
+  padding: 18px 0 14px;
+}
+
+.cv-sidebar.collapsed {
+  width: 88px;
+  min-width: 88px;
+  max-width: 88px;
+}
+
+.cv-sidebar-welcome {
+  margin: 0 14px 14px;
+  height: auto;
+  padding: 16px;
+  border: 1px solid var(--cv-border);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  color: var(--cv-text);
+}
+
+.cv-sidebar-welcome h4,
+.cv-sidebar-welcome p {
+  color: var(--cv-text);
+}
+
+.cv-sidebar-welcome p {
+  color: var(--cv-muted);
+}
+
+.cv-sidebar-nav,
+.cv-sidebar-bottom {
+  padding-inline: 10px;
+}
+
+.cv-sidebar-menu-item {
+  width: auto;
+  margin: 4px 0;
+  padding: 11px 12px;
+  border-radius: 12px;
+  color: #475569;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.cv-sidebar-menu-item:hover {
+  background: #f4f8ff;
+  color: var(--cv-primary);
+}
+
+.cv-sidebar-menu-item.active {
+  background: #e8f0ff;
+  color: var(--cv-primary);
+}
+
+.cv-sidebar-section__label {
+  color: #94a3b8;
+}
+
+.cv-sidebar-badge {
+  background: #dbeafe;
+  color: var(--cv-primary);
+}
+
+.cv-navbar {
+  height: 70px;
+  min-height: 70px;
+  margin: 16px 16px 0;
+  padding: 0 18px;
+  border: 1px solid rgba(231, 237, 245, 0.9);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+  color: var(--cv-text);
+}
+
+.cv-navbar::after {
+  display: none;
+}
+
+.cv-menu-button,
+.cv-navbar-icon-btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  color: #475569;
+}
+
+.cv-menu-button:hover,
+.cv-navbar-icon-btn:hover {
+  background: #f8fbff;
+  color: var(--cv-primary);
+}
+
+.cv-navbar-brand {
+  color: var(--cv-text);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.cv-navbar-search {
+  height: 42px;
+  background: #f8fafc;
+  border: 1px solid var(--cv-border);
+  color: #64748b;
+}
+
+.cv-navbar-search input,
+.cv-navbar-search input::placeholder {
+  color: #64748b;
+}
+
+.cv-navbar-profile {
+  padding: 5px 8px 5px 5px;
+  background: #ffffff;
+  border: 1px solid var(--cv-border);
+}
+
+.cv-navbar-profile__avatar {
+  background: #e8f0ff;
+  color: var(--cv-primary);
+}
+
+.cv-dashboard-scroll {
+  background: #f7f9fc;
+}
+
+.cv-dashboard-content {
+  padding: 16px 16px 20px !important;
+}
+
+.cv-dashboard-main .cv-footer {
+  margin: 0 16px 16px;
+  border: 1px solid var(--cv-border);
+  border-radius: 14px;
+  background: #ffffff;
+  color: var(--cv-muted);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+.cv-placeholder-card {
+  padding: 28px;
+  border: 1px solid var(--cv-border);
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+.cv-placeholder-card__title {
+  margin: 0 0 12px;
+  color: var(--cv-text);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+}
+
+.cv-placeholder-card__text,
+.cv-section-kicker {
+  margin: 0;
+}
+
+.cv-placeholder-card__text {
+  color: var(--cv-muted);
+  max-width: 720px;
+}
+
+.cv-section-kicker {
+  margin-bottom: 8px;
+  color: var(--cv-primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cv-education-page {
+  display: grid;
+  gap: 18px;
+  padding-bottom: 8px;
+}
+
+.cv-education-hero-card,
+.cv-education-stat-card,
+.cv-education-section-card,
+.cv-education-material-card,
+.cv-education-category-card,
+.cv-education-tip-item {
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 18px rgba(0, 70, 120, 0.18);
+}
+
+.cv-education-hero-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+  gap: 20px;
+  padding: 26px 30px;
+  align-items: center;
+  background: #005f99;
+  box-shadow: 0 10px 24px rgba(0, 70, 120, 0.3);
+}
+
+.cv-education-hero-card h1,
+.cv-education-section-card h2,
+.cv-education-material-card h3,
+.cv-education-category-card h3,
+.cv-education-activity-row__content h3 {
+  margin: 0;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.cv-education-hero-card h1 {
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  line-height: 1.08;
+  color: #ffffff;
+}
+
+.cv-education-hero-card__text,
+.cv-education-category-card p,
+.cv-education-activity-row__content p,
+.cv-education-tip-item p,
+.cv-education-tips-highlight p {
+  margin: 0;
+  color: #475569;
+}
+
+.cv-education-hero-card__text {
+  margin-top: 14px;
+  max-width: 640px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cv-education-hero-card .cv-section-kicker {
+  color: #7ee9f5;
+}
+
+.cv-education-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 22px;
+}
+
+.cv-education-search i {
+  position: absolute;
+  left: 16px;
+  color: #94a3b8;
+}
+
+.cv-education-search input {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px 0 44px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  outline: none;
+}
+
+.cv-education-search input::placeholder {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.cv-education-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.cv-education-chip {
+  min-height: 34px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.cv-education-hero-card__visual {
+  min-width: 0;
+}
+
+.cv-education-hero-illustration {
+  position: relative;
+  min-height: 320px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.cv-education-hero-illustration img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cv-education-hero-illustration__overlay {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(14px);
+}
+
+.cv-education-hero-illustration__overlay span,
+.cv-education-hero-illustration__overlay strong {
+  display: block;
+}
+
+.cv-education-hero-illustration__overlay span {
+  color: var(--cv-primary);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.cv-education-hero-illustration__overlay strong {
+  margin-top: 4px;
+  color: var(--cv-text);
+  font-size: 1rem;
+}
+
+.cv-education-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.cv-education-stat-card {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 14px;
+  padding: 18px;
+  align-items: start;
+  background: #005f99;
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(0, 70, 120, 0.25), 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.cv-education-stat-card__icon,
+.cv-education-category-card__icon,
+.cv-education-activity-row__icon {
+  width: 52px;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  font-size: 1.15rem;
+}
+
+.cv-education-stat-card__icon.is-blue,
+.cv-education-category-card__icon,
+.cv-education-activity-row__icon {
+  background: #e8f0ff;
+  color: var(--cv-primary);
+}
+
+.cv-education-stat-card__icon.is-sky {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+.cv-education-stat-card__icon.is-green {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.cv-education-stat-card__icon.is-amber {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.cv-education-stat-card__icon.is-violet {
+  background: #ede9fe;
+  color: #7c3aed;
+}
+
+.cv-education-stat-card p,
+.cv-education-stat-card span,
+.cv-education-material-card__meta,
+.cv-education-activity-row__content span {
+  margin: 0;
+  color: #475569;
+}
+
+.cv-education-stat-card h3 {
+  margin: 4px 0;
+  color: #ffffff;
+  font-size: 1.85rem;
+  font-weight: 800;
+}
+
+.cv-education-stat-card p {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.cv-education-stat-card span {
+  color: #7ee9f5;
+  font-size: 0.88rem;
+}
+
+.cv-education-section-card {
+  padding: 24px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cv-education-section-card:hover,
+.cv-education-material-card:hover,
+.cv-education-category-card:hover,
+.cv-education-tip-item:hover {
+  transform: translateY(-2px);
+}
+
+.cv-education-section-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.cv-education-material-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.cv-education-material-card {
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cv-education-material-card__thumb {
+  min-height: 132px;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+}
+
+.cv-education-material-card__thumb.is-blue {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  color: #1d4ed8;
+}
+
+.cv-education-material-card__thumb.is-green {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+  color: #15803d;
+}
+
+.cv-education-material-card__thumb.is-sky {
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+  color: #0369a1;
+}
+
+.cv-education-material-card__thumb.is-amber {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  color: #b45309;
+}
+
+.cv-education-material-card__thumb.is-violet {
+  background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+  color: #6d28d9;
+}
+
+.cv-education-material-card__body {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+}
+
+.cv-education-material-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.84rem;
+}
+
+.cv-education-material-card__progress {
+  display: grid;
+  gap: 8px;
+}
+
+.cv-education-material-card__progress strong {
+  color: var(--cv-primary);
+  font-size: 0.9rem;
+}
+
+.cv-education-material-card__progress-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+.cv-education-material-card__progress-bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
+}
+
+.cv-education-category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.cv-education-category-card {
+  padding: 20px;
+  display: grid;
+  gap: 12px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cv-education-bottom-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.9fr);
+  gap: 18px;
+}
+
+.cv-education-activity-timeline {
+  display: grid;
+  gap: 16px;
+}
+
+.cv-education-activity-row {
+  display: grid;
+  grid-template-columns: 60px minmax(0, 1fr);
+  gap: 16px;
+}
+
+.cv-education-activity-row__rail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cv-education-activity-row__icon {
+  position: relative;
+  z-index: 1;
+}
+
+.cv-education-activity-row__line {
+  width: 2px;
+  flex: 1;
+  margin-top: 10px;
+  background: #dbe7ff;
+}
+
+.cv-education-activity-row__content {
+  padding: 4px 0 14px;
+}
+
+.cv-education-activity-row__content p {
+  margin: 8px 0;
+}
+
+.cv-education-tips-card {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.cv-education-tips-list {
+  display: grid;
+  gap: 12px;
+}
+
+.cv-education-tip-item {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 12px;
+  padding: 14px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cv-education-tip-item i {
+  margin-top: 2px;
+  color: var(--cv-primary);
+}
+
+.cv-education-tips-highlight {
+  padding: 16px;
+  border: 1px dashed #c7d7fe;
+  border-radius: 14px;
+  background: #f8fbff;
+}
+
+.cv-education-tips-highlight strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--cv-primary);
+}
+
+.cv-feature-page {
+  display: grid;
+  gap: 18px;
+  padding-bottom: 8px;
+}
+
+.cv-feature-hero,
+.cv-feature-stat-card,
+.cv-feature-panel,
+.cv-feature-highlight-card,
+.cv-feature-tip {
+  border: 1px solid var(--cv-border);
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+.cv-feature-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 20px;
+  padding: 24px;
+  align-items: center;
+}
+
+.cv-feature-hero__copy h1,
+.cv-feature-panel__head h2,
+.cv-feature-highlight-card h3,
+.cv-feature-timeline__content h3 {
+  margin: 0;
+  color: var(--cv-text);
+  font-weight: 700;
+}
+
+.cv-feature-hero__copy h1 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.08;
+}
+
+.cv-feature-hero__copy p:last-child,
+.cv-feature-highlight-card p,
+.cv-feature-timeline__content p,
+.cv-feature-tip p {
+  margin: 0;
+  color: var(--cv-muted);
+}
+
+.cv-feature-hero__copy p:last-child {
+  margin-top: 14px;
+  max-width: 680px;
+}
+
+.cv-feature-hero__visual {
+  min-height: 260px;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at top left, rgba(96, 165, 250, 0.35), transparent 34%),
+    linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border: 1px solid #dbe7ff;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+
+.cv-feature-hero__visual-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.cv-feature-hero__visual-grid span {
+  min-height: 88px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(219, 231, 255, 0.9);
+}
+
+.cv-feature-hero__badge {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--cv-primary);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.cv-feature-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.cv-feature-stat-card {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 14px;
+  padding: 18px;
+}
+
+.cv-feature-stat-card__icon,
+.cv-feature-highlight-card__icon,
+.cv-feature-timeline__dot {
+  width: 52px;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: #e8f0ff;
+  color: var(--cv-primary);
+  font-size: 1.15rem;
+}
+
+.cv-feature-stat-card p,
+.cv-feature-stat-card span,
+.cv-feature-timeline__content span {
+  margin: 0;
+  color: var(--cv-muted);
+}
+
+.cv-feature-stat-card h3 {
+  margin: 4px 0;
+  color: var(--cv-text);
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.cv-feature-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: 18px;
+}
+
+.cv-feature-panel {
+  padding: 22px;
+}
+
+.cv-feature-panel__head {
+  margin-bottom: 18px;
+}
+
+.cv-feature-highlight-list,
+.cv-feature-timeline,
+.cv-feature-tips {
+  display: grid;
+  gap: 14px;
+}
+
+.cv-feature-highlight-card {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 14px;
+  padding: 16px;
+}
+
+.cv-feature-timeline__item {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 14px;
+}
+
+.cv-feature-timeline__rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cv-feature-timeline__line {
+  width: 2px;
+  flex: 1;
+  margin-top: 10px;
+  background: #dbe7ff;
+}
+
+.cv-feature-timeline__content {
+  padding: 4px 0 12px;
+}
+
+.cv-feature-timeline__content p {
+  margin: 8px 0;
+}
+
+.cv-feature-panel--tips {
+  align-content: start;
+}
+
+.cv-feature-tip {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 12px;
+  padding: 14px;
+}
+
+.cv-feature-tip i {
+  margin-top: 2px;
+  color: var(--cv-primary);
+}
+
+@media (max-width: 1280px) {
+  .cv-education-stats-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cv-education-material-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cv-feature-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .cv-education-hero-card,
+  .cv-education-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-education-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cv-feature-hero,
+  .cv-feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+  .cv-education-stats-grid,
+  .cv-education-material-grid,
+  .cv-education-category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-feature-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .cv-education-hero-card,
+  .cv-education-section-card {
+    padding: 18px;
+  }
+
+  .cv-education-stat-card {
+    grid-template-columns: 46px minmax(0, 1fr);
+  }
+
+  .cv-education-activity-row {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .cv-feature-hero,
+  .cv-feature-panel {
+    padding: 18px;
+  }
+
+  .cv-feature-highlight-card,
+  .cv-feature-stat-card {
+    grid-template-columns: 46px minmax(0, 1fr);
+  }
+
+  .cv-feature-timeline__item {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 12px;
+  }
+}
+
+/* Global Glass Card Theme */
+
+.cv-card,
+.cv-auth-hero-card,
+.cv-auth-form-card,
+.cv-placeholder-card,
+.cv-hero-panel,
+.cv-stat-card,
+.cv-dashboard-panel,
+.cv-action-card,
+.cv-recent-activity-card,
+.cv-vault-card,
+.cv-vault-help-card,
+.cv-vault-table-card,
+.cv-vault-info-card,
+.cv-timeline-summary-card,
+.cv-roadmap-section,
+.cv-roadmap-card,
+.cv-timeline-stat-card,
+.cv-timeline-achievement-card,
+.cv-achievement-item,
+.cv-education-hero-card,
+.cv-education-stat-card,
+.cv-education-section-card,
+.cv-education-material-card,
+.cv-education-category-card,
+.cv-education-tip-item,
+.cv-feature-hero,
+.cv-feature-stat-card,
+.cv-feature-panel,
+.cv-feature-highlight-card,
+.cv-feature-tip {
+  background: rgba(0, 86, 150, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  box-shadow: 0 10px 30px rgba(0, 35, 68, 0.2) !important;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.cv-card *,
+.cv-auth-hero-card *,
+.cv-auth-form-card *,
+.cv-placeholder-card *,
+.cv-hero-panel *,
+.cv-stat-card *,
+.cv-dashboard-panel *,
+.cv-action-card *,
+.cv-recent-activity-card *,
+.cv-vault-card *,
+.cv-vault-help-card *,
+.cv-vault-table-card *,
+.cv-vault-info-card *,
+.cv-timeline-summary-card *,
+.cv-roadmap-section *,
+.cv-roadmap-card *,
+.cv-timeline-stat-card *,
+.cv-timeline-achievement-card *,
+.cv-achievement-item *,
+.cv-education-hero-card *,
+.cv-education-stat-card *,
+.cv-education-section-card *,
+.cv-education-material-card *,
+.cv-education-category-card *,
+.cv-education-tip-item *,
+.cv-feature-hero *,
+.cv-feature-stat-card *,
+.cv-feature-panel *,
+.cv-feature-highlight-card *,
+.cv-feature-tip * {
+  color: #ffffff !important;
+}
+
+.cv-card p,
+.cv-auth-hero-card p,
+.cv-auth-form-card p,
+.cv-placeholder-card p,
+.cv-hero-panel p,
+.cv-stat-card p,
+.cv-dashboard-panel p,
+.cv-action-card p,
+.cv-recent-activity-card p,
+.cv-vault-card p,
+.cv-vault-help-card p,
+.cv-vault-table-card p,
+.cv-vault-info-card p,
+.cv-timeline-summary-card p,
+.cv-roadmap-section p,
+.cv-roadmap-card p,
+.cv-timeline-stat-card p,
+.cv-timeline-achievement-card p,
+.cv-achievement-item p,
+.cv-education-hero-card p,
+.cv-education-stat-card p,
+.cv-education-section-card p,
+.cv-education-material-card p,
+.cv-education-category-card p,
+.cv-education-tip-item p,
+.cv-feature-hero p,
+.cv-feature-stat-card p,
+.cv-feature-panel p,
+.cv-feature-highlight-card p,
+.cv-feature-tip p,
+.cv-card span,
+.cv-auth-hero-card span,
+.cv-auth-form-card span,
+.cv-placeholder-card span,
+.cv-hero-panel span,
+.cv-stat-card span,
+.cv-dashboard-panel span,
+.cv-action-card span,
+.cv-recent-activity-card span,
+.cv-vault-card span,
+.cv-vault-help-card span,
+.cv-vault-table-card span,
+.cv-vault-info-card span,
+.cv-timeline-summary-card span,
+.cv-roadmap-section span,
+.cv-roadmap-card span,
+.cv-timeline-stat-card span,
+.cv-timeline-achievement-card span,
+.cv-achievement-item span,
+.cv-education-hero-card span,
+.cv-education-stat-card span,
+.cv-education-section-card span,
+.cv-education-material-card span,
+.cv-education-category-card span,
+.cv-education-tip-item span,
+.cv-feature-hero span,
+.cv-feature-stat-card span,
+.cv-feature-panel span,
+.cv-feature-highlight-card span,
+.cv-feature-tip span,
+.cv-card small,
+.cv-auth-hero-card small,
+.cv-auth-form-card small,
+.cv-placeholder-card small,
+.cv-hero-panel small,
+.cv-stat-card small,
+.cv-dashboard-panel small,
+.cv-action-card small,
+.cv-recent-activity-card small,
+.cv-vault-card small,
+.cv-vault-help-card small,
+.cv-vault-table-card small,
+.cv-vault-info-card small,
+.cv-timeline-summary-card small,
+.cv-roadmap-section small,
+.cv-roadmap-card small,
+.cv-timeline-stat-card small,
+.cv-timeline-achievement-card small,
+.cv-achievement-item small,
+.cv-education-hero-card small,
+.cv-education-stat-card small,
+.cv-education-section-card small,
+.cv-education-material-card small,
+.cv-education-category-card small,
+.cv-education-tip-item small,
+.cv-feature-hero small,
+.cv-feature-stat-card small,
+.cv-feature-panel small,
+.cv-feature-highlight-card small,
+.cv-feature-tip small {
+  color: rgba(255, 255, 255, 0.86) !important;
+}
+
+.cv-vault-menu__item,
+.cv-table-actions button,
+.cv-add-button,
+.cv-add-button--secondary,
+.cv-chip-button,
+.cv-text-link,
+.cv-education-chip,
+.cv-education-search input,
+.cv-feature-hero__visual-grid span,
+.cv-feature-hero__badge,
+.cv-education-hero-illustration__overlay,
+.cv-education-material-card__progress-bar,
+.cv-progress-bar,
+.cv-progress-ring__inner,
+.cv-vault-score__ring::before {
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.cv-vault-menu__item,
+.cv-table-actions button,
+.cv-chip-button,
+.cv-education-chip,
+.cv-feature-hero__visual-grid span,
+.cv-feature-hero__badge,
+.cv-education-hero-illustration__overlay,
+.cv-tips-highlight,
+.cv-education-tips-highlight {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: #ffffff !important;
+}
+
+.cv-vault-table th,
+.cv-vault-table td,
+.cv-vault-table-card h3,
+.cv-vault-info-card strong,
+.cv-section-head h3,
+.cv-dashboard-panel__header h3,
+.cv-placeholder-card__title,
+.cv-form-title,
+.cv-form-label {
+  color: #ffffff !important;
+}
+
+.cv-vault-table th,
+.cv-vault-table td,
+.cv-vault-table td button i {
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+/* Global card tint override */
+
+:root {
+  --cv-card-section-bg: rgba(0, 86, 150, 0.88);
+}
+
+.cv-placeholder-card,
+.cv-hero-panel,
+.cv-stat-card,
+.cv-action-section,
+.cv-progress-card,
+.cv-alert-card,
+.cv-dashboard-panel,
+.cv-action-card,
+.cv-recent-activity-card,
+.cv-vault-card,
+.cv-vault-help-card,
+.cv-vault-table-card,
+.cv-vault-info-card,
+.cv-timeline-hero,
+.cv-timeline-summary-card,
+.cv-roadmap-section,
+.cv-roadmap-card,
+.cv-timeline-stat-card,
+.cv-timeline-achievement-card,
+.cv-achievement-item,
+.cv-education-hero-card,
+.cv-education-stat-card,
+.cv-education-section-card,
+.cv-education-material-card,
+.cv-education-category-card,
+.cv-education-tip-item,
+.cv-feature-hero,
+.cv-feature-stat-card,
+.cv-feature-panel,
+.cv-feature-highlight-card,
+.cv-feature-tip {
+  background: var(--cv-card-section-bg) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 8px 24px rgba(0, 48, 92, 0.28) !important;
+}
+
+.cv-hero-panel :is(h1, h2, h3, h4, h5, p, span, small),
+.cv-stat-card :is(h1, h2, h3, h4, h5, p, span, small),
+.cv-dashboard-panel :is(h1, h2, h3, h4, h5, p, span, small),
+.cv-action-card :is(h1, h2, h3, h4, h5, p, span, small),
+.cv-recent-activity-card :is(h1, h2, h3, h4, h5, p, span, small),
+.cv-vault-card :is(h1, h2, h3, h4, h5, p, span, small, strong),
+.cv-vault-help-card :is(h1, h2, h3, h4, h5, p, span, small, strong),
+.cv-vault-table-card :is(h1, h2, h3, h4, h5, p, span, small, strong, th, td),
+.cv-vault-info-card :is(h1, h2, h3, h4, h5, p, span, small, strong),
+.cv-timeline-hero :is(h1, h2, h3, h4, h5, p, span, small),
+.cv-timeline-summary-card :is(h1, h2, h3, h4, h5, p, span, small),
+.cv-roadmap-section :is(h1, h2, h3, h4, h5, p, span, small),
+.cv-roadmap-card :is(h1, h2, h3, h4, h5, p, span, small),
+.cv-timeline-stat-card :is(h1, h2, h3, h4, h5, p, span, small),
+.cv-timeline-achievement-card :is(h1, h2, h3, h4, h5, p, span, small),
+.cv-achievement-item :is(h1, h2, h3, h4, h5, p, span, small),
+.cv-education-hero-card :is(h1, h2, h3, h4, h5, p, span, small, strong),
+.cv-education-stat-card :is(h1, h2, h3, h4, h5, p, span, small, strong),
+.cv-education-section-card :is(h1, h2, h3, h4, h5, p, span, small, strong),
+.cv-education-material-card :is(h1, h2, h3, h4, h5, p, span, small, strong),
+.cv-education-category-card :is(h1, h2, h3, h4, h5, p, span, small, strong),
+.cv-education-tip-item :is(h1, h2, h3, h4, h5, p, span, small, strong),
+.cv-feature-hero :is(h1, h2, h3, h4, h5, p, span, small, strong),
+.cv-feature-stat-card :is(h1, h2, h3, h4, h5, p, span, small, strong),
+.cv-feature-panel :is(h1, h2, h3, h4, h5, p, span, small, strong),
+.cv-feature-highlight-card :is(h1, h2, h3, h4, h5, p, span, small, strong),
+.cv-feature-tip :is(h1, h2, h3, h4, h5, p, span, small, strong) {
+  color: #ffffff !important;
+}
+
+.cv-education-search input,
+.cv-navbar-search input,
+.cv-form-control {
+  color: #ffffff;
+}
+
+.cv-education-search input::placeholder,
+.cv-navbar-search input::placeholder,
+.cv-form-control::placeholder {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.cv-vault-table th,
+.cv-vault-table td,
+.cv-vault-table td button i,
+.cv-vault-menu__item,
+.cv-table-actions button,
+.cv-add-button,
+.cv-add-button--secondary,
+.cv-chip-button,
+.cv-text-link,
+.cv-status-badge,
+.cv-alert-tag {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.16) !important;
+}
+
+.cv-vault-menu__item,
+.cv-table-actions button,
+.cv-add-button,
+.cv-add-button--secondary,
+.cv-chip-button,
+.cv-status-badge,
+.cv-alert-tag {
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+.cv-progress-bar,
+.cv-education-material-card__progress-bar,
+.cv-education-progress,
+.cv-feature-timeline__line,
+.cv-education-activity-row__line,
+.cv-activity-item__line {
+  background: rgba(255, 255, 255, 0.18) !important;
+}
+
+.cv-progress-bar__fill,
+.cv-education-material-card__progress-bar span,
+.cv-education-progress span {
+  background: linear-gradient(90deg, #7ee9f5 0%, #ffffff 100%) !important;
+}
+
+/* Final CyberVault Design System */
+
+body {
+  background: #eef3f8 !important;
+  color: #0f172a;
+}
+
+.cv-dashboard-shell,
+.cv-dashboard-scroll,
+.cv-dashboard-main,
+.cv-dashboard-content,
+.cv-dashboard-container,
+.cv-timeline-page,
+.cv-education-page,
+.cv-feature-page {
+  background: transparent !important;
+}
+
+.cv-navbar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 100 !important;
+  background: rgba(11, 106, 168, 0.82) !important;
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.cv-footer {
+  background: #c5d2dd !important;
+  color: #0f172a !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.cv-footer a,
+.cv-footer span,
+.cv-footer div {
+  color: #0f172a !important;
+}
+
+.cv-hero-panel,
+.cv-stat-card,
+.cv-dashboard-panel,
+.cv-action-card,
+.cv-recent-activity-card,
+.cv-vault-card,
+.cv-vault-help-card,
+.cv-vault-info-card,
+.cv-timeline-hero,
+.cv-timeline-summary-card,
+.cv-roadmap-section,
+.cv-roadmap-card,
+.cv-timeline-stat-card,
+.cv-timeline-achievement-card,
+.cv-achievement-item,
+.cv-education-hero-card,
+.cv-education-stat-card,
+.cv-education-section-card,
+.cv-education-material-card,
+.cv-education-category-card,
+.cv-education-tip-item,
+.cv-feature-hero,
+.cv-feature-stat-card,
+.cv-feature-panel,
+.cv-feature-highlight-card,
+.cv-feature-tip {
+  background: rgba(6, 108, 172, 0.82) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16) !important;
+  border-radius: 20px !important;
+  transition: all 0.25s ease !important;
+}
+
+.cv-hero-panel:hover,
+.cv-stat-card:hover,
+.cv-dashboard-panel:hover,
+.cv-action-card:hover,
+.cv-recent-activity-card:hover,
+.cv-vault-card:hover,
+.cv-vault-help-card:hover,
+.cv-vault-info-card:hover,
+.cv-timeline-summary-card:hover,
+.cv-roadmap-card:hover,
+.cv-achievement-item:hover,
+.cv-education-stat-card:hover,
+.cv-education-section-card:hover,
+.cv-education-material-card:hover,
+.cv-education-category-card:hover,
+.cv-education-tip-item:hover,
+.cv-feature-stat-card:hover,
+.cv-feature-panel:hover,
+.cv-feature-highlight-card:hover,
+.cv-feature-tip:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+.cv-vault-table-card {
+  background: rgba(6, 108, 172, 0.96) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.cv-vault-table-wrap,
+.cv-vault-table,
+.cv-vault-table thead,
+.cv-vault-table tbody {
+  background: transparent !important;
+}
+
+.cv-dashboard-panel__header h3,
+.cv-section-head h3,
+.cv-education-section-head h2,
+.cv-feature-panel__head h2,
+.cv-vault-card h3,
+.cv-vault-table-card h3,
+.cv-vault-info-card h3,
+.cv-education-hero-card h1,
+.cv-feature-hero__copy h1,
+.cv-timeline-hero h1,
+.cv-roadmap-section h3 {
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+}
+
+.cv-hero-panel :is(h1, h2, h3, h4, h5),
+.cv-stat-card :is(h1, h2, h3, h4, h5),
+.cv-dashboard-panel :is(h1, h2, h3, h4, h5),
+.cv-action-card :is(h1, h2, h3, h4, h5),
+.cv-recent-activity-card :is(h1, h2, h3, h4, h5),
+.cv-vault-card :is(h1, h2, h3, h4, h5, strong),
+.cv-vault-help-card :is(h1, h2, h3, h4, h5, strong),
+.cv-vault-info-card :is(h1, h2, h3, h4, h5, strong),
+.cv-timeline-hero :is(h1, h2, h3, h4, h5),
+.cv-timeline-summary-card :is(h1, h2, h3, h4, h5),
+.cv-roadmap-section :is(h1, h2, h3, h4, h5),
+.cv-roadmap-card :is(h1, h2, h3, h4, h5),
+.cv-timeline-stat-card :is(h1, h2, h3, h4, h5),
+.cv-timeline-achievement-card :is(h1, h2, h3, h4, h5),
+.cv-achievement-item :is(h1, h2, h3, h4, h5),
+.cv-education-hero-card :is(h1, h2, h3, h4, h5, strong),
+.cv-education-stat-card :is(h1, h2, h3, h4, h5, strong),
+.cv-education-section-card :is(h1, h2, h3, h4, h5, strong),
+.cv-education-material-card :is(h1, h2, h3, h4, h5, strong),
+.cv-education-category-card :is(h1, h2, h3, h4, h5, strong),
+.cv-education-tip-item :is(h1, h2, h3, h4, h5, strong),
+.cv-feature-hero :is(h1, h2, h3, h4, h5, strong),
+.cv-feature-stat-card :is(h1, h2, h3, h4, h5, strong),
+.cv-feature-panel :is(h1, h2, h3, h4, h5, strong),
+.cv-feature-highlight-card :is(h1, h2, h3, h4, h5, strong),
+.cv-feature-tip :is(h1, h2, h3, h4, h5, strong) {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.cv-hero-panel :is(p, span, small),
+.cv-stat-card :is(p, span, small),
+.cv-dashboard-panel :is(p, span, small),
+.cv-action-card :is(p, span, small),
+.cv-recent-activity-card :is(p, span, small),
+.cv-vault-card :is(p, span, small),
+.cv-vault-help-card :is(p, span, small),
+.cv-vault-info-card :is(p, span, small),
+.cv-timeline-hero :is(p, span, small),
+.cv-timeline-summary-card :is(p, span, small),
+.cv-roadmap-section :is(p, span, small),
+.cv-roadmap-card :is(p, span, small),
+.cv-timeline-stat-card :is(p, span, small),
+.cv-timeline-achievement-card :is(p, span, small),
+.cv-achievement-item :is(p, span, small),
+.cv-education-hero-card :is(p, span, small),
+.cv-education-stat-card :is(p, span, small),
+.cv-education-section-card :is(p, span, small),
+.cv-education-material-card :is(p, span, small),
+.cv-education-category-card :is(p, span, small),
+.cv-education-tip-item :is(p, span, small),
+.cv-feature-hero :is(p, span, small),
+.cv-feature-stat-card :is(p, span, small),
+.cv-feature-panel :is(p, span, small),
+.cv-feature-highlight-card :is(p, span, small),
+.cv-feature-tip :is(p, span, small) {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.cv-dashboard-panel .cv-stat-card__note,
+.cv-stat-card__note,
+.cv-education-material-card__meta,
+.cv-feature-timeline__content span,
+.cv-education-activity-row__content span,
+.cv-activity-item__content span,
+.cv-vault-mini-list__item span {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.cv-icon-box,
+.cv-roadmap-icon,
+.cv-feature-stat-card__icon,
+.cv-feature-highlight-card__icon,
+.cv-feature-timeline__dot,
+.cv-education-stat-card__icon,
+.cv-education-category-card__icon,
+.cv-education-activity-row__icon,
+.cv-activity-item__icon,
+.cv-achievement-item .cv-icon-box,
+.cv-timeline-summary-card .cv-icon-box {
+  background: #7fe7f3 !important;
+  color: #005f9f !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.cv-cta-button--cyan,
+.cv-btn-primary,
+.cv-add-button,
+.cv-add-button--secondary {
+  background: #7fe7f3 !important;
+  color: #003f73 !important;
+  font-weight: 700 !important;
+  border: 0 !important;
+}
+
+.cv-cta-button--white,
+.cv-btn-light,
+.cv-btn-social,
+.cv-chip-button {
+  background: #ffffff !important;
+  color: #003f73 !important;
+  font-weight: 700 !important;
+  border: 0 !important;
+}
+
+.cv-text-link {
+  color: #7fe7f3 !important;
+  font-weight: 700 !important;
+}
+
+.cv-navbar-search,
+.cv-education-search input,
+.cv-form-control,
+.cv-auth-form-card,
+.cv-auth-hero-card {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.cv-education-search input,
+.cv-form-control {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid rgba(11, 106, 168, 0.16) !important;
+  box-shadow: none !important;
+}
+
+.cv-education-search input::placeholder,
+.cv-form-control::placeholder {
+  color: #64748b !important;
+}
+
+.cv-auth-form-card,
+.cv-auth-hero-card {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border: 1px solid rgba(11, 106, 168, 0.1) !important;
+  box-shadow: 0 12px 34px rgba(0, 70, 120, 0.18) !important;
+}
+
+.cv-auth-form-card *,
+.cv-auth-hero-card * {
+  color: inherit !important;
+}
+
+.cv-auth-form-card .cv-form-title,
+.cv-auth-form-card .cv-form-label,
+.cv-auth-hero-card .cv-auth-title,
+.cv-auth-hero-card .cv-auth-subtitle {
+  color: #0f172a !important;
+}
+
+.cv-vault-table th,
+.cv-vault-table td {
+  color: #ffffff !important;
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.cv-vault-score__ring::before,
+.cv-progress-ring__inner,
+.cv-education-material-card__progress-bar,
+.cv-progress-bar,
+.cv-feature-hero__badge,
+.cv-feature-hero__visual-grid span,
+.cv-education-hero-illustration__overlay,
+.cv-vault-menu__item,
+.cv-table-actions button,
+.cv-alert-tag,
+.cv-status-badge {
+  background: rgba(255, 255, 255, 0.14) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+}
+
+.cv-stat-grid,
+.cv-action-grid,
+.cv-timeline-summary-grid,
+.cv-education-stats-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+.cv-feature-stats {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+.cv-education-material-grid,
+.cv-roadmap-grid,
+.cv-feature-highlight-list {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+.cv-education-category-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+@media (max-width: 1024px) {
+  .cv-stat-grid,
+  .cv-action-grid,
+  .cv-timeline-summary-grid,
+  .cv-education-stats-grid,
+  .cv-feature-stats,
+  .cv-education-material-grid,
+  .cv-roadmap-grid,
+  .cv-feature-highlight-list,
+  .cv-education-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .cv-stat-grid,
+  .cv-action-grid,
+  .cv-timeline-summary-grid,
+  .cv-education-stats-grid,
+  .cv-feature-stats,
+  .cv-education-material-grid,
+  .cv-roadmap-grid,
+  .cv-feature-highlight-list,
+  .cv-education-category-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* CyberVault Final Color System */
+
+body,
+.cv-dashboard-main,
+.cv-dashboard-scroll {
+  background: #eef3f8 !important;
+}
+
+html,
+body,
+#root {
+  overflow-x: hidden;
+}
+
+.cv-navbar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  height: 58px !important;
+  min-height: 58px !important;
+  background: rgba(0, 86, 150, 0.82) !important;
+  backdrop-filter: blur(18px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18) !important;
+}
+
+.cv-dashboard-main {
+  min-height: 100vh !important;
+}
+
+.cv-dashboard-scroll {
+  min-height: calc(100vh - 58px) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+.cv-dashboard-content {
+  min-height: calc(100vh - 150px) !important;
+  padding: 20px 20px 32px !important;
+}
+
+.cv-feature-page {
+  gap: 20px !important;
+  min-height: calc(100vh - 190px) !important;
+  padding-bottom: 28px !important;
+}
+
+.cv-feature-hero {
+  min-height: 280px !important;
+  padding: 28px !important;
+}
+
+.cv-feature-hero__visual {
+  min-height: 300px !important;
+}
+
+.cv-feature-stats {
+  gap: 16px !important;
+}
+
+.cv-feature-stat-card {
+  min-height: 120px !important;
+  padding: 22px !important;
+}
+
+.cv-feature-grid {
+  grid-template-columns: minmax(0, 1.12fr) minmax(360px, 0.88fr) !important;
+  align-items: start !important;
+}
+
+.cv-feature-panel {
+  min-height: 100% !important;
+  padding: 26px !important;
+}
+
+.cv-feature-highlight-list,
+.cv-feature-timeline,
+.cv-feature-tips {
+  gap: 16px !important;
+}
+
+.cv-feature-highlight-card {
+  min-height: 124px !important;
+  padding: 18px !important;
+}
+
+.cv-feature-timeline__item {
+  min-height: 110px !important;
+}
+
+.cv-feature-tip {
+  min-height: 76px !important;
+  padding: 16px !important;
+}
+
+@media (max-width: 1024px) {
+  .cv-dashboard-content {
+    min-height: auto !important;
+    padding: 16px 16px 24px !important;
+  }
+
+  .cv-feature-page {
+    min-height: auto !important;
+  }
+
+  .cv-feature-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.cv-navbar::after {
+  content: "" !important;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -22px;
+  height: 22px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 86, 150, 0.18),
+    rgba(238, 243, 248, 0)
+  ) !important;
+  pointer-events: none;
+}
+
+.cv-sidebar {
+  position: sticky !important;
+  top: 0 !important;
+  height: 100vh !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  background: #ffffff !important;
+  border-right: 1px solid #e5e7eb !important;
+  z-index: 900 !important;
+}
+
+.cv-sidebar-welcome {
+  background: #1886e6 !important;
+  color: #ffffff !important;
+}
+
+.cv-sidebar-menu-item {
+  transition: all 0.22s ease !important;
+}
+
+.cv-sidebar-menu-item.active {
+  background: rgba(24, 134, 230, 0.28) !important;
+  color: #1886e6 !important;
+  font-weight: 600 !important;
+}
+
+.cv-sidebar-menu-item:hover {
+  background: rgba(24, 134, 230, 0.14) !important;
+  color: #1886e6 !important;
+  transform: translateX(3px) !important;
+}
+
+.cv-sidebar-menu-item:hover i,
+.cv-sidebar-menu-item.active i {
+  color: #1886e6 !important;
+}
+
+.cv-card-dark,
+.cv-hero-panel,
+.cv-stat-card,
+.cv-action-section,
+.cv-progress-card,
+.cv-alert-card,
+.cv-dashboard-panel,
+.cv-action-card,
+.cv-recent-activity-card,
+.cv-vault-card,
+.cv-vault-help-card,
+.cv-vault-info-card,
+.cv-timeline-hero,
+.cv-timeline-summary-card,
+.cv-roadmap-section,
+.cv-roadmap-card,
+.cv-timeline-stat-card,
+.cv-timeline-achievement-card,
+.cv-achievement-item,
+.cv-education-hero-card,
+.cv-education-stat-card,
+.cv-education-section-card,
+.cv-education-material-card,
+.cv-education-category-card,
+.cv-education-tip-item,
+.cv-feature-hero,
+.cv-feature-stat-card,
+.cv-feature-panel,
+.cv-feature-highlight-card,
+.cv-feature-tip {
+  background: #2091f3 !important;
+  color: #ffffff !important;
+  border-radius: 20px !important;
+  border: none !important;
+  box-shadow: 0 10px 24px rgba(0, 86, 150, 0.16) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.cv-action-card:nth-child(even),
+.cv-card-secondary {
+  background: #739ce0 !important;
+}
+
+.cv-action-card:nth-child(odd) {
+  background: #2091f3 !important;
+}
+
+.cv-hero-panel,
+.cv-timeline-hero,
+.cv-education-hero-card,
+.cv-feature-hero {
+  background: linear-gradient(135deg, #2091f3 0%, #1886e6 100%) !important;
+}
+
+.cv-hero-panel:hover,
+.cv-stat-card:hover,
+.cv-dashboard-panel:hover,
+.cv-action-card:hover,
+.cv-recent-activity-card:hover,
+.cv-vault-card:hover,
+.cv-vault-help-card:hover,
+.cv-vault-info-card:hover,
+.cv-timeline-summary-card:hover,
+.cv-roadmap-card:hover,
+.cv-achievement-item:hover,
+.cv-education-stat-card:hover,
+.cv-education-section-card:hover,
+.cv-education-material-card:hover,
+.cv-education-category-card:hover,
+.cv-education-tip-item:hover,
+.cv-feature-stat-card:hover,
+.cv-feature-panel:hover,
+.cv-feature-highlight-card:hover,
+.cv-feature-tip:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+.cv-vault-table-card {
+  background: #2091f3 !important;
+  border-radius: 20px !important;
+  border: none !important;
+  box-shadow: 0 10px 24px rgba(0, 86, 150, 0.16) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.cv-hero-panel :is(h1, h2, h3, h4, h5),
+.cv-stat-card :is(h1, h2, h3, h4, h5),
+.cv-dashboard-panel :is(h1, h2, h3, h4, h5),
+.cv-action-card :is(h1, h2, h3, h4, h5),
+.cv-recent-activity-card :is(h1, h2, h3, h4, h5),
+.cv-vault-card :is(h1, h2, h3, h4, h5, strong),
+.cv-vault-help-card :is(h1, h2, h3, h4, h5, strong),
+.cv-vault-info-card :is(h1, h2, h3, h4, h5, strong),
+.cv-timeline-hero :is(h1, h2, h3, h4, h5),
+.cv-timeline-summary-card :is(h1, h2, h3, h4, h5),
+.cv-roadmap-section :is(h1, h2, h3, h4, h5),
+.cv-roadmap-card :is(h1, h2, h3, h4, h5),
+.cv-timeline-stat-card :is(h1, h2, h3, h4, h5),
+.cv-timeline-achievement-card :is(h1, h2, h3, h4, h5),
+.cv-achievement-item :is(h1, h2, h3, h4, h5),
+.cv-education-hero-card :is(h1, h2, h3, h4, h5, strong),
+.cv-education-stat-card :is(h1, h2, h3, h4, h5, strong),
+.cv-education-section-card :is(h1, h2, h3, h4, h5, strong),
+.cv-education-material-card :is(h1, h2, h3, h4, h5, strong),
+.cv-education-category-card :is(h1, h2, h3, h4, h5, strong),
+.cv-education-tip-item :is(h1, h2, h3, h4, h5, strong),
+.cv-feature-hero :is(h1, h2, h3, h4, h5, strong),
+.cv-feature-stat-card :is(h1, h2, h3, h4, h5, strong),
+.cv-feature-panel :is(h1, h2, h3, h4, h5, strong),
+.cv-feature-highlight-card :is(h1, h2, h3, h4, h5, strong),
+.cv-feature-tip :is(h1, h2, h3, h4, h5, strong) {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.cv-dashboard-panel__header h3,
+.cv-section-head h3,
+.cv-education-section-head h2,
+.cv-feature-panel__head h2,
+.cv-vault-card h3,
+.cv-vault-table-card h3,
+.cv-vault-info-card h3,
+.cv-roadmap-section h3 {
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+}
+
+.cv-hero-panel :is(p, span, small),
+.cv-stat-card :is(p, span, small),
+.cv-dashboard-panel :is(p, span, small),
+.cv-action-card :is(p, span, small),
+.cv-recent-activity-card :is(p, span, small),
+.cv-vault-card :is(p, span, small),
+.cv-vault-help-card :is(p, span, small),
+.cv-vault-info-card :is(p, span, small),
+.cv-timeline-hero :is(p, span, small),
+.cv-timeline-summary-card :is(p, span, small),
+.cv-roadmap-section :is(p, span, small),
+.cv-roadmap-card :is(p, span, small),
+.cv-timeline-stat-card :is(p, span, small),
+.cv-timeline-achievement-card :is(p, span, small),
+.cv-achievement-item :is(p, span, small),
+.cv-education-hero-card :is(p, span, small),
+.cv-education-stat-card :is(p, span, small),
+.cv-education-section-card :is(p, span, small),
+.cv-education-material-card :is(p, span, small),
+.cv-education-category-card :is(p, span, small),
+.cv-education-tip-item :is(p, span, small),
+.cv-feature-hero :is(p, span, small),
+.cv-feature-stat-card :is(p, span, small),
+.cv-feature-panel :is(p, span, small),
+.cv-feature-highlight-card :is(p, span, small),
+.cv-feature-tip :is(p, span, small) {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.cv-dashboard-panel .cv-stat-card__note,
+.cv-stat-card__note,
+.cv-education-material-card__meta,
+.cv-feature-timeline__content span,
+.cv-education-activity-row__content span,
+.cv-activity-item__content span,
+.cv-vault-mini-list__item span,
+.cv-alert-item__meta span,
+.cv-roadmap-card__footer small {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.cv-icon-box,
+.cv-roadmap-icon,
+.cv-feature-stat-card__icon,
+.cv-feature-highlight-card__icon,
+.cv-feature-timeline__dot,
+.cv-education-stat-card__icon,
+.cv-education-category-card__icon,
+.cv-education-activity-row__icon,
+.cv-activity-item__icon,
+.cv-achievement-item .cv-icon-box,
+.cv-timeline-summary-card .cv-icon-box {
+  background: #7fe7f3 !important;
+  color: #005696 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.cv-btn-primary,
+.cv-cta-button--cyan,
+.cv-add-button,
+.cv-add-button--secondary {
+  background: #7fe7f3 !important;
+  color: #003f73 !important;
+  font-weight: 700 !important;
+  border: none !important;
+}
+
+.cv-btn-light,
+.cv-cta-button--white,
+.cv-chip-button {
+  background: #ffffff !important;
+  color: #003f73 !important;
+  font-weight: 700 !important;
+  border: none !important;
+}
+
+.cv-text-link {
+  color: #7ee9f5 !important;
+  font-weight: 700 !important;
+}
+
+.cv-footer {
+  background: rgba(5, 5, 5, 0.36) !important;
+  color: #0f172a !important;
+  height: 50px !important;
+  min-height: 50px !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+.cv-footer a,
+.cv-footer span,
+.cv-footer div {
+  color: #0f172a !important;
+}
+
+.cv-vault-table th,
+.cv-vault-table td {
+  color: #ffffff !important;
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.cv-vault-menu__item,
+.cv-table-actions button,
+.cv-status-badge,
+.cv-alert-tag,
+.cv-feature-hero__badge,
+.cv-feature-hero__visual-grid span,
+.cv-education-hero-illustration__overlay {
+  background: rgba(255, 255, 255, 0.14) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.cv-education-search input,
+.cv-form-control {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid rgba(11, 106, 168, 0.14) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+.cv-education-search input::placeholder,
+.cv-form-control::placeholder {
+  color: #64748b !important;
+}
+
+.cv-stat-grid,
+.cv-action-grid,
+.cv-timeline-summary-grid,
+.cv-education-stats-grid,
+.cv-feature-stats,
+.cv-education-material-grid,
+.cv-roadmap-grid,
+.cv-education-category-grid {
+  gap: 14px !important;
+}
+
+@media (min-width: 1025px) {
+  .cv-stat-grid,
+  .cv-action-grid,
+  .cv-timeline-summary-grid,
+  .cv-education-stats-grid,
+  .cv-feature-stats,
+  .cv-education-material-grid,
+  .cv-roadmap-grid,
+  .cv-education-category-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}

@@ -10,12 +10,12 @@ const menuUtama = [
 const menuFitur = [
   { label: 'Pusat Edukasi', icon: 'bi-journal-text', to: '/pusat-edukasi' },
   { label: 'Pelaporan Insiden Digital', icon: 'bi-bug', to: '/pelaporan-insiden' },
-  { label: 'Pemantau Privasi Digital', icon: 'bi-exclamation-triangle', to: '/pemantau-privasi-digital' },
-  { label: 'Pusat Informasi & Peringatan', icon: 'bi-building-exclamation', to: '/pusat-informasi-dan-peringatan' },
-  { label: 'Pusat Pembelajaran CSIRT', icon: 'bi-arrow-repeat', to: '/pusat-pembelajaran-csirt' },
-  { label: 'Sertifikat dan Penilaian', icon: 'bi-chat-square-text', to: '/sertifikat-dan-penilaian' },
-  { label: 'Forum Kesadaran Digital', icon: 'bi-chat-left-dots', to: '/forum-kesadaran-digital' },
-  { label: 'Asesmen Keamanan Digital', icon: 'bi-person-workspace', to: '/asesmen-keamanan-digital' },
+  { label: 'Pemantau Privasi Digital', icon: 'bi-exclamation-triangle', to: '/pemantau-privasi' },
+  { label: 'Pusat Informasi & Peringatan', icon: 'bi-building-exclamation', to: '/informasi-peringatan' },
+  { label: 'Pusat Pembelajaran CSIRT', icon: 'bi-arrow-repeat', to: '/pembelajaran-csirt' },
+  { label: 'Sertifikat dan Penilaian', icon: 'bi-chat-square-text', to: '/sertifikat-penilaian' },
+  { label: 'Forum Kesadaran Digital', icon: 'bi-chat-left-dots', to: '/forum' },
+  { label: 'Asesmen Keamanan Digital', icon: 'bi-person-workspace', to: '/asesmen' },
 ]
 
 const menuBawah = [

@@ -1,12 +1,19 @@
+import PusatEdukasi from './PusatEdukasi.jsx'
+
 function PlaceholderPage({ title, description }) {
+  if (
+    title === 'Pusat Edukasi' ||
+    description === 'Konten edukasi keamanan digital akan ditampilkan di sini.'
+  ) {
+    return <PusatEdukasi />
+  }
+
   return (
     <section className="container-fluid px-0">
-      <div className="cv-card cv-card-dark">
-        <p className="cybervault-section-label">CyberVault</p>
-        <h1 className="cv-section-title mb-3">{title}</h1>
-        <p className="cybervault-card__text">
-          {description}
-        </p>
+      <div className="cv-placeholder-card">
+        <p className="cv-section-kicker">CyberVault</p>
+        <h1 className="cv-placeholder-card__title">{title}</h1>
+        <p className="cv-placeholder-card__text">{description}</p>
       </div>
     </section>
   )
