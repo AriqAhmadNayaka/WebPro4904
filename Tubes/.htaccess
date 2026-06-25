@@ -1,0 +1,17 @@
+DirectoryIndex index.php
+
+<IfModule mod_autoindex.c>
+    Options -Indexes
+</IfModule>
+
+<FilesMatch "\.(sql|md)$">
+    Deny from all
+</FilesMatch>
+
+<Files "database.local.php">
+    Deny from all
+</Files>
+
+<Files "database.hosting.example.php">
+    Deny from all
+</Files>
