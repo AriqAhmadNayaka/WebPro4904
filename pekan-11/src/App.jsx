@@ -5,7 +5,6 @@ function App() {
   const [activities, setActivities] = useState([]);
   const [input, setInput] = useState("");
 
-  // Tambah aktivitas
   const handleAdd = () => {
     if (input.trim() === "") return;
     setActivities([
@@ -15,7 +14,7 @@ function App() {
     setInput("");
   };
 
-  // Hapus aktivitas
+
   const handleDelete = (id) => {
     setActivities(activities.filter((item) => item.id !== id));
   };
